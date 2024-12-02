@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\FromCommunity;
+namespace OpenClassrooms\OpenAPIValidation\Tests\FromCommunity;
 
 use GuzzleHttp\Psr7\Request;
-use League\OpenAPIValidation\PSR7\Exception\NoOperation;
-use League\OpenAPIValidation\PSR7\Exception\NoPath;
-use League\OpenAPIValidation\PSR7\ValidatorBuilder;
-use League\OpenAPIValidation\Tests\PSR7\BaseValidatorTest;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoOperation;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoPath;
+use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
+use OpenClassrooms\OpenAPIValidation\Tests\PSR7\BaseValidatorTest;
 use Psr\Http\Message\RequestInterface;
 
 /**

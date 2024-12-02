@@ -12,12 +12,12 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "League\\OpenAPIValidation\\": "src/"
+            "OpenClassrooms\\OpenAPIValidation\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "League\\OpenAPIValidation\\Tests\\": "tests/"
+            "OpenClassrooms\\OpenAPIValidation\\Tests\\": "tests/"
         }
     },
     "require": {

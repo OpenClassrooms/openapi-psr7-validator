@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Schema\TypeFormats;
+namespace OpenClassrooms\OpenAPIValidation\Schema\TypeFormats;
 
 // Purpose of this class is to allow customizable/extendable list of formats
 class FormatsContainer

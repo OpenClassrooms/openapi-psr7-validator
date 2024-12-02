@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\Exception;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\Exception;
 
 use function sprintf;
 

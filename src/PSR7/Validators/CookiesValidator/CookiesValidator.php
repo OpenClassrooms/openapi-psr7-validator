@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\Validators\CookiesValidator;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators\CookiesValidator;
 
-use League\OpenAPIValidation\PSR7\MessageValidator;
-use League\OpenAPIValidation\PSR7\OperationAddress;
-use League\OpenAPIValidation\PSR7\SpecFinder;
-use League\OpenAPIValidation\PSR7\Validators\ValidationStrategy;
+use OpenClassrooms\OpenAPIValidation\PSR7\MessageValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress;
+use OpenClassrooms\OpenAPIValidation\PSR7\SpecFinder;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\ValidationStrategy;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ServerRequestInterface;

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Schema\Keywords;
+namespace OpenClassrooms\OpenAPIValidation\Schema\Keywords;
 
 use cebe\openapi\spec\Schema as CebeSchema;
-use League\OpenAPIValidation\Schema\BreadCrumb;
-use League\OpenAPIValidation\Schema\Exception\InvalidSchema;
-use League\OpenAPIValidation\Schema\Exception\KeywordMismatch;
-use League\OpenAPIValidation\Schema\Exception\NotEnoughValidSchemas;
-use League\OpenAPIValidation\Schema\Exception\SchemaMismatch;
-use League\OpenAPIValidation\Schema\Exception\TooManyValidSchemas;
-use League\OpenAPIValidation\Schema\SchemaValidator;
+use OpenClassrooms\OpenAPIValidation\Schema\BreadCrumb;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\InvalidSchema;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\NotEnoughValidSchemas;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\SchemaMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\TooManyValidSchemas;
+use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
 use Respect\Validation\Validator;
 use Throwable;
 

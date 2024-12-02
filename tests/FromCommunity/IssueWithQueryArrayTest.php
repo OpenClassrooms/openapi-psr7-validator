@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\FromCommunity;
+namespace OpenClassrooms\OpenAPIValidation\Tests\FromCommunity;
 
 use GuzzleHttp\Psr7\ServerRequest;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidParameter;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidQueryArgs;
-use League\OpenAPIValidation\PSR7\ValidatorBuilder;
-use League\OpenAPIValidation\Schema\Exception\TypeMismatch;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidParameter;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidQueryArgs;
+use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use PHPUnit\Framework\TestCase;
 
 final class IssueWithQueryArrayTest extends TestCase

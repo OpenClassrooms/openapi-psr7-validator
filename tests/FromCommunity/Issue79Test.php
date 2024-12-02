@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\FromCommunity;
+namespace OpenClassrooms\OpenAPIValidation\Tests\FromCommunity;
 
 use cebe\openapi\Reader;
-use League\OpenAPIValidation\PSR7\PathFinder;
+use OpenClassrooms\OpenAPIValidation\PSR7\PathFinder;
 use PHPUnit\Framework\TestCase;
 
 /**

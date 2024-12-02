@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7;
+namespace OpenClassrooms\OpenAPIValidation\PSR7;
 
 use cebe\openapi\spec\OpenApi;
-use League\OpenAPIValidation\PSR7\Exception\ValidationFailed;
-use League\OpenAPIValidation\PSR7\Validators\BodyValidator\BodyValidator;
-use League\OpenAPIValidation\PSR7\Validators\CookiesValidator\CookiesValidator;
-use League\OpenAPIValidation\PSR7\Validators\HeadersValidator;
-use League\OpenAPIValidation\PSR7\Validators\QueryArgumentsValidator;
-use League\OpenAPIValidation\PSR7\Validators\ValidatorChain;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\ValidationFailed;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\BodyValidator\BodyValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\CookiesValidator\CookiesValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\HeadersValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\QueryArgumentsValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\ValidatorChain;
 use Psr\Http\Message\RequestInterface;
 
 final class CallbackRequestValidator implements ReusableSchema

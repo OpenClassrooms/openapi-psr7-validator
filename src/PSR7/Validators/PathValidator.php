@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\Validators;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators;
 
-use League\OpenAPIValidation\PSR7\Exception\NoPath;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidParameter;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidPath;
-use League\OpenAPIValidation\PSR7\Exception\Validation\RequiredParameterMissing;
-use League\OpenAPIValidation\PSR7\MessageValidator;
-use League\OpenAPIValidation\PSR7\OperationAddress;
-use League\OpenAPIValidation\PSR7\SpecFinder;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoPath;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidParameter;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidPath;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\RequiredParameterMissing;
+use OpenClassrooms\OpenAPIValidation\PSR7\MessageValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress;
+use OpenClassrooms\OpenAPIValidation\PSR7\SpecFinder;
 use LogicException;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\RequestInterface;

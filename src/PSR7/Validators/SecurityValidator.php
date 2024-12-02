@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\Validators;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators;
 
 use cebe\openapi\spec\SecurityRequirement;
 use cebe\openapi\spec\SecurityScheme;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidCookies;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidQueryArgs;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidSecurity;
-use League\OpenAPIValidation\PSR7\Exception\ValidationFailed;
-use League\OpenAPIValidation\PSR7\MessageValidator;
-use League\OpenAPIValidation\PSR7\OperationAddress;
-use League\OpenAPIValidation\PSR7\SpecFinder;
-use League\OpenAPIValidation\Schema\Exception\InvalidSchema;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidCookies;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidQueryArgs;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidSecurity;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\ValidationFailed;
+use OpenClassrooms\OpenAPIValidation\PSR7\MessageValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress;
+use OpenClassrooms\OpenAPIValidation\PSR7\SpecFinder;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\InvalidSchema;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ServerRequestInterface;

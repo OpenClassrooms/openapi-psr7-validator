@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\Exception\Validation;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation;
 
-use League\OpenAPIValidation\PSR7\Exception\ValidationFailed;
-use League\OpenAPIValidation\Schema\Exception\SchemaMismatch;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\ValidationFailed;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\SchemaMismatch;
 
 use function is_scalar;
 use function json_encode;

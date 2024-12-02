@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7;
+namespace OpenClassrooms\OpenAPIValidation\PSR7;
 
 use cebe\openapi\spec\OpenApi;
 use InvalidArgumentException;
-use League\OpenAPIValidation\PSR7\SchemaFactory\JsonFactory;
-use League\OpenAPIValidation\PSR7\SchemaFactory\JsonFileFactory;
-use League\OpenAPIValidation\PSR7\SchemaFactory\PrecreatedSchemaFactory;
-use League\OpenAPIValidation\PSR7\SchemaFactory\YamlFactory;
-use League\OpenAPIValidation\PSR7\SchemaFactory\YamlFileFactory;
+use OpenClassrooms\OpenAPIValidation\PSR7\SchemaFactory\JsonFactory;
+use OpenClassrooms\OpenAPIValidation\PSR7\SchemaFactory\JsonFileFactory;
+use OpenClassrooms\OpenAPIValidation\PSR7\SchemaFactory\PrecreatedSchemaFactory;
+use OpenClassrooms\OpenAPIValidation\PSR7\SchemaFactory\YamlFactory;
+use OpenClassrooms\OpenAPIValidation\PSR7\SchemaFactory\YamlFileFactory;
 use Psr\Cache\CacheItemPoolInterface;
 
 class ValidatorBuilder

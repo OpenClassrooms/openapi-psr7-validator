@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\Validators\BodyValidator;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators\BodyValidator;
 
 use cebe\openapi\spec\Schema;
 use cebe\openapi\spec\Type as CebeType;
-use League\OpenAPIValidation\PSR7\Validators\SerializedParameter;
-use League\OpenAPIValidation\Schema\Exception\SchemaMismatch;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\SerializedParameter;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\SchemaMismatch;
 
 trait BodyDeserialization
 {

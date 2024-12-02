@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\PSR7;
+namespace OpenClassrooms\OpenAPIValidation\Tests\PSR7;
 
 use cebe\openapi\spec\OpenApi;
-use League\OpenAPIValidation\PSR7\CacheableSchemaFactory;
-use League\OpenAPIValidation\PSR7\ValidatorBuilder;
+use OpenClassrooms\OpenAPIValidation\PSR7\CacheableSchemaFactory;
+use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 /**
- * @covers \League\OpenAPIValidation\PSR7\ValidatorBuilder
+ * @covers \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder
  */
 final class ValidatorBuilderTest extends TestCase
 {

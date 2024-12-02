@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\PSR7\Validators;
+namespace OpenClassrooms\OpenAPIValidation\Tests\PSR7\Validators;
 
 use cebe\openapi\spec\Parameter;
 use cebe\openapi\spec\Schema;
-use League\OpenAPIValidation\PSR7\Validators\SerializedParameter;
-use League\OpenAPIValidation\Schema\Exception\InvalidSchema;
-use League\OpenAPIValidation\Schema\Exception\SchemaMismatch;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\SerializedParameter;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\InvalidSchema;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\SchemaMismatch;
 use PHPUnit\Framework\TestCase;
 
 class SerializedParameterTest extends TestCase

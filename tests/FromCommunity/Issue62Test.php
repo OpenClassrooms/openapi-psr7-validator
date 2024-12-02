@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\FromCommunity;
+namespace OpenClassrooms\OpenAPIValidation\Tests\FromCommunity;
 
 use GuzzleHttp\Psr7\ServerRequest;
 use GuzzleHttp\Psr7\UploadedFile;
-use League\OpenAPIValidation\PSR7\ValidatorBuilder;
+use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 use PHPUnit\Framework\TestCase;
 
 final class Issue62Test extends TestCase

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\Validators;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators;
 
 use cebe\openapi\spec\Parameter;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidParameter;
-use League\OpenAPIValidation\PSR7\Exception\Validation\RequiredParameterMissing;
-use League\OpenAPIValidation\Schema\BreadCrumb;
-use League\OpenAPIValidation\Schema\Exception\SchemaMismatch;
-use League\OpenAPIValidation\Schema\SchemaValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidParameter;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\RequiredParameterMissing;
+use OpenClassrooms\OpenAPIValidation\Schema\BreadCrumb;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\SchemaMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
 
 use function array_key_exists;
 

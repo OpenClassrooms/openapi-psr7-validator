@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\Validators;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators;
 
-use League\OpenAPIValidation\Schema\SchemaValidator;
+use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
 

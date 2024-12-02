@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\Validators\BodyValidator;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators\BodyValidator;
 
 use cebe\openapi\spec\Encoding;
 use cebe\openapi\spec\Header;
@@ -10,17 +10,17 @@ use cebe\openapi\spec\MediaType;
 use cebe\openapi\spec\Schema;
 use cebe\openapi\spec\Type as CebeType;
 use InvalidArgumentException;
-use League\OpenAPIValidation\PSR7\Exception\NoPath;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders;
-use League\OpenAPIValidation\PSR7\Exception\ValidationFailed;
-use League\OpenAPIValidation\PSR7\MessageValidator;
-use League\OpenAPIValidation\PSR7\OperationAddress;
-use League\OpenAPIValidation\PSR7\Validators\SerializedParameter;
-use League\OpenAPIValidation\PSR7\Validators\ValidationStrategy;
-use League\OpenAPIValidation\Schema\Exception\SchemaMismatch;
-use League\OpenAPIValidation\Schema\Exception\TypeMismatch;
-use League\OpenAPIValidation\Schema\SchemaValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoPath;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\ValidationFailed;
+use OpenClassrooms\OpenAPIValidation\PSR7\MessageValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\SerializedParameter;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\ValidationStrategy;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\SchemaMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;

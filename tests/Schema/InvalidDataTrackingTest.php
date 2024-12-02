@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\Schema;
+namespace OpenClassrooms\OpenAPIValidation\Tests\Schema;
 
-use League\OpenAPIValidation\Schema\Exception\TypeMismatch;
-use League\OpenAPIValidation\Schema\SchemaValidator;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
 
 final class InvalidDataTrackingTest extends SchemaValidatorTest
 {

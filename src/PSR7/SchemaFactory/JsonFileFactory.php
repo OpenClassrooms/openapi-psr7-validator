@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\SchemaFactory;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\SchemaFactory;
 
 use cebe\openapi\Reader;
 use cebe\openapi\spec\OpenApi;

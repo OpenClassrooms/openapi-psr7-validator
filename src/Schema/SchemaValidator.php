@@ -2,33 +2,33 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Schema;
+namespace OpenClassrooms\OpenAPIValidation\Schema;
 
 use cebe\openapi\spec\Schema as CebeSchema;
 use cebe\openapi\spec\Type as CebeType;
-use League\OpenAPIValidation\Foundation\ArrayHelper;
-use League\OpenAPIValidation\Schema\Exception\SchemaMismatch;
-use League\OpenAPIValidation\Schema\Keywords\AllOf;
-use League\OpenAPIValidation\Schema\Keywords\AnyOf;
-use League\OpenAPIValidation\Schema\Keywords\Enum;
-use League\OpenAPIValidation\Schema\Keywords\Items;
-use League\OpenAPIValidation\Schema\Keywords\Maximum;
-use League\OpenAPIValidation\Schema\Keywords\MaxItems;
-use League\OpenAPIValidation\Schema\Keywords\MaxLength;
-use League\OpenAPIValidation\Schema\Keywords\MaxProperties;
-use League\OpenAPIValidation\Schema\Keywords\Minimum;
-use League\OpenAPIValidation\Schema\Keywords\MinItems;
-use League\OpenAPIValidation\Schema\Keywords\MinLength;
-use League\OpenAPIValidation\Schema\Keywords\MinProperties;
-use League\OpenAPIValidation\Schema\Keywords\MultipleOf;
-use League\OpenAPIValidation\Schema\Keywords\Not;
-use League\OpenAPIValidation\Schema\Keywords\Nullable;
-use League\OpenAPIValidation\Schema\Keywords\OneOf;
-use League\OpenAPIValidation\Schema\Keywords\Pattern;
-use League\OpenAPIValidation\Schema\Keywords\Properties;
-use League\OpenAPIValidation\Schema\Keywords\Required;
-use League\OpenAPIValidation\Schema\Keywords\Type;
-use League\OpenAPIValidation\Schema\Keywords\UniqueItems;
+use OpenClassrooms\OpenAPIValidation\Foundation\ArrayHelper;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\SchemaMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\AllOf;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\AnyOf;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\Enum;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\Items;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\Maximum;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\MaxItems;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\MaxLength;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\MaxProperties;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\Minimum;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\MinItems;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\MinLength;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\MinProperties;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\MultipleOf;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\Not;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\Nullable;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\OneOf;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\Pattern;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\Properties;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\Required;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\Type;
+use OpenClassrooms\OpenAPIValidation\Schema\Keywords\UniqueItems;
 
 use function count;
 use function is_array;

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\Validators\CookiesValidator;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators\CookiesValidator;
 
 use cebe\openapi\spec\Parameter;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidCookies;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidParameter;
-use League\OpenAPIValidation\PSR7\Exception\Validation\RequiredParameterMissing;
-use League\OpenAPIValidation\PSR7\MessageValidator;
-use League\OpenAPIValidation\PSR7\OperationAddress;
-use League\OpenAPIValidation\PSR7\Validators\ArrayValidator;
-use League\OpenAPIValidation\PSR7\Validators\ValidationStrategy;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidCookies;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidParameter;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\RequiredParameterMissing;
+use OpenClassrooms\OpenAPIValidation\PSR7\MessageValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\ArrayValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\ValidationStrategy;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Webmozart\Assert\Assert;

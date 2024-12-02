@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Schema\TypeFormats;
+namespace OpenClassrooms\OpenAPIValidation\Schema\TypeFormats;
 
 use function preg_match;
 

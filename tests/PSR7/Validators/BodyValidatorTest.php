@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\PSR7\Validators;
+namespace OpenClassrooms\OpenAPIValidation\Tests\PSR7\Validators;
 
 use GuzzleHttp\Psr7\Message;
 use GuzzleHttp\Psr7\ServerRequest;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
-use League\OpenAPIValidation\PSR7\ValidatorBuilder;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
+use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 use PHPUnit\Framework\TestCase;
 
 class BodyValidatorTest extends TestCase

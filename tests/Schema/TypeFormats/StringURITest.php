@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\Schema\TypeFormats;
+namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\TypeFormats;
 
-use League\OpenAPIValidation\Schema\TypeFormats\StringURI;
+use OpenClassrooms\OpenAPIValidation\Schema\TypeFormats\StringURI;
 use PHPUnit\Framework\TestCase;
 
 use function rawurlencode;

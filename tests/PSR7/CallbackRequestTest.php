@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\PSR7;
+namespace OpenClassrooms\OpenAPIValidation\Tests\PSR7;
 
 use GuzzleHttp\Psr7\Request;
-use League\OpenAPIValidation\PSR7\CallbackAddress;
-use League\OpenAPIValidation\PSR7\CallbackRequestValidator;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
-use League\OpenAPIValidation\PSR7\ValidatorBuilder;
+use OpenClassrooms\OpenAPIValidation\PSR7\CallbackAddress;
+use OpenClassrooms\OpenAPIValidation\PSR7\CallbackRequestValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
+use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 use Psr\Http\Message\RequestInterface;
 
 use function json_encode;

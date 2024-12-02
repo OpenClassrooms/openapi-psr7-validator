@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR15\Exception;
+namespace OpenClassrooms\OpenAPIValidation\PSR15\Exception;
 
-use League\OpenAPIValidation\PSR7\Exception\ValidationFailed;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\ValidationFailed;
 
 class InvalidResponseMessage extends ValidationFailed
 {

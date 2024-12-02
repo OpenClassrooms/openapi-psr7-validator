@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\FromCommunity;
+namespace OpenClassrooms\OpenAPIValidation\Tests\FromCommunity;
 
 use GuzzleHttp\Psr7\ServerRequest;
 use GuzzleHttp\Psr7\Utils;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
-use League\OpenAPIValidation\PSR7\ValidatorBuilder;
-use League\OpenAPIValidation\Schema\Exception\KeywordMismatch;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
+use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use PHPUnit\Framework\TestCase;
 
 use function json_encode;

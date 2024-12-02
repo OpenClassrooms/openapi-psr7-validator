@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR15;
+namespace OpenClassrooms\OpenAPIValidation\PSR15;
 
-use League\OpenAPIValidation\PSR15\Exception\InvalidResponseMessage;
-use League\OpenAPIValidation\PSR15\Exception\InvalidServerRequestMessage;
-use League\OpenAPIValidation\PSR7\Exception\ValidationFailed;
-use League\OpenAPIValidation\PSR7\ResponseValidator;
-use League\OpenAPIValidation\PSR7\ServerRequestValidator;
+use OpenClassrooms\OpenAPIValidation\PSR15\Exception\InvalidResponseMessage;
+use OpenClassrooms\OpenAPIValidation\PSR15\Exception\InvalidServerRequestMessage;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\ValidationFailed;
+use OpenClassrooms\OpenAPIValidation\PSR7\ResponseValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\ServerRequestValidator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;

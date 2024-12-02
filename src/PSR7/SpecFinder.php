@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7;
+namespace OpenClassrooms\OpenAPIValidation\PSR7;
 
 use cebe\openapi\exceptions\TypeErrorException;
 use cebe\openapi\spec\Callback;
@@ -15,11 +15,11 @@ use cebe\openapi\spec\Response as ResponseSpec;
 use cebe\openapi\spec\SecurityRequirement;
 use cebe\openapi\spec\SecurityScheme;
 use cebe\openapi\SpecBaseObject;
-use League\OpenAPIValidation\PSR7\Exception\NoCallback;
-use League\OpenAPIValidation\PSR7\Exception\NoOperation;
-use League\OpenAPIValidation\PSR7\Exception\NoPath;
-use League\OpenAPIValidation\PSR7\Exception\NoResponseCode;
-use League\OpenAPIValidation\Schema\Exception\InvalidSchema;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoCallback;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoOperation;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoPath;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoResponseCode;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\InvalidSchema;
 use Webmozart\Assert\Assert;
 
 use function is_array;

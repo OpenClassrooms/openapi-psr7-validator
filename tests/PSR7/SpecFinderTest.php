@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\PSR7;
+namespace OpenClassrooms\OpenAPIValidation\Tests\PSR7;
 
-use League\OpenAPIValidation\PSR7\CallbackAddress;
-use League\OpenAPIValidation\PSR7\OperationAddress;
-use League\OpenAPIValidation\PSR7\ResponseAddress;
-use League\OpenAPIValidation\PSR7\SpecFinder;
-use League\OpenAPIValidation\PSR7\ValidatorBuilder;
+use OpenClassrooms\OpenAPIValidation\PSR7\CallbackAddress;
+use OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress;
+use OpenClassrooms\OpenAPIValidation\PSR7\ResponseAddress;
+use OpenClassrooms\OpenAPIValidation\PSR7\SpecFinder;
+use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 use PHPUnit\Framework\TestCase;
 
 use function array_keys;

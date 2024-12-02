@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\Schema;
+namespace OpenClassrooms\OpenAPIValidation\Tests\Schema;
 
 use GuzzleHttp\Psr7\ServerRequest;
-use League\OpenAPIValidation\PSR7\ValidatorBuilder;
-use League\OpenAPIValidation\Schema\Exception\InvalidSchema;
+use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\InvalidSchema;
 use PHPUnit\Framework\TestCase;
 
 class PathParsingTest extends TestCase

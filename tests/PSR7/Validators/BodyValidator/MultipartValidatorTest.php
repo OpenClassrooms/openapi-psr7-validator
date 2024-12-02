@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\PSR7\Validators\BodyValidator;
+namespace OpenClassrooms\OpenAPIValidation\Tests\PSR7\Validators\BodyValidator;
 
 use GuzzleHttp\Psr7\Message;
 use GuzzleHttp\Psr7\ServerRequest;
 use GuzzleHttp\Psr7\UploadedFile;
 use GuzzleHttp\Psr7\Uri;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders;
-use League\OpenAPIValidation\PSR7\ValidatorBuilder;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders;
+use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UploadedFileInterface;
 

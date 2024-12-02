@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7;
+namespace OpenClassrooms\OpenAPIValidation\PSR7;
 
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidPath;
-use League\OpenAPIValidation\Schema\Exception\InvalidSchema;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidPath;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\InvalidSchema;
 
 use function explode;
 use function implode;

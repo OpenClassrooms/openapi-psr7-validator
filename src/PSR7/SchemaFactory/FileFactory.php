@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\SchemaFactory;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\SchemaFactory;
 
-use League\OpenAPIValidation\PSR7\CacheableSchemaFactory;
+use OpenClassrooms\OpenAPIValidation\PSR7\CacheableSchemaFactory;
 use Webmozart\Assert\Assert;
 
 use function crc32;

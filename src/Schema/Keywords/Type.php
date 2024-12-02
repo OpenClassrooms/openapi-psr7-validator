@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Schema\Keywords;
+namespace OpenClassrooms\OpenAPIValidation\Schema\Keywords;
 
 use cebe\openapi\spec\Type as CebeType;
-use League\OpenAPIValidation\Foundation\ArrayHelper;
-use League\OpenAPIValidation\Schema\Exception\FormatMismatch;
-use League\OpenAPIValidation\Schema\Exception\InvalidSchema;
-use League\OpenAPIValidation\Schema\Exception\TypeMismatch;
-use League\OpenAPIValidation\Schema\TypeFormats\FormatsContainer;
+use OpenClassrooms\OpenAPIValidation\Foundation\ArrayHelper;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\FormatMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\InvalidSchema;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\TypeFormats\FormatsContainer;
 use RuntimeException;
 use TypeError;
 

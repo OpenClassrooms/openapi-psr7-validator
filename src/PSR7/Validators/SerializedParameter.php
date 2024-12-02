@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\Validators;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators;
 
 use cebe\openapi\spec\Parameter as CebeParameter;
 use cebe\openapi\spec\Schema as CebeSchema;
 use cebe\openapi\spec\Type as CebeType;
-use League\OpenAPIValidation\Schema\Exception\ContentTypeMismatch;
-use League\OpenAPIValidation\Schema\Exception\InvalidSchema;
-use League\OpenAPIValidation\Schema\Exception\SchemaMismatch;
-use League\OpenAPIValidation\Schema\Exception\TypeMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\ContentTypeMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\InvalidSchema;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\SchemaMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use Respect\Validation\Validator;
 use Throwable;
 

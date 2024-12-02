@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Foundation;
+namespace OpenClassrooms\OpenAPIValidation\Foundation;
 
 use function array_keys;
 use function count;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Schema\Exception;
+namespace OpenClassrooms\OpenAPIValidation\Schema\Exception;
 
 use RuntimeException;
 use Throwable;

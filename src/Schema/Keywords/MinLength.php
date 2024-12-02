@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Schema\Keywords;
+namespace OpenClassrooms\OpenAPIValidation\Schema\Keywords;
 
-use League\OpenAPIValidation\Schema\Exception\InvalidSchema;
-use League\OpenAPIValidation\Schema\Exception\KeywordMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\InvalidSchema;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use Respect\Validation\Validator;
 use Throwable;
 

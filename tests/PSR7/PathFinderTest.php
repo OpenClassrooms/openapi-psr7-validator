@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\PSR7;
+namespace OpenClassrooms\OpenAPIValidation\Tests\PSR7;
 
 use cebe\openapi\Reader;
-use League\OpenAPIValidation\PSR7\PathFinder;
+use OpenClassrooms\OpenAPIValidation\PSR7\PathFinder;
 use PHPUnit\Framework\TestCase;
 
 final class PathFinderTest extends TestCase

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7;
+namespace OpenClassrooms\OpenAPIValidation\PSR7;
 
-use League\OpenAPIValidation\PSR7\Exception\NoPath;
-use League\OpenAPIValidation\PSR7\Exception\ValidationFailed;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoPath;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\ValidationFailed;
 use Psr\Http\Message\MessageInterface;
 
 interface MessageValidator

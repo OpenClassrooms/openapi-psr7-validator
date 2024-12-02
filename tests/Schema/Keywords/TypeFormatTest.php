@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\Schema\Keywords;
+namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
-use League\OpenAPIValidation\Schema\Exception\FormatMismatch;
-use League\OpenAPIValidation\Schema\SchemaValidator;
-use League\OpenAPIValidation\Schema\TypeFormats\FormatsContainer;
-use League\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Schema\Exception\FormatMismatch;
+use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
+use OpenClassrooms\OpenAPIValidation\Schema\TypeFormats\FormatsContainer;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
 
 final class TypeFormatTest extends SchemaValidatorTest
 {

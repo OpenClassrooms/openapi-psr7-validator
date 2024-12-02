@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\PSR15;
+namespace OpenClassrooms\OpenAPIValidation\Tests\PSR15;
 
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\ServerRequest;
-use League\OpenAPIValidation\PSR15\Exception\InvalidResponseMessage;
-use League\OpenAPIValidation\PSR15\Exception\InvalidServerRequestMessage;
-use League\OpenAPIValidation\PSR15\ValidationMiddleware;
-use League\OpenAPIValidation\PSR7\ValidatorBuilder;
-use League\OpenAPIValidation\Tests\PSR7\BaseValidatorTest;
+use OpenClassrooms\OpenAPIValidation\PSR15\Exception\InvalidResponseMessage;
+use OpenClassrooms\OpenAPIValidation\PSR15\Exception\InvalidServerRequestMessage;
+use OpenClassrooms\OpenAPIValidation\PSR15\ValidationMiddleware;
+use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
+use OpenClassrooms\OpenAPIValidation\Tests\PSR7\BaseValidatorTest;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 

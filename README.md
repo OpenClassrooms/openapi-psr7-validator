@@ -36,16 +36,16 @@ You can validate `\Psr\Http\Message\ServerRequestInterface` instance like this:
 $yamlFile = "api.yaml";
 $jsonFile = "api.json";
 
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYamlFile($yamlFile)->getServerRequestValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYamlFile($yamlFile)->getServerRequestValidator();
 #or
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYaml(file_get_contents($yamlFile))->getServerRequestValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYaml(file_get_contents($yamlFile))->getServerRequestValidator();
 #or
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromJson(file_get_contents($jsonFile))->getServerRequestValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromJson(file_get_contents($jsonFile))->getServerRequestValidator();
 #or
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromJsonFile($jsonFile)->getServerRequestValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromJsonFile($jsonFile)->getServerRequestValidator();
 #or
 $schema = new \cebe\openapi\spec\OpenApi(); // generate schema object by hand
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromSchema($schema)->getServerRequestValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromSchema($schema)->getServerRequestValidator();
 
 $match = $validator->validate($request);
 ```
@@ -55,9 +55,9 @@ the operation which should match your request (i.e you have routing in your proj
 `RouterRequestValidator`
 
 ```php
-$address = new \League\OpenAPIValidation\PSR7\OperationAddress('/some/operation', 'post');
+$address = new \OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress('/some/operation', 'post');
 
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromSchema($schema)->getRoutedRequestValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromSchema($schema)->getRoutedRequestValidator();
 
 $validator->validate($address, $request);
 ```
@@ -71,16 +71,16 @@ You can validate `\Psr\Http\Message\RequestInterface` instance like this:
 $yamlFile = "api.yaml";
 $jsonFile = "api.json";
 
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYamlFile($yamlFile)->getRequestValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYamlFile($yamlFile)->getRequestValidator();
 #or
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYaml(file_get_contents($yamlFile))->getRequestValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYaml(file_get_contents($yamlFile))->getRequestValidator();
 #or
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromJson(file_get_contents($jsonFile))->getRequestValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromJson(file_get_contents($jsonFile))->getRequestValidator();
 #or
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromJsonFile($jsonFile)->getRequestValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromJsonFile($jsonFile)->getRequestValidator();
 #or
 $schema = new \cebe\openapi\spec\OpenApi(); // generate schema object by hand
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromSchema($schema)->getRequestValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromSchema($schema)->getRequestValidator();
 
 $match = $validator->validate($request);
 ```
@@ -96,30 +96,30 @@ Example:
 $yamlFile = "api.yaml";
 $jsonFile = "api.json";
 
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYamlFile($yamlFile)->getResponseValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYamlFile($yamlFile)->getResponseValidator();
 #or
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYaml(file_get_contents($yamlFile))->getResponseValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYaml(file_get_contents($yamlFile))->getResponseValidator();
 #or
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromJson(file_get_contents($jsonFile))->getResponseValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromJson(file_get_contents($jsonFile))->getResponseValidator();
 #or
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromJsonFile($jsonFile)->getResponseValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromJsonFile($jsonFile)->getResponseValidator();
 #or
 $schema = new \cebe\openapi\spec\OpenApi(); // generate schema object by hand
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromSchema($schema)->getResponseValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromSchema($schema)->getResponseValidator();
 
-$operation = new \League\OpenAPIValidation\PSR7\OperationAddress('/password/gen', 'get') ;
+$operation = new \OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress('/password/gen', 'get') ;
 
 $validator->validate($operation, $response);
 ```
 
 ### Reuse Schema After Validation
 
-`\League\OpenAPIValidation\PSR7\ValidatorBuilder` reads and compiles schema in memory as instance of `\cebe\openapi\spec\OpenApi`. Validators use this instance to perform validation logic. You can reuse this instance after the validation like this:
+`\OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder` reads and compiles schema in memory as instance of `\cebe\openapi\spec\OpenApi`. Validators use this instance to perform validation logic. You can reuse this instance after the validation like this:
 
 ```php
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYamlFile($yamlFile)->getServerRequestValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYamlFile($yamlFile)->getServerRequestValidator();
 # or
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYamlFile($yamlFile)->getResponseValidator();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)->fromYamlFile($yamlFile)->getResponseValidator();
 
 /** @var \cebe\openapi\spec\OpenApi */
 $openApi = $validator->getSchema();
@@ -132,16 +132,16 @@ PSR-15 middleware can be used like this:
 $yamlFile = 'api.yaml';
 $jsonFile = 'api.json';
 
-$psr15Middleware = (new \League\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromYamlFile($yamlFile)->getValidationMiddleware();
+$psr15Middleware = (new \OpenClassrooms\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromYamlFile($yamlFile)->getValidationMiddleware();
 #or
-$psr15Middleware = (new \League\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromYaml(file_get_contents($yamlFile))->getValidationMiddleware();
+$psr15Middleware = (new \OpenClassrooms\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromYaml(file_get_contents($yamlFile))->getValidationMiddleware();
 #or
-$psr15Middleware = (new \League\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromJsonFile($jsonFile)->getValidationMiddleware();
+$psr15Middleware = (new \OpenClassrooms\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromJsonFile($jsonFile)->getValidationMiddleware();
 #or
-$psr15Middleware = (new \League\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromJson(file_get_contents($jsonFile))->getValidationMiddleware();
+$psr15Middleware = (new \OpenClassrooms\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromJson(file_get_contents($jsonFile))->getValidationMiddleware();
 #or
 $schema = new \cebe\openapi\spec\OpenApi(); // generate schema object by hand
-$validator = (new \League\OpenAPIValidation\PSR7\ValidationMiddlewareBuilder)->fromSchema($schema)->getValidationMiddleware();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidationMiddlewareBuilder)->fromSchema($schema)->getValidationMiddleware();
 ```
 
 ### SlimFramework Middleware
@@ -152,18 +152,18 @@ adapter which you can use like this:
 $yamlFile = 'api.yaml';
 $jsonFile = 'api.json';
 
-$psr15Middleware = (new \League\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromYamlFile($yamlFile)->getValidationMiddleware();
+$psr15Middleware = (new \OpenClassrooms\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromYamlFile($yamlFile)->getValidationMiddleware();
 #or
-$psr15Middleware = (new \League\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromYaml(file_get_contents($yamlFile))->getValidationMiddleware();
+$psr15Middleware = (new \OpenClassrooms\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromYaml(file_get_contents($yamlFile))->getValidationMiddleware();
 #or
-$psr15Middleware = (new \League\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromJsonFile($jsonFile)->getValidationMiddleware();
+$psr15Middleware = (new \OpenClassrooms\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromJsonFile($jsonFile)->getValidationMiddleware();
 #or
-$psr15Middleware = (new \League\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromJson(file_get_contents($jsonFile))->getValidationMiddleware();
+$psr15Middleware = (new \OpenClassrooms\OpenAPIValidation\PSR15\ValidationMiddlewareBuilder)->fromJson(file_get_contents($jsonFile))->getValidationMiddleware();
 #or
 $schema = new \cebe\openapi\spec\OpenApi(); // generate schema object by hand
-$validator = (new \League\OpenAPIValidation\PSR7\ValidationMiddlewareBuilder)->fromSchema($schema)->getValidationMiddleware();
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidationMiddlewareBuilder)->fromSchema($schema)->getValidationMiddleware();
 
-$slimMiddleware = new \League\OpenAPIValidation\PSR15\SlimAdapter($psr15Middleware);
+$slimMiddleware = new \OpenClassrooms\OpenAPIValidation\PSR15\SlimAdapter($psr15Middleware);
 
 /** @var \Slim\App $app */
 $app->add($slimMiddleware);
@@ -177,7 +177,7 @@ You enable caching if you pass a configured Cache Pool Object to the static cons
 $cachePool = new ArrayCachePool();
 
 // Pass it as a 2nd argument
-$validator = (new \League\OpenAPIValidation\PSR7\ValidatorBuilder)
+$validator = (new \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder)
     ->fromYamlFile($yamlFile)
     ->setCache($cachePool)
     ->getResponseValidator();
@@ -214,8 +214,8 @@ $spec->resolveReferences(new ReferenceContext($spec, "/"));
 $schema = new cebe\openapi\spec\Schema($spec->schema);
 
 try {
-    (new \League\OpenAPIValidation\Schema\SchemaValidator())->validate($data, $schema);
-} catch(\League\OpenAPIValidation\Schema\Exception\KeywordMismatch $e) {
+    (new \OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator())->validate($data, $schema);
+} catch(\OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch $e) {
     // you can evaluate failure details
     // $e->keyword() == "enum"
     // $e->data() == "c"
@@ -267,30 +267,30 @@ $customFormat = function ($value): bool {
 };
 
 # Register your callable like this before validating your data
-\League\OpenAPIValidation\Schema\TypeFormats\FormatsContainer::registerFormat('string', 'custom', $customFormat);
+\OpenClassrooms\OpenAPIValidation\Schema\TypeFormats\FormatsContainer::registerFormat('string', 'custom', $customFormat);
 ```
 
 ## Exceptions
 The package throws a list of various exceptions which you can catch and handle. There are some of them:
 - Schema related:
-    - `\League\OpenAPIValidation\Schema\Exception\KeywordMismatch` - Indicates that data was not matched against a schema's keyword
-        - `\League\OpenAPIValidation\Schema\Exception\TypeMismatch` - Validation for `type` keyword failed against a given data. For example `type:string` and value is `12`
-        - `\League\OpenAPIValidation\Schema\Exception\FormatMismatch` - data mismatched a given type format. For example `type: string, format: email` won't match `not-email`.
+    - `\OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch` - Indicates that data was not matched against a schema's keyword
+        - `\OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch` - Validation for `type` keyword failed against a given data. For example `type:string` and value is `12`
+        - `\OpenClassrooms\OpenAPIValidation\Schema\Exception\FormatMismatch` - data mismatched a given type format. For example `type: string, format: email` won't match `not-email`.
 - PSR7 Messages related:
-    - `\League\OpenAPIValidation\PSR7\Exception\NoContentType` - HTTP message(request/response) contains no Content-Type header. General HTTP errors.
-    - `\League\OpenAPIValidation\PSR7\Exception\NoPath` - path is not found in the spec
-    - `\League\OpenAPIValidation\PSR7\Exception\NoOperation` - operation os not found in the path
-    - `\League\OpenAPIValidation\PSR7\Exception\NoResponseCode` - response code not found under the operation in the spec
+    - `\OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoContentType` - HTTP message(request/response) contains no Content-Type header. General HTTP errors.
+    - `\OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoPath` - path is not found in the spec
+    - `\OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoOperation` - operation os not found in the path
+    - `\OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoResponseCode` - response code not found under the operation in the spec
     - Validation exceptions (check parent exception for possible root causes):
-        - `\League\OpenAPIValidation\PSR7\Exception\ValidationFailed` - generic exception for failed PSR-7 message
-        - `\League\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody` - body does not match schema
-        - `\League\OpenAPIValidation\PSR7\Exception\Validation\InvalidCookies` - cookies does not match schema or missing required cookie
-        - `\League\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders` - header does not match schema or missing required header
-        - `\League\OpenAPIValidation\PSR7\Exception\Validation\InvalidPath` - path does not match pattern or pattern values does not match schema
-        - `\League\OpenAPIValidation\PSR7\Exception\Validation\InvalidQueryArgs` - query args does not match schema or missing required argument
-        - `\League\OpenAPIValidation\PSR7\Exception\Validation\InvalidSecurity` - request does not match security schema or invalid security headers
+        - `\OpenClassrooms\OpenAPIValidation\PSR7\Exception\ValidationFailed` - generic exception for failed PSR-7 message
+        - `\OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody` - body does not match schema
+        - `\OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidCookies` - cookies does not match schema or missing required cookie
+        - `\OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders` - header does not match schema or missing required header
+        - `\OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidPath` - path does not match pattern or pattern values does not match schema
+        - `\OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidQueryArgs` - query args does not match schema or missing required argument
+        - `\OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidSecurity` - request does not match security schema or invalid security headers
     - Request related:
-        - `\League\OpenAPIValidation\PSR7\Exception\MultipleOperationsMismatchForRequest` - request matched multiple operations in the spec, 
+        - `\OpenClassrooms\OpenAPIValidation\PSR7\Exception\MultipleOperationsMismatchForRequest` - request matched multiple operations in the spec, 
         but validation failed for all of them.
 
 ## Testing

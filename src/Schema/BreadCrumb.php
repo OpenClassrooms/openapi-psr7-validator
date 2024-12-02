@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Schema;
+namespace OpenClassrooms\OpenAPIValidation\Schema;
 
 use RuntimeException;
 

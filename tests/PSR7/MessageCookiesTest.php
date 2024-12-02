@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\Tests\PSR7;
+namespace OpenClassrooms\OpenAPIValidation\Tests\PSR7;
 
 use HansOtt\PSR7Cookies\SetCookie;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidCookies;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders;
-use League\OpenAPIValidation\PSR7\OperationAddress;
-use League\OpenAPIValidation\PSR7\ResponseAddress;
-use League\OpenAPIValidation\PSR7\ValidatorBuilder;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidCookies;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders;
+use OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress;
+use OpenClassrooms\OpenAPIValidation\PSR7\ResponseAddress;
+use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 
 final class MessageCookiesTest extends BaseValidatorTest
 {

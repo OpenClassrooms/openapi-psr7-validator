@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace League\OpenAPIValidation\PSR7\Validators\BodyValidator;
+namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators\BodyValidator;
 
 use cebe\openapi\spec\MediaType;
 use cebe\openapi\spec\Reference;
 use cebe\openapi\spec\RequestBody;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders;
-use League\OpenAPIValidation\PSR7\MessageValidator;
-use League\OpenAPIValidation\PSR7\OperationAddress;
-use League\OpenAPIValidation\PSR7\SpecFinder;
-use League\OpenAPIValidation\PSR7\Validators\ValidationStrategy;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
+use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders;
+use OpenClassrooms\OpenAPIValidation\PSR7\MessageValidator;
+use OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress;
+use OpenClassrooms\OpenAPIValidation\PSR7\SpecFinder;
+use OpenClassrooms\OpenAPIValidation\PSR7\Validators\ValidationStrategy;
 use Psr\Http\Message\MessageInterface;
 
 use function explode;
