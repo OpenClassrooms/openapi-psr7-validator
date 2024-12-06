@@ -170,6 +170,10 @@ final class SerializedParameter
             return $this->convertToSerializationStyle($value, $this->schema);
         }
 
+        if (($type === CebeType::OBJECT) && is_string($value)) {
+            return $this->convertToSerializationStyle($value, $this->schema);
+        }
+
         return $value;
     }
 
@@ -184,6 +188,9 @@ final class SerializedParameter
         switch ($this->in) {
             case 'path':
                 return $this->convertToSerializationStyleForPath($value, $schema);
+
+            case 'header':
+                return $this->convertToSerializationStyleForHeader($value, $schema);
 
             default:
                 return $this->convertToSerializationStyleForQuery($value, $schema);
@@ -255,6 +262,29 @@ final class SerializedParameter
         }
 
         return $value;
+    }
+
+    /**
+     * @param mixed           $value
+     * @param CebeSchema|null $schema - optional schema of value to convert it in case of DeepObject serialisation
+     *
+     * @return mixed
+     */
+    protected function convertToSerializationStyleForHeader($value, ?CebeSchema $schema)
+    {
+        $value = explode(',', $value);
+
+        if (! is_iterable($value)) {
+            throw TypeMismatch::becauseTypeDoesNotMatch(['iterable'], $value);
+        }
+
+        $array  = [];
+        foreach ($value as &$val) {
+            $splitVal = explode('=', $val);
+            $array[$splitVal[0]] = $this->castToSchemaType($splitVal[1], $schema->properties[$splitVal[0]]->type ?? null);
+        }
+
+        return $array;
     }
 
     /**
