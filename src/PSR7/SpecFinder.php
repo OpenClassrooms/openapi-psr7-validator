@@ -247,7 +247,7 @@ final class SpecFinder
             }
 
             $headerData = json_decode(json_encode($p->getSerializableData()), true);
-            unset($headerData['in'], $headerData['name']);
+            unset($headerData['name']);
             try {
                 $headerSpecs[$p->name] = new HeaderSpec($headerData);
             } catch (TypeErrorException $e) {
