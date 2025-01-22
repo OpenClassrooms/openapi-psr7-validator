@@ -10,18 +10,19 @@ class FormatsContainer
     /** @var mixed[] - array of types->formats->callables */
     private static $list = [
         'string' => [
-            'byte'      => StringByte::class,
-            'date'      => StringDate::class,
+            'byte' => StringByte::class,
+            'date' => StringDate::class,
             'date-time' => StringDateTime::class,
-            'email'     => StringEmail::class,
-            'hostname'  => StringHostname::class,
-            'uri'       => StringURI::class,
-            'uuid'      => StringUUID::class,
-            'ipv4'      => StringIP4::class,
-            'ipv6'      => StringIP6::class,
+            'email' => StringEmail::class,
+            'hostname' => StringHostname::class,
+            'phoneNumber' => StringPhoneNumber::class,
+            'uri' => StringURI::class,
+            'uuid' => StringUUID::class,
+            'ipv4' => StringIP4::class,
+            'ipv6' => StringIP6::class,
         ],
         'number' => [
-            'float'  => NumberFloat::class,
+            'float' => NumberFloat::class,
             'double' => NumberDouble::class,
         ],
     ];
@@ -45,6 +46,7 @@ class FormatsContainer
         self::registerFormat('string', 'date-time', StringDateTime::class);
         self::registerFormat('string', 'email', StringEmail::class);
         self::registerFormat('string', 'hostname', StringHostname::class);
+        self::registerFormat('string', 'phoneNumber', StringPhoneNumber::class);
         self::registerFormat('string', 'uri', StringURI::class);
         self::registerFormat('string', 'uuid', StringUUID::class);
         self::registerFormat('string', 'ipv4', StringIP4::class);
