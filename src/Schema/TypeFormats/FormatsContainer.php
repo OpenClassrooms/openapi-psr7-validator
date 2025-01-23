@@ -15,7 +15,7 @@ class FormatsContainer
             'date-time' => StringDateTime::class,
             'email' => StringEmail::class,
             'hostname' => StringHostname::class,
-            'phoneNumber' => StringPhoneNumber::class,
+            'phone-number' => StringPhoneNumber::class,
             'uri' => StringURI::class,
             'uuid' => StringUUID::class,
             'ipv4' => StringIP4::class,
@@ -46,7 +46,7 @@ class FormatsContainer
         self::registerFormat('string', 'date-time', StringDateTime::class);
         self::registerFormat('string', 'email', StringEmail::class);
         self::registerFormat('string', 'hostname', StringHostname::class);
-        self::registerFormat('string', 'phoneNumber', StringPhoneNumber::class);
+        self::registerFormat('string', 'phone-number', StringPhoneNumber::class);
         self::registerFormat('string', 'uri', StringURI::class);
         self::registerFormat('string', 'uuid', StringUUID::class);
         self::registerFormat('string', 'ipv4', StringIP4::class);
