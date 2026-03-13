@@ -55,6 +55,55 @@ SPEC;
         $this->addToAssertionCount(1);
     }
 
+    public function testItValidatesSafeUriGreen(): void
+    {
+        $spec = <<<SPEC
+schema:
+  type: string
+  format: safe-uri
+SPEC;
+
+        $schema = $this->loadRawSchema($spec);
+        (new SchemaValidator())->validate('https://example.org/path', $schema);
+        $this->addToAssertionCount(1);
+    }
+
+    public function testItValidatesSafeUriRed(): void
+    {
+        $spec = <<<SPEC
+schema:
+  type: string
+  format: safe-uri
+SPEC;
+
+        $schema = $this->loadRawSchema($spec);
+
+        try {
+            (new SchemaValidator())->validate('https://localhost/path', $schema);
+            $this->fail('Validation did not expected to pass');
+        } catch (FormatMismatch $e) {
+            $this->assertEquals('safe-uri', $e->format());
+        }
+    }
+
+    public function testItValidatesSafeUriWithUserInfoRed(): void
+    {
+        $spec = <<<SPEC
+schema:
+  type: string
+  format: safe-uri
+SPEC;
+
+        $schema = $this->loadRawSchema($spec);
+
+        try {
+            (new SchemaValidator())->validate('https://user@example.org/path', $schema);
+            $this->fail('Validation did not expected to pass');
+        } catch (FormatMismatch $e) {
+            $this->assertEquals('safe-uri', $e->format());
+        }
+    }
+
     public function testItAllowsCustomFormatGreen(): void
     {
         $spec = <<<SPEC
