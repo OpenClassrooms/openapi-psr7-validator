@@ -17,6 +17,7 @@ class FormatsContainer
             'hostname' => StringHostname::class,
             'phone-number' => StringPhoneNumber::class,
             'uri' => StringURI::class,
+            'safe-uri' => StringSafeURI::class,
             'uuid' => StringUUID::class,
             'ipv4' => StringIP4::class,
             'ipv6' => StringIP6::class,
@@ -48,6 +49,7 @@ class FormatsContainer
         self::registerFormat('string', 'hostname', StringHostname::class);
         self::registerFormat('string', 'phone-number', StringPhoneNumber::class);
         self::registerFormat('string', 'uri', StringURI::class);
+        self::registerFormat('string', 'safe-uri', StringSafeURI::class);
         self::registerFormat('string', 'uuid', StringUUID::class);
         self::registerFormat('string', 'ipv4', StringIP4::class);
         self::registerFormat('string', 'ipv6', StringIP6::class);

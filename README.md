@@ -242,6 +242,7 @@ This package contains a bunch of built-in format validators:
     - `ipv4`
     - `ipv6`
     - `uri`
+    - `safe-uri` (absolute `https`, no userinfo/fragment, blocks localhost and private/reserved IP literals)
     - `uuid` (uuid4)
 - `number` type
     - `float`
