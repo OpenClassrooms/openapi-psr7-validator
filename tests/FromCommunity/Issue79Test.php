@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 final class Issue79Test extends TestCase
 {
     /**
-     * @dataProvider provideSpecAndOperationToMatch()
+     * @dataProvider provideSpecAndOperationToMatch
      */
     public function testItFindsMatchingOperationWithTheRightServer(
         string $spec,
@@ -120,7 +120,7 @@ YAML
     }
 
     /**
-     * @dataProvider provideSpecAndOperationToNotMatch()
+     * @dataProvider provideSpecAndOperationToNotMatch
      */
     public function testItDoesNotFindMatchingOperationWithTheWrongServer(
         string $spec,

@@ -26,6 +26,7 @@ class OperationAddress
 
     /** @var string */
     protected $method;
+
     /** @var string */
     protected $path;
 
@@ -70,7 +71,7 @@ class OperationAddress
 
     public function countPlaceholders(): int
     {
-        return preg_match_all(self::PATH_PLACEHOLDER, $this->path()) ?? 0;
+        return preg_match_all(self::PATH_PLACEHOLDER, $this->path()) ?: 0;
     }
 
     public function countExactMatchParts(string $comparisonPath): int
