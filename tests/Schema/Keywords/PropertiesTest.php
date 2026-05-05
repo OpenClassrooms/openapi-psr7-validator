@@ -7,9 +7,9 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class PropertiesTest extends SchemaValidatorTest
+final class PropertiesTest extends SchemaValidatorTestCase
 {
     public function testItValidatesPropertiesGreen(): void
     {
@@ -17,8 +17,8 @@ final class PropertiesTest extends SchemaValidatorTest
 schema:
   type: object
   properties:
-	name:
-	  type: string
+    name:
+      type: string
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -34,10 +34,10 @@ SPEC;
 schema:
   type: object
   properties:
-	name:
-	  type: string
+    name:
+      type: string
   additionalProperties:
-	type: number
+    type: number
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -53,10 +53,10 @@ SPEC;
 schema:
   type: object
   properties:
-	name:
-	  type: string
-	age:
-	  type: integer
+    name:
+      type: string
+    age:
+      type: integer
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -72,10 +72,10 @@ SPEC;
 schema:
   type: object
   properties:
-	name:
-	  type: string
+    name:
+      type: string
   additionalProperties:
-	type: number
+    type: number
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -91,9 +91,9 @@ SPEC;
 schema:
   type: object
   required:
-	- data
+    - data
   properties:
-	data: {}
+    data: {}
   additionalProperties: false
 SPEC;
 
@@ -109,9 +109,9 @@ SPEC;
         $spec = <<<'SPEC'
 schema:
   properties:
-	date:
-	  type: string
-	  format: date
+    date:
+      type: string
+      format: date
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

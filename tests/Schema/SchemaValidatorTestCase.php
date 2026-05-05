@@ -10,7 +10,7 @@ use cebe\openapi\spec\Parameter;
 use cebe\openapi\spec\Schema;
 use PHPUnit\Framework\TestCase;
 
-abstract class SchemaValidatorTest extends TestCase
+abstract class SchemaValidatorTestCase extends TestCase
 {
     protected function loadRawSchema(string $rawSchema): Schema
     {

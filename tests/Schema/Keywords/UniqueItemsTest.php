@@ -6,9 +6,9 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class UniqueItemsTest extends SchemaValidatorTest
+final class UniqueItemsTest extends SchemaValidatorTestCase
 {
     /** @return array<array<(string|array<mixed>)>> */
     public function dataProviderGreen(): array
@@ -19,7 +19,7 @@ final class UniqueItemsTest extends SchemaValidatorTest
 schema:
   type: array
   items:
-	type: integer
+    type: integer
 SPEC
 ,
                 [],
@@ -29,7 +29,7 @@ SPEC
 schema:
   type: array
   items:
-	type: integer
+    type: integer
 SPEC
 ,
                 [1, 1],
@@ -39,7 +39,7 @@ SPEC
 schema:
   type: array
   items:
-	type: integer
+    type: integer
   uniqueItems: true
 SPEC
 ,
@@ -50,7 +50,7 @@ SPEC
 schema:
   type: array
   items:
-	type: number
+    type: number
   uniqueItems: true
 SPEC
 ,
@@ -61,7 +61,7 @@ SPEC
 schema:
   type: array
   items:
-	type: boolean
+    type: boolean
   uniqueItems: true
 SPEC
 ,
@@ -72,7 +72,7 @@ SPEC
 schema:
   type: array
   items:
-	type: string
+    type: string
   uniqueItems: true
 SPEC
 ,
@@ -83,7 +83,7 @@ SPEC
 schema:
   type: array
   items:
-	type: object
+    type: object
   uniqueItems: true
 SPEC
 ,
@@ -94,9 +94,9 @@ SPEC
 schema:
   type: array
   items:
-	type: array
-	items:
-		type: object
+    type: array
+    items:
+        type: object
   uniqueItems: true
 SPEC
 ,
@@ -107,10 +107,10 @@ SPEC
 schema:
   type: array
   items:
-	type: array
-	items:
-		type: object
-	uniqueItems: true
+    type: array
+    items:
+        type: object
+    uniqueItems: true
   uniqueItems: true
 SPEC
 ,
@@ -128,7 +128,7 @@ SPEC
 schema:
   type: array
   items:
-	type: integer
+    type: integer
   uniqueItems: true
 SPEC
 ,
@@ -139,7 +139,7 @@ SPEC
 schema:
   type: array
   items:
-	type: boolean
+    type: boolean
   uniqueItems: true
 SPEC
 ,
@@ -150,7 +150,7 @@ SPEC
 schema:
   type: array
   items:
-	type: string
+    type: string
   uniqueItems: true
 SPEC
 ,
@@ -161,7 +161,7 @@ SPEC
 schema:
   type: array
   items:
-	type: object
+    type: object
   uniqueItems: true
 SPEC
 ,
@@ -172,9 +172,9 @@ SPEC
 schema:
   type: array
   items:
-	type: array
-	items:
-		type: object
+    type: array
+    items:
+        type: object
   uniqueItems: true
 SPEC
 ,
@@ -185,10 +185,10 @@ SPEC
 schema:
   type: array
   items:
-	type: array
-	items:
-		type: object
-	uniqueItems: true
+    type: array
+    items:
+        type: object
+    uniqueItems: true
   uniqueItems: true
 SPEC
 ,

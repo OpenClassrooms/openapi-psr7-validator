@@ -12,7 +12,7 @@ use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 
 use function json_encode;
 
-final class RequestTest extends BaseValidatorTest
+final class RequestTest extends BaseValidatorTestCase
 {
     public function testItValidatesMessageGreen(): void
     {

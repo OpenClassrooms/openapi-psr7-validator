@@ -6,9 +6,9 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class PatternTest extends SchemaValidatorTest
+final class PatternTest extends SchemaValidatorTestCase
 {
     /** @return string[][] */
     public function validDataProvider(): array

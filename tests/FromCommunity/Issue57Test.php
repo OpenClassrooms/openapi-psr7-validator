@@ -26,32 +26,32 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /products.create:
-	post:
-	  requestBody:
-		required: true
-		content:
-		  application/json:
-			schema:
-			  properties:
-				test:
-				  type: object
-				  properties:
-					some_property_here:
-					  oneOf:
-						- type: object
-						- type: string
-						  maxLength: 50
-						  minLength: 1
-				  
-	  responses:
-		'200':
-		  description: OK
-		  content:
-			application/json:
-			  schema:
-				properties:
-				  result: 
-					type: string
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                test:
+                  type: object
+                  properties:
+                    some_property_here:
+                      oneOf:
+                        - type: object
+                        - type: string
+                          maxLength: 50
+                          minLength: 1
+                  
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  result: 
+                    type: string
 YAML;
 
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();

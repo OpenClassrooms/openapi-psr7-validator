@@ -11,7 +11,6 @@ use OpenClassrooms\OpenAPIValidation\Schema\Exception\InvalidSchema;
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\TypeFormats\FormatsContainer;
 use RuntimeException;
-use TypeError;
 
 use function class_exists;
 use function is_array;

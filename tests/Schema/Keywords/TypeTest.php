@@ -6,10 +6,10 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 use stdClass;
 
-final class TypeTest extends SchemaValidatorTest
+final class TypeTest extends SchemaValidatorTestCase
 {
     /** @return mixed[][] */
     public function validDataProvider(): array

@@ -7,9 +7,9 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\FormatMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
 use OpenClassrooms\OpenAPIValidation\Schema\TypeFormats\FormatsContainer;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class TypeFormatTest extends SchemaValidatorTest
+final class TypeFormatTest extends SchemaValidatorTestCase
 {
     public function testItValidatesTypeFormatGreen(): void
     {

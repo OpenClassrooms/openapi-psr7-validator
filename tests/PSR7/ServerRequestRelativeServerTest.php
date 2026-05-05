@@ -7,7 +7,7 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\PSR7;
 use GuzzleHttp\Psr7\ServerRequest;
 use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 
-class ServerRequestRelativeServerTest extends BaseValidatorTest
+class ServerRequestRelativeServerTest extends BaseValidatorTestCase
 {
     /** @return array<array<ServerRequest>> */
     public function validDataProvider(): array
@@ -47,14 +47,14 @@ servers:
   - url: /v2
 paths:
   /products:
-	get:
-	  summary: Inherits servers
+    get:
+      summary: Inherits servers
   /products/overridden:
-	servers:
-	  - url: https://special.host/v3
-	  - url: /v4
-	get:
-	  summary: Overrides servers
+    servers:
+      - url: https://special.host/v3
+      - url: /v4
+    get:
+      summary: Overrides servers
 SPEC;
 
         $validator = (new ValidatorBuilder())->fromYaml($spec)->getServerRequestValidator();

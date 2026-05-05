@@ -6,9 +6,9 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class RequiredTest extends SchemaValidatorTest
+final class RequiredTest extends SchemaValidatorTestCase
 {
     public function testItValidatesRequiredGreen(): void
     {
@@ -33,11 +33,11 @@ SPEC;
 schema:
   type: object
   properties:
-	name:
-	  type: string
-	  writeOnly: true
-	age:
-	  type: integer
+    name:
+      type: string
+      writeOnly: true
+    age:
+      type: integer
   required:
   - name
   - age
@@ -77,10 +77,10 @@ SPEC;
 schema:
   type: object
   properties:
-	name:
-	  type: string
-	age:
-	  type: integer
+    name:
+      type: string
+    age:
+      type: integer
   required:
   - name
   - age

@@ -8,11 +8,11 @@ use GuzzleHttp\Psr7\Request;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoOperation;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoPath;
 use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
-use OpenClassrooms\OpenAPIValidation\Tests\PSR7\BaseValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\PSR7\BaseValidatorTestCase;
 use Psr\Http\Message\RequestInterface;
 
 /** @see https://github.com/thephpleague/openapi-psr7-validator/issues/79 */
-final class Issue93Test extends BaseValidatorTest
+final class Issue93Test extends BaseValidatorTestCase
 {
     public function testBadMethodRequest(): void
     {

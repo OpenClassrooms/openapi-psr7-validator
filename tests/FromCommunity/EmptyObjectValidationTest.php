@@ -24,13 +24,13 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /products.create:
-	post:
-	  requestBody:
-		required: true
-		content:
-		  application/json:
-			schema:
-			  type: object
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
 YAML;
 
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();

@@ -24,16 +24,16 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /test/{invalid{brackets}:
-	parameters: 
-	  - name: 'invalid{brackets'
-		in: path
-		schema:
-		  type: string
-		required: true
-	get:
-	  responses:
-		'204':
-		  description: no data
+    parameters: 
+      - name: 'invalid{brackets'
+        in: path
+        schema:
+          type: string
+        required: true
+    get:
+      responses:
+        '204':
+          description: no data
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
 

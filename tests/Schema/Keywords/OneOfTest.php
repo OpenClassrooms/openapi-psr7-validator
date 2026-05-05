@@ -6,25 +6,25 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class OneOfTest extends SchemaValidatorTest
+final class OneOfTest extends SchemaValidatorTestCase
 {
     public function testItValidatesOneOfGreen(): void
     {
         $spec = <<<'SPEC'
 schema:
   oneOf:
-	- type: object
-	  properties:
-		name:
-		  type: string
-	  required:
-	  - name
-	- type: object
-	  properties:
-		age:
-		  type: integer
+    - type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    - type: object
+      properties:
+        age:
+          type: integer
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -39,14 +39,14 @@ SPEC;
         $spec = <<<'SPEC'
 schema:
   oneOf:
-	- type: object
-	  properties:
-		name:
-		  type: string
-	- type: object
-	  properties:
-		age:
-		  type: integer
+    - type: object
+      properties:
+        name:
+          type: string
+    - type: object
+      properties:
+        age:
+          type: integer
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -65,14 +65,14 @@ SPEC;
         $spec = <<<'SPEC'
 schema:
   oneOf:
-	- type: object
-	  properties:
-		name:
-		  type: string
-	- type: object
-	  properties:
-		age:
-		  type: integer
+    - type: object
+      properties:
+        name:
+          type: string
+    - type: object
+      properties:
+        age:
+          type: integer
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

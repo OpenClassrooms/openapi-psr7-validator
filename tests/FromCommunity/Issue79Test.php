@@ -39,12 +39,12 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-	servers:
-	  - url: /v2
-	get:
-	  summary: Product Types
-	  servers:
-		- url: /v3
+    servers:
+      - url: /v2
+    get:
+      summary: Product Types
+      servers:
+        - url: /v3
 YAML
 ,
             '/v3/products/10',
@@ -63,10 +63,10 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-	servers:
-	  - url: /v2
-	get:
-	  summary: Product Types
+    servers:
+      - url: /v2
+    get:
+      summary: Product Types
 YAML
 ,
             '/v2/products/10',
@@ -85,8 +85,8 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-	get:
-	  summary: Product Types
+    get:
+      summary: Product Types
 YAML
 ,
             '/v1/products/10',
@@ -103,8 +103,8 @@ info:
   version: "1.0.0"
 paths:
   /products/{id}:
-	get:
-	  summary: Product Types
+    get:
+      summary: Product Types
 YAML
 ,
             '/products/10',
@@ -139,12 +139,12 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-	servers:
-	  - url: /v2
-	get:
-	  summary: Product Types
-	  servers:
-		- url: /v3
+    servers:
+      - url: /v2
+    get:
+      summary: Product Types
+      servers:
+        - url: /v3
 YAML
 ,
             '/v2/products/10',
@@ -162,10 +162,10 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-	servers:
-	  - url: /v2
-	get:
-	  summary: Product Types
+    servers:
+      - url: /v2
+    get:
+      summary: Product Types
 YAML
 ,
             '/v1/products/10',
@@ -183,8 +183,8 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-	get:
-	  summary: Product Types
+    get:
+      summary: Product Types
 YAML
 ,
             '/products/10',

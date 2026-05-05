@@ -7,7 +7,7 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema;
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
 
-final class InvalidDataTrackingTest extends SchemaValidatorTest
+final class InvalidDataTrackingTest extends SchemaValidatorTestCase
 {
     public function testItShowsInvalidDataAddress(): void
     {
@@ -15,7 +15,7 @@ final class InvalidDataTrackingTest extends SchemaValidatorTest
 schema:
   type: array
   items:
-	type: string
+    type: string
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -36,12 +36,12 @@ SPEC;
 schema:
   type: array
   items:
-	type: array
-	items:
-	  type: object
-	  properties:
-		name: 
-		  type: string     
+    type: array
+    items:
+      type: object
+      properties:
+        name: 
+          type: string     
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

@@ -13,7 +13,7 @@ use Psr\Http\Message\ResponseInterface;
 
 use function json_encode;
 
-final class CallbackResponseTest extends BaseValidatorTest
+final class CallbackResponseTest extends BaseValidatorTestCase
 {
     public function testItValidatesMessageGreen(): void
     {

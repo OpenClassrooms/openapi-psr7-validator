@@ -11,7 +11,7 @@ use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 
 use function sprintf;
 
-final class HeadersTest extends BaseValidatorTest
+final class HeadersTest extends BaseValidatorTestCase
 {
     public function testItValidatesRequestQueryArgumentsGreen(): void
     {

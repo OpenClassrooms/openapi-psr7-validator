@@ -20,7 +20,6 @@ use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoOperation;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoPath;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoResponseCode;
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\InvalidSchema;
-use Webmozart\Assert\Assert;
 
 use function is_array;
 use function json_decode;

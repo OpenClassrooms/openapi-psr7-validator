@@ -81,25 +81,25 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-	get:
-	  parameters:
-		- in: query
-		  name: id
-		  required: true
-		  style: deepObject
-		  explode: true
-		  schema:
-			type: object
-			properties:
-			  before:
-				type: integer
-				format: int32
-			  after:
-				type: integer
-				format: int32
-	  responses:
-		'200':
-		  description: A list of users
+    get:
+      parameters:
+        - in: query
+          name: id
+          required: true
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            properties:
+              before:
+                type: integer
+                format: int32
+              after:
+                type: integer
+                format: int32
+      responses:
+        '200':
+          description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $validator->validate($this->makeRequest('deepObject', 'integer'));
@@ -118,25 +118,25 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-	get:
-	  parameters:
-		- in: query
-		  name: id
-		  required: true
-		  style: deepObject
-		  explode: true
-		  schema:
-			type: object
-			properties:
-			  before:
-				type: integer
-				format: int32
-			  after:
-				type: integer
-				format: int32
-	  responses:
-		'200':
-		  description: A list of users
+    get:
+      parameters:
+        - in: query
+          name: id
+          required: true
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            properties:
+              before:
+                type: integer
+                format: int32
+              after:
+                type: integer
+                format: int32
+      responses:
+        '200':
+          description: A list of users
 YAML;
         try {
             $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
@@ -163,31 +163,31 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-	get:
-	  parameters:
-		- in: query
-		  name: id
-		  required: true
-		  style: deepObject
-		  explode: true
-		  schema:
-			type: object
-			properties:
-			  before:
-				type: object
-				properties:
-				  first:
-					type: object
-					properties:
-					  second:
-						type: integer
-						format: int32
-			  after:
-				type: integer
-				format: int32
-	  responses:
-		'200':
-		  description: A list of users
+    get:
+      parameters:
+        - in: query
+          name: id
+          required: true
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            properties:
+              before:
+                type: object
+                properties:
+                  first:
+                    type: object
+                    properties:
+                      second:
+                        type: integer
+                        format: int32
+              after:
+                type: integer
+                format: int32
+      responses:
+        '200':
+          description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $validator->validate($this->makeRequest('deepObject', 'deep'));
@@ -206,20 +206,20 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-	get:
-	  parameters:
-		- in: query
-		  name: id
-		  required: true
-		  style: deepObject
-		  explode: true
-		  schema:
-			type: object
-			additionalProperties:
-			  type: integer
-	  responses:
-		'200':
-		  description: A list of users
+    get:
+      parameters:
+        - in: query
+          name: id
+          required: true
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            additionalProperties:
+              type: integer
+      responses:
+        '200':
+          description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $request   = $this->makeRequest('deepObject', 'numericKeys');
@@ -240,20 +240,20 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-	get:
-	  parameters:
-		- in: query
-		  name: id
-		  required: true
-		  style: deepObject
-		  explode: true
-		  schema:
-			type: array
-			items:
-			  type: integer
-	  responses:
-		'200':
-		  description: A list of users
+    get:
+      parameters:
+        - in: query
+          name: id
+          required: true
+          style: deepObject
+          explode: true
+          schema:
+            type: array
+            items:
+              type: integer
+      responses:
+        '200':
+          description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $request   = $this->makeRequest('deepObject', 'deepArrayInteger');
@@ -277,19 +277,19 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-	get:
-	  parameters:
-		- in: query
-		  name: id
-		  required: true
-		  style: deepObject
-		  schema:
-			type: array
-			items:
-			  type: integer
-	  responses:
-		'200':
-		  description: A list of users
+    get:
+      parameters:
+        - in: query
+          name: id
+          required: true
+          style: deepObject
+          schema:
+            type: array
+            items:
+              type: integer
+      responses:
+        '200':
+          description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $request   = $this->makeRequest('deepObject', 'deepArrayInteger');
@@ -310,20 +310,20 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-	get:
-	  parameters:
-		- in: query
-		  name: id
-		  required: true
-		  style: deepObject
-		  explode: true
-		  schema:
-			type: array
-			items:
-			  type: boolean
-	  responses:
-		'200':
-		  description: A list of users
+    get:
+      parameters:
+        - in: query
+          name: id
+          required: true
+          style: deepObject
+          explode: true
+          schema:
+            type: array
+            items:
+              type: boolean
+      responses:
+        '200':
+          description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $request   = $this->makeRequest('deepObject', 'deepArrayBoolean');
@@ -344,20 +344,20 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-	get:
-	  parameters:
-		- in: query
-		  name: id
-		  required: true
-		  style: deepObject
-		  explode: true
-		  schema:
-			type: array
-			items:
-			  type: string
-	  responses:
-		'200':
-		  description: A list of users
+    get:
+      parameters:
+        - in: query
+          name: id
+          required: true
+          style: deepObject
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $request   = $this->makeRequest('deepObject', 'deepArrayStrings');
@@ -378,22 +378,22 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-	get:
-	  parameters:
-		- in: query
-		  name: id
-		  required: true
-		  style: deepObject
-		  explode: true
-		  schema:
-			type: array
-			items:
-			  type: array
-			  items:
-				type: integer
-	  responses:
-		'200':
-		  description: A list of users
+    get:
+      parameters:
+        - in: query
+          name: id
+          required: true
+          style: deepObject
+          explode: true
+          schema:
+            type: array
+            items:
+              type: array
+              items:
+                type: integer
+      responses:
+        '200':
+          description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $request   = $this->makeRequest('deepObject', 'deepArrayOfArrayInteger');
@@ -416,20 +416,20 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-	get:
-	  parameters:
-		- in: query
-		  name: id
-		  required: true
-		  style: deepObject
-		  explode: true
-		  schema:
-			type: array
-			items:
-			  type: boolean
-	  responses:
-		'200':
-		  description: A list of users
+    get:
+      parameters:
+        - in: query
+          name: id
+          required: true
+          style: deepObject
+          explode: true
+          schema:
+            type: array
+            items:
+              type: boolean
+      responses:
+        '200':
+          description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         try {
@@ -457,31 +457,31 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-	get:
-	  parameters:
-		- in: query
-		  name: id
-		  required: true
-		  style: deepObject
-		  explode: true
-		  schema:
-			type: object
-			properties:
-			  before:
-				type: object
-				properties:
-				  first:
-					type: object
-					properties:
-					  second:
-						type: string
-						format: date-time
-			  after:
-				type: integer
-				format: int32
-	  responses:
-		'200':
-		  description: A list of users
+    get:
+      parameters:
+        - in: query
+          name: id
+          required: true
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            properties:
+              before:
+                type: object
+                properties:
+                  first:
+                    type: object
+                    properties:
+                      second:
+                        type: string
+                        format: date-time
+              after:
+                type: integer
+                format: int32
+      responses:
+        '200':
+          description: A list of users
 YAML;
         try {
             $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();

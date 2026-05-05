@@ -11,7 +11,7 @@ use OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress;
 use OpenClassrooms\OpenAPIValidation\PSR7\ResponseAddress;
 use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 
-final class MessageCookiesTest extends BaseValidatorTest
+final class MessageCookiesTest extends BaseValidatorTestCase
 {
     public function testItValidatesRequestWithCookiesForServerRequestGreen(): void
     {

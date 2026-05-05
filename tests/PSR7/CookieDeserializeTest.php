@@ -11,7 +11,7 @@ use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 
 use function sprintf;
 
-final class CookieDeserializeTest extends BaseValidatorTest
+final class CookieDeserializeTest extends BaseValidatorTestCase
 {
     /** @return mixed[][] */
     public function dataProviderCookiesGreen(): array

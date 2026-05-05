@@ -19,7 +19,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use function json_encode;
 use function sprintf;
 
-abstract class BaseValidatorTest extends TestCase
+abstract class BaseValidatorTestCase extends TestCase
 {
     /** @var string */
     protected $apiSpecFile = __DIR__ . '/../stubs/api.yaml';

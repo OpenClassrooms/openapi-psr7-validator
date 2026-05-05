@@ -37,9 +37,9 @@ final class Issue4Test extends TestCase
             ['Content-Type' => 'application/json'],
             <<<'JSON'
 {
-	"test": {
-		"input": "some data"
-	}
+    "test": {
+        "input": "some data"
+    }
 }
 JSON,
         );

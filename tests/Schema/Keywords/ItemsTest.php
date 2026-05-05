@@ -6,9 +6,9 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class ItemsTest extends SchemaValidatorTest
+final class ItemsTest extends SchemaValidatorTestCase
 {
     public function testItValidatesItemsGreen(): void
     {
@@ -16,7 +16,7 @@ final class ItemsTest extends SchemaValidatorTest
 schema:
   type: array
   items:
-	type: string
+    type: string
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -32,10 +32,10 @@ SPEC;
 schema:
   type: array
   items:
-	type: array
-	items:
-	  type: string
-	minItems: 2
+    type: array
+    items:
+      type: string
+    minItems: 2
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -51,7 +51,7 @@ SPEC;
 schema:
   type: array
   items:
-	type: string
+    type: string
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -67,10 +67,10 @@ SPEC;
 schema:
   type: array
   items:
-	type: array
-	items:
-	  type: string
-	minItems: 2
+    type: array
+    items:
+      type: string
+    minItems: 2
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

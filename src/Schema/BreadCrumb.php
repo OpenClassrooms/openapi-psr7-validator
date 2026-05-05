@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\OpenAPIValidation\Schema;
 
-use RuntimeException;
-
 use function array_unshift;
-use function is_scalar;
-use function sprintf;
 
 // Breadcrumb addresses a value in a complex structure.
 // It can address an index in the compound array(object)
@@ -20,7 +16,6 @@ class BreadCrumb
     /** @param int|string|null $compoundIndex suitable for array index */
     public function __construct(protected int|string|null $compoundIndex = null)
     {
-
     }
 
     /** @return BreadCrumb */

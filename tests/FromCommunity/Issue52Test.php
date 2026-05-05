@@ -19,51 +19,51 @@ final class Issue52Test extends TestCase
 {
   "openapi": "3.0.0",
   "info": {
-	"title": "Product import API",
-	"version": "1.0"
+    "title": "Product import API",
+    "version": "1.0"
   },
   "servers": [
-	{
-	  "url": "http://localhost:8000/api/v1"
-	}
+    {
+      "url": "http://localhost:8000/api/v1"
+    }
   ],
   "paths": {
-	"/products": {
-	  "post": {
-		"parameters":[
-		  {
-			"name": "fields",
-			"required":true,
-			"in": "query",
-			"schema": {
-				"type": "array",
-				"items": {
-				  "type": "string",
-				  "enum": [
-					"array"
-				  ]
-				}
-				}
-		  }
-		],
-		"responses": {
-		  "200": {
-			"description": "OK",
-			"content": {
-			  "application/json": {
-				"schema": {
-				  "properties": {
-					"result": {
-					  "type": "string"
-					}
-				  }
-				}
-			  }
-			}
-		  }
-		}
-	  }
-	}
+    "/products": {
+      "post": {
+        "parameters":[
+          {
+            "name": "fields",
+            "required":true,
+            "in": "query",
+            "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "array"
+                  ]
+                }
+                }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "result": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 JSON;

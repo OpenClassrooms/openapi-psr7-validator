@@ -24,21 +24,21 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /clam/scan:
-	put:
-	  responses:
-		'202':
-		  description: Accepted
-	  requestBody:
-		content:
-		  multipart/form-data:
-			schema:
-			  type: object
-			  properties:
-				upload:
-				  type: array
-				  items:
-					type: string
-					format: binary
+    put:
+      responses:
+        '202':
+          description: Accepted
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                upload:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
 YAML;
 
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();

@@ -6,16 +6,16 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class NullableTest extends SchemaValidatorTest
+final class NullableTest extends SchemaValidatorTestCase
 {
     public function testItValidatesNullableGreen(): void
     {
         $spec = <<<'SPEC'
 schema:
-	type: string
-	nullable: true
+    type: string
+    nullable: true
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -29,7 +29,7 @@ SPEC;
     {
         $spec = <<<'SPEC'
 schema:
-	type: string
+    type: string
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

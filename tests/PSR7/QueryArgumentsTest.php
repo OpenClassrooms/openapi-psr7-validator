@@ -9,7 +9,7 @@ use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidQueryArgs;
 use OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress;
 use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 
-final class QueryArgumentsTest extends BaseValidatorTest
+final class QueryArgumentsTest extends BaseValidatorTestCase
 {
     public function testItValidatesServerRequestQueryArgumentsGreen(): void
     {
