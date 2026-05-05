@@ -7,9 +7,9 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\FromCommunity;
 use GuzzleHttp\Psr7\Response;
 use OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress;
 use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
-use OpenClassrooms\OpenAPIValidation\Tests\PSR7\BaseValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\PSR7\BaseValidatorTestCase;
 
-final class NullableSchemaTest extends BaseValidatorTest
+final class NullableSchemaTest extends BaseValidatorTestCase
 {
     public function testNullableImplicitResult(): void
     {

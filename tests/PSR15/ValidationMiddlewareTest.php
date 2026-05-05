@@ -10,11 +10,11 @@ use OpenClassrooms\OpenAPIValidation\PSR15\Exception\InvalidResponseMessage;
 use OpenClassrooms\OpenAPIValidation\PSR15\Exception\InvalidServerRequestMessage;
 use OpenClassrooms\OpenAPIValidation\PSR15\ValidationMiddleware;
 use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
-use OpenClassrooms\OpenAPIValidation\Tests\PSR7\BaseValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\PSR7\BaseValidatorTestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class ValidationMiddlewareTest extends BaseValidatorTest
+class ValidationMiddlewareTest extends BaseValidatorTestCase
 {
     /** @return array<mixed> data sets for tests */
     public function dataProvider(): array
@@ -47,13 +47,13 @@ class ValidationMiddlewareTest extends BaseValidatorTest
     public function testItReturnsExpectedException(
         ServerRequestInterface $serverRequest,
         RequestHandlerInterface $handler,
-        string $expectedExceptionType
+        string $expectedExceptionType,
     ): void {
         $builder = (new ValidatorBuilder())->fromYamlFile($this->apiSpecFile);
 
         $middleware = new ValidationMiddleware(
             $builder->getServerRequestValidator(),
-            $builder->getResponseValidator()
+            $builder->getResponseValidator(),
         );
 
         $this->expectException($expectedExceptionType);

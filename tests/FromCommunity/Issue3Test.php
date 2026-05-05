@@ -13,13 +13,11 @@ use function json_encode;
 
 final class Issue3Test extends TestCase
 {
-    /**
-     * @see https://github.com/lezhnev74/openapi-psr7-validator/issues/3
-     */
+    /** @see https://github.com/lezhnev74/openapi-psr7-validator/issues/3 */
     public function testIssue3(): void
     {
         $yaml = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API

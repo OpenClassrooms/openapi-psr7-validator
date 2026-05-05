@@ -7,11 +7,11 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema;
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
 
-final class InvalidDataTrackingTest extends SchemaValidatorTest
+final class InvalidDataTrackingTest extends SchemaValidatorTestCase
 {
     public function testItShowsInvalidDataAddress(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   items:
@@ -32,7 +32,7 @@ SPEC;
 
     public function testItShowsInvalidDataAddressNested(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   items:

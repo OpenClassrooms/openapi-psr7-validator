@@ -6,18 +6,16 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class UniqueItemsTest extends SchemaValidatorTest
+final class UniqueItemsTest extends SchemaValidatorTestCase
 {
-    /**
-     * @return array<array<(string|array<mixed>)>>
-     */
+    /** @return array<array<(string|array<mixed>)>> */
     public function dataProviderGreen(): array
     {
         return [
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -27,7 +25,7 @@ SPEC
                 [],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -37,7 +35,7 @@ SPEC
                 [1, 1],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -48,7 +46,7 @@ SPEC
                 [1, 2],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -59,7 +57,7 @@ SPEC
                 [1, 1.0],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -70,7 +68,7 @@ SPEC
                 [true, false],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -81,7 +79,7 @@ SPEC
                 ['one', 'oNe'],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -92,7 +90,7 @@ SPEC
                 [['a' => 1, 'b' => 2], ['a' => 3, 'b' => 4]],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -105,7 +103,7 @@ SPEC
                 [[['a' => 1, 'b' => 2], ['a' => 3, 'b' => 4]], [['a' => 1, 'b' => 2], ['a' => 1, 'b' => 2]]],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -121,14 +119,12 @@ SPEC
         ];
     }
 
-    /**
-     * @return array<array<(string|array<mixed>)>>
-     */
+    /** @return array<array<(string|array<mixed>)>> */
     public function dataProviderRed(): array
     {
         return [
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -139,7 +135,7 @@ SPEC
                 [1, 1],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -150,7 +146,7 @@ SPEC
                 [true, true],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -161,7 +157,7 @@ SPEC
                 ['one', 'one'],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -172,7 +168,7 @@ SPEC
                 [['a' => 1, 'b' => 2], ['a' => 1, 'b' => 2]],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
@@ -185,7 +181,7 @@ SPEC
                 [[['a' => 1, 'b' => 2], ['a' => 3, 'b' => 4]], [['a' => 1, 'b' => 2], ['a' => 3, 'b' => 4]]],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:

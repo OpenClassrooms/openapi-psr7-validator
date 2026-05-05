@@ -6,14 +6,12 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 use stdClass;
 
-final class TypeTest extends SchemaValidatorTest
+final class TypeTest extends SchemaValidatorTestCase
 {
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function validDataProvider(): array
     {
         return [
@@ -28,12 +26,8 @@ final class TypeTest extends SchemaValidatorTest
         ];
     }
 
-    /**
-     * @param mixed $validValue
-     *
-     * @dataProvider validDataProvider
-     */
-    public function testItValidatesTypeGreen(string $type, ?string $format, $validValue): void
+    /** @dataProvider validDataProvider */
+    public function testItValidatesTypeGreen(string $type, string|null $format, mixed $validValue): void
     {
         $spec = <<<SPEC
 schema:
@@ -51,12 +45,8 @@ SPEC;
         $this->addToAssertionCount(1);
     }
 
-    /**
-     * @param mixed $invalidValue
-     *
-     * @dataProvider invalidDataProvider
-     */
-    public function testItValidatesTypeRed(string $type, $invalidValue): void
+    /** @dataProvider invalidDataProvider */
+    public function testItValidatesTypeRed(string $type, mixed $invalidValue): void
     {
         $spec = <<<SPEC
 schema:
@@ -69,9 +59,7 @@ SPEC;
         (new SchemaValidator())->validate($invalidValue, $schema);
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function invalidDataProvider(): array
     {
         return [

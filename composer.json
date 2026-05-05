@@ -1,53 +1,64 @@
 {
-    "name": "openclassrooms/openapi-psr7-validator",
-    "description": "Validate PSR-7 messages against OpenAPI (3.0.2) specifications \nexpressed in YAML or JSON",
-    "keywords": [
-        "OpenAPI",
-        "psr7",
-        "http",
-        "validation"
-    ],
-    "homepage": "https://github.com/thephpleague/openapi-psr7-validator",
-    "license": "MIT",
-    "type": "library",
-    "autoload": {
-        "psr-4": {
-            "OpenClassrooms\\OpenAPIValidation\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "OpenClassrooms\\OpenAPIValidation\\Tests\\": "tests/"
-        }
-    },
-    "require": {
-        "php": ">=7.2",
-        "ext-json": "*",
-        "devizzent/cebe-php-openapi": "^1.0",
-        "giggsey/libphonenumber-for-php": "^9.0",
-        "league/uri": "^6.3 || ^7.0",
-        "psr/cache": "^1.0 || ^2.0 || ^3.0",
-        "psr/http-message": "^1.0 || ^2.0",
-        "psr/http-server-middleware": "^1.0",
-        "respect/validation": "^1.1.3 || ^2.0",
-        "riverline/multipart-parser": "^2.0.3",
-        "symfony/polyfill-php80": "^1.27",
-        "webmozart/assert": "^1.4"
-    },
-    "require-dev": {
-        "doctrine/coding-standard": "^8.0",
-        "guzzlehttp/psr7": "^2.0",
-        "hansott/psr7-cookies": "^3.0.2 || ^4.0",
-        "phpstan/extension-installer": "^1.0",
-        "phpstan/phpstan": "^1",
-        "phpstan/phpstan-phpunit": "^1",
-        "phpstan/phpstan-webmozart-assert": "^1",
-        "phpunit/phpunit": "^7 || ^8 || ^9",
-        "symfony/cache": "^5.1"
-    },
-    "config": {
-        "sort-packages": true,
-        "allow-plugins": true
-    },
-    "prefer-stable": true
+  "name": "openclassrooms/openapi-psr7-validator",
+  "description": "Validate PSR-7 messages against OpenAPI (3.0.2) specifications \nexpressed in YAML or JSON",
+  "keywords": [
+    "OpenAPI",
+    "psr7",
+    "http",
+    "validation"
+  ],
+  "homepage": "https://github.com/thephpleague/openapi-psr7-validator",
+  "license": "MIT",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "OpenClassrooms\\OpenAPIValidation\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "OpenClassrooms\\OpenAPIValidation\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=8.4",
+    "ext-json": "*",
+    "openclassrooms/php-openapi": "^2.0.1",
+    "giggsey/libphonenumber-for-php": "^9.0",
+    "league/uri": "^6.3 || ^7.0",
+    "psr/cache": "^1.0 || ^2.0 || ^3.0",
+    "psr/http-message": "^1.0 || ^2.0",
+    "psr/http-server-middleware": "^1.0",
+    "respect/validation": "^2.0",
+    "riverline/multipart-parser": "^2.0.3",
+    "webmozart/assert": "^2.0"
+  },
+  "require-dev": {
+    "doctrine/coding-standard": "^14.0",
+    "guzzlehttp/psr7": "^2.0",
+    "hansott/psr7-cookies": "^4.0",
+    "phpstan/extension-installer": "^1.4",
+    "phpstan/phpstan": "^2.0",
+    "phpstan/phpstan-phpunit": "^2.0",
+    "phpstan/phpstan-webmozart-assert": "^2.0",
+    "phpunit/phpunit": "^10",
+    "symfony/cache": "^6.4"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/OpenClassrooms/php-openapi"
+    }
+  ],
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": true
+  },
+  "prefer-stable": true,
+  "scripts": {
+    "codestyle": "vendor/bin/phpcs",
+    "phpstan": "vendor/bin/phpstan analyse --ansi",
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-clover=.build/phpunit/clover.xml --coverage-html=.build/phpunit"
+  }
 }

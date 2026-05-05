@@ -7,6 +7,7 @@ namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators\BodyValidator;
 use cebe\openapi\spec\MediaType;
 use cebe\openapi\spec\Reference;
 use cebe\openapi\spec\RequestBody;
+use cebe\openapi\spec\Response;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders;
 use OpenClassrooms\OpenAPIValidation\PSR7\MessageValidator;
@@ -25,7 +26,7 @@ use function strtok;
  */
 final class BodyValidator implements MessageValidator
 {
-    private const HEADER_CONTENT_TYPE = 'Content-Type';
+    private const string HEADER_CONTENT_TYPE = 'Content-Type';
     use ValidationStrategy;
 
     /** @var SpecFinder */
@@ -36,7 +37,7 @@ final class BodyValidator implements MessageValidator
         $this->finder = $finder;
     }
 
-    /** {@inheritdoc} */
+    /** {@inheritDoc} */
     public function validate(OperationAddress $addr, MessageInterface $message): void
     {
         $mediaTypeSpecs = $this->finder->findBodySpec($addr);
@@ -53,11 +54,13 @@ final class BodyValidator implements MessageValidator
             return;
         }
 
-        $mediaTypeSpecs = $mediaTypeSpecs->content;
+        if ($mediaTypeSpecs instanceof RequestBody || $mediaTypeSpecs instanceof Response) {
+            $mediaTypeSpecs = $mediaTypeSpecs->content;
 
-        if (empty($mediaTypeSpecs)) {
-            // edge case: if "content" keyword is not set (body can be anything as no expectations set)
-            return;
+            if (empty($mediaTypeSpecs)) {
+                // edge case: if "content" keyword is not set (body can be anything as no expectations set)
+                return;
+            }
         }
 
         // Detect ContentType of the message
@@ -90,7 +93,7 @@ final class BodyValidator implements MessageValidator
         }
     }
 
-    private function messageContentType(MessageInterface $message): ?string
+    private function messageContentType(MessageInterface $message): string|null
     {
         $contentTypes = $message->getHeader(self::HEADER_CONTENT_TYPE);
         if (! $contentTypes) {
@@ -112,10 +115,8 @@ final class BodyValidator implements MessageValidator
      * Match the spec from media type specs for the given media type.
      *
      * @param Reference[]|MediaType[] $mediaTypeSpecs
-     *
-     * @return Reference|MediaType|null
      */
-    private function matchMediaTypeSpec(array $mediaTypeSpecs, string $mediaType)
+    private function matchMediaTypeSpec(array $mediaTypeSpecs, string $mediaType): Reference|MediaType|null
     {
         [$mediaTypeType, $mediaTypeSubType] = explode('/', $mediaType);
 

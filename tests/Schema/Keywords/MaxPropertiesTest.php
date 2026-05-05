@@ -6,13 +6,13 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class MaxPropertiesTest extends SchemaValidatorTest
+final class MaxPropertiesTest extends SchemaValidatorTestCase
 {
     public function testItValidatesMaxPropertiesGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
 SPEC;
@@ -26,7 +26,7 @@ SPEC;
 
     public function testItValidatesMaxPropertiesRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   maxProperties: 2

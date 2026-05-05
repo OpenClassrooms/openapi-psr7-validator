@@ -16,7 +16,7 @@ final class SecurityApiKeyTest extends TestCase
      *
      * @var string
      */
-    private $specSecurityORUnion = <<<OR
+    private $specSecurityORUnion = <<<'OR'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -52,7 +52,7 @@ OR;
      *
      * @var string
      */
-    private $specSecurityANDUnion = <<<AND
+    private $specSecurityANDUnion = <<<'AND'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -83,7 +83,7 @@ AND;
      *
      * @var string
      */
-    private $specSecurityANDORCombined = <<<AND
+    private $specSecurityANDORCombined = <<<'AND'
 openapi: "3.0.0"
 info:
   title: Uber API

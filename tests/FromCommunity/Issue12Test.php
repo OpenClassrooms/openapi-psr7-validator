@@ -20,10 +20,10 @@ final class Issue12Test extends TestCase
      *
      * @dataProvider getNullableTypeExamples
      */
-    public function testIssue12(?array $example): void
+    public function testIssue12(array|null $example): void
     {
         $yaml = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -68,9 +68,7 @@ YAML;
         $this->addToAssertionCount(1);
     }
 
-    /**
-     * @return mixed[]
-     */
+    /** @return mixed[] */
     public function getNullableTypeExamples(): array
     {
         return [

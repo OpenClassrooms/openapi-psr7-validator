@@ -24,11 +24,9 @@ class Pattern extends BaseKeyword
      * matches the instance successfully.  Recall: regular expressions are
      * not implicitly anchored.
      *
-     * @param mixed $data
-     *
      * @throws KeywordMismatch
      */
-    public function validate($data, string $pattern): void
+    public function validate(mixed $data, string $pattern): void
     {
         try {
             Validator::stringType()->assert($data);

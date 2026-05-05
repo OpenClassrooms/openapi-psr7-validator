@@ -9,10 +9,7 @@ use function is_int;
 
 class NumberDouble
 {
-    /**
-     * @param mixed $value
-     */
-    public function __invoke($value): bool
+    public function __invoke(mixed $value): bool
     {
         return is_float($value + 0) || is_int($value + 0);
     }

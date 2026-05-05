@@ -26,11 +26,9 @@ class UniqueItems extends BaseKeyword
      * If not present, this keyword may be considered present with boolean
      * value false.
      *
-     * @param mixed $data
-     *
      * @throws KeywordMismatch
      */
-    public function validate($data, bool $uniqueItems): void
+    public function validate(mixed $data, bool $uniqueItems): void
     {
         if (! $uniqueItems) {
             return;

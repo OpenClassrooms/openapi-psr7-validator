@@ -22,10 +22,11 @@ use const PREG_SPLIT_DELIM_CAPTURE;
 
 class OperationAddress
 {
-    private const PATH_PLACEHOLDER = '#{[^}]+}#';
+    private const string PATH_PLACEHOLDER = '#{[^}]+}#';
 
     /** @var string */
     protected $method;
+
     /** @var string */
     protected $path;
 
@@ -70,7 +71,7 @@ class OperationAddress
 
     public function countPlaceholders(): int
     {
-        return preg_match_all(self::PATH_PLACEHOLDER, $this->path()) ?? 0;
+        return preg_match_all(self::PATH_PLACEHOLDER, $this->path()) ?: 0;
     }
 
     public function countExactMatchParts(string $comparisonPath): int
@@ -134,7 +135,7 @@ class OperationAddress
      *
      * @param array<string>|null $parameterNames
      */
-    protected function buildPattern(string $url, ?array &$parameterNames): string
+    protected function buildPattern(string $url, array|null &$parameterNames): string
     {
         $parameterNames = [];
         $pregParts      = [];

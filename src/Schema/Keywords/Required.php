@@ -26,6 +26,7 @@ class Required extends BaseKeyword
     public function __construct(CebeSchema $parentSchema, int $type, BreadCrumb $breadCrumb)
     {
         parent::__construct($parentSchema);
+
         $this->validationDataType = $type;
         $this->breadCrumb         = $breadCrumb;
     }
@@ -41,12 +42,11 @@ class Required extends BaseKeyword
      * If a readOnly or writeOnly property is included in the required list, required affects just the relevant scope – responses only or requests only.
      * That is, read-only required properties apply to responses only, and write-only required properties – to requests only.
      *
-     * @param mixed    $data
      * @param string[] $required
      *
      * @throws KeywordMismatch
      */
-    public function validate($data, array $required): void
+    public function validate(mixed $data, array $required): void
     {
         try {
             Validator::arrayType()->assert($data);
@@ -82,7 +82,7 @@ class Required extends BaseKeyword
                 throw KeywordMismatch::fromKeyword(
                     'required',
                     $data,
-                    sprintf("Required property '%s' must be present in the object", $reqProperty)
+                    sprintf("Required property '%s' must be present in the object", $reqProperty),
                 )->withBreadCrumb($this->breadCrumb->addCrumb($reqProperty));
             }
         }

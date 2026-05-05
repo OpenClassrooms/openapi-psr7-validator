@@ -6,13 +6,13 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class RequiredTest extends SchemaValidatorTest
+final class RequiredTest extends SchemaValidatorTestCase
 {
     public function testItValidatesRequiredGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   required:
@@ -29,7 +29,7 @@ SPEC;
 
     public function testItValidatesPropertiesWriteOnlyGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   properties:
@@ -52,7 +52,7 @@ SPEC;
 
     public function testItValidatesRequiredRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   required: 
@@ -73,7 +73,7 @@ SPEC;
 
     public function testItValidatesPropertiesRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   properties:

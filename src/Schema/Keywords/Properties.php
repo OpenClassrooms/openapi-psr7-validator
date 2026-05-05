@@ -29,6 +29,7 @@ class Properties extends BaseKeyword
     public function __construct(CebeSchema $parentSchema, int $type, BreadCrumb $breadCrumb)
     {
         parent::__construct($parentSchema);
+
         $this->validationDataType = $type;
         $this->dataBreadCrumb     = $breadCrumb;
     }
@@ -57,13 +58,11 @@ class Properties extends BaseKeyword
      * schema to all of the properties that weren't validated by
      * "properties" nor "patternProperties".
      *
-     * @param mixed        $data
      * @param CebeSchema[] $properties
-     * @param mixed        $additionalProperties
      *
      * @throws SchemaMismatch
      */
-    public function validate($data, array $properties, $additionalProperties): void
+    public function validate(mixed $data, array $properties, mixed $additionalProperties): void
     {
         try {
             Validator::arrayType()->assert($data);
@@ -93,7 +92,7 @@ class Properties extends BaseKeyword
                 throw KeywordMismatch::fromKeyword(
                     'additionalProperties',
                     $data,
-                    sprintf('Data has additional properties (%s) which are not allowed', implode(',', $unexpectedProps))
+                    sprintf('Data has additional properties (%s) which are not allowed', implode(',', $unexpectedProps)),
                 );
             }
 
@@ -109,7 +108,7 @@ class Properties extends BaseKeyword
             $schemaValidator->validate(
                 $data[$propName],
                 $additionalProperties,
-                $this->dataBreadCrumb->addCrumb($propName)
+                $this->dataBreadCrumb->addCrumb($propName),
             );
         }
     }

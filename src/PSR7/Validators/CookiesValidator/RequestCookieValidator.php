@@ -27,17 +27,13 @@ class RequestCookieValidator implements MessageValidator
     /** @var Parameter[] */
     private $specs;
 
-    /**
-     * @param Parameter[] $specs
-     */
+    /** @param Parameter[] $specs */
     public function __construct(array $specs)
     {
         $this->specs = $specs;
     }
 
-    /**
-     * @throws InvalidCookies
-     */
+    /** @throws InvalidCookies */
     public function validate(OperationAddress $addr, MessageInterface $message): void
     {
         Assert::isInstanceOf($message, RequestInterface::class);
@@ -83,9 +79,7 @@ class RequestCookieValidator implements MessageValidator
         }
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     private function getCookiesFromMessage(MessageInterface $message): array
     {
         // Needed in case it is an array of cookies.

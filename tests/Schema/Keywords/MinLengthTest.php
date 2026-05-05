@@ -6,13 +6,13 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class MinLengthTest extends SchemaValidatorTest
+final class MinLengthTest extends SchemaValidatorTestCase
 {
     public function testItValidatesMinLengthGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   minLength: 10
@@ -27,7 +27,7 @@ SPEC;
 
     public function testItValidatesMinLengthRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   minLength: 11

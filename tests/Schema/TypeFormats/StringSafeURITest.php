@@ -9,9 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class StringSafeURITest extends TestCase
 {
-    /**
-     * @return array<array<string>>
-     */
+    /** @return array<array<string>> */
     public function greenSafeURIDataProvider(): array
     {
         return [
@@ -22,9 +20,7 @@ class StringSafeURITest extends TestCase
         ];
     }
 
-    /**
-     * @return array<array<string>>
-     */
+    /** @return array<array<string>> */
     public function redSafeURIDataProvider(): array
     {
         return [
@@ -62,17 +58,13 @@ class StringSafeURITest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider greenSafeURIDataProvider
-     */
+    /** @dataProvider greenSafeURIDataProvider */
     public function testGreenSafeURIFormat(string $uri): void
     {
         $this->assertTrue((new StringSafeURI())($uri));
     }
 
-    /**
-     * @dataProvider redSafeURIDataProvider
-     */
+    /** @dataProvider redSafeURIDataProvider */
     public function testRedSafeURIFormat(string $uri): void
     {
         $this->assertFalse((new StringSafeURI())($uri));

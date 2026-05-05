@@ -6,19 +6,17 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\FromCommunity;
 
 use GuzzleHttp\Psr7\ServerRequest;
 use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
-use OpenClassrooms\OpenAPIValidation\Tests\PSR7\BaseValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\PSR7\BaseValidatorTestCase;
 
 use function parse_str;
 
-/**
- * @see https://github.com/thephpleague/openapi-psr7-validator/issues/140
- */
-final class Issue140Test extends BaseValidatorTest
+/** @see https://github.com/thephpleague/openapi-psr7-validator/issues/140 */
+final class Issue140Test extends BaseValidatorTestCase
 {
     public function testIssue140(): void
     {
         $json = /** @lang json */
-               <<<JSON
+               <<<'JSON'
 {
     "openapi": "3.0.0",
     "servers": [

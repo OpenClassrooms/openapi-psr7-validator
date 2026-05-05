@@ -11,13 +11,11 @@ use PHPUnit\Framework\TestCase;
 
 final class Issue52Test extends TestCase
 {
-    /**
-     * @see https://github.com/thephpleague/openapi-psr7-validator/issues/52
-     */
+    /** @see https://github.com/thephpleague/openapi-psr7-validator/issues/52 */
     public function testIssue52(): void
     {
         $json = /** @lang json */
-            <<<JSON
+            <<<'JSON'
 {
   "openapi": "3.0.0",
   "info": {

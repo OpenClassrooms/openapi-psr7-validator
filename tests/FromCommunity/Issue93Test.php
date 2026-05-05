@@ -8,13 +8,11 @@ use GuzzleHttp\Psr7\Request;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoOperation;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoPath;
 use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
-use OpenClassrooms\OpenAPIValidation\Tests\PSR7\BaseValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\PSR7\BaseValidatorTestCase;
 use Psr\Http\Message\RequestInterface;
 
-/**
- * @see https://github.com/thephpleague/openapi-psr7-validator/issues/79
- */
-final class Issue93Test extends BaseValidatorTest
+/** @see https://github.com/thephpleague/openapi-psr7-validator/issues/79 */
+final class Issue93Test extends BaseValidatorTestCase
 {
     public function testBadMethodRequest(): void
     {
@@ -22,7 +20,7 @@ final class Issue93Test extends BaseValidatorTest
 
         $this->expectException(NoOperation::class);
         $this->expectExceptionMessage(
-            'OpenAPI spec contains no such operation [/empty,get]'
+            'OpenAPI spec contains no such operation [/empty,get]',
         );
 
         $validator = (new ValidatorBuilder())->fromYamlFile($this->apiSpecFile)->getRequestValidator();
@@ -35,7 +33,7 @@ final class Issue93Test extends BaseValidatorTest
 
         $this->expectException(NoPath::class);
         $this->expectExceptionMessage(
-            'OpenAPI spec contains no such operation [/no-such-path]'
+            'OpenAPI spec contains no such operation [/no-such-path]',
         );
 
         $validator = (new ValidatorBuilder())->fromYamlFile($this->apiSpecFile)->getRequestValidator();

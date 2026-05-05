@@ -1,13 +1,15 @@
 name: Tests
 
-on: [push, pull_request]
+on:
+  pull_request:
+  push:
+    branches:
+      - master
 
 jobs:
-
   tests:
     name: Tests
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.experimental }}
     strategy:
       fail-fast: false
       matrix:
@@ -15,29 +17,30 @@ jobs:
           - "lowest"
           - "highest"
         php:
-          - '7.2'
-          - '7.3'
-          - '7.4'
-          - '8.0'
-        experimental:
-          - false
-        include:
-          - php: "8.1"
-            composer-options: "--ignore-platform-reqs"
-            experimental: true
-            dependencies: "highest"
+          - "8.4"
+          - "8.5"
 
     steps:
       - name: Set up PHP
-        uses: shivammathur/setup-php@2.9.0
+        uses: shivammathur/setup-php@2.37.0
         with:
           php-version: ${{ matrix.php }}
           extensions: intl, mbstring
           tools: "composer:v2"
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
 
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
 
       - name: "Install lowest dependencies"
         if: ${{ matrix.dependencies == 'lowest' }}
@@ -51,17 +54,28 @@ jobs:
         run: ./vendor/bin/phpunit -c phpunit.xml
 
   cs:
-    name: Codestyle check on PHP 7.2
+    name: Codestyle check on PHP 8.4
     runs-on: ubuntu-latest
 
     steps:
       - name: Set up PHP
-        uses: shivammathur/setup-php@2.1.0
+        uses: shivammathur/setup-php@2.37.0
         with:
-          php-version: 7.2
+          php-version: 8.4
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
 
       - name: Download dependencies
         run: composer update --no-interaction --prefer-dist --optimize-autoloader --prefer-stable
@@ -76,16 +90,27 @@ jobs:
     strategy:
       matrix:
         php:
-          - '7.2'
+          - "8.4"
 
     steps:
       - name: Set up PHP
-        uses: shivammathur/setup-php@2.1.0
+        uses: shivammathur/setup-php@2.37.0
         with:
           php-version: ${{ matrix.php }}
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
 
       - name: Download dependencies
         run: composer update --no-interaction --prefer-dist --optimize-autoloader --prefer-stable

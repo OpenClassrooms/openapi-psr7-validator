@@ -7,11 +7,9 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\PSR7;
 use GuzzleHttp\Psr7\ServerRequest;
 use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 
-class ServerRequestRelativeServerTest extends BaseValidatorTest
+class ServerRequestRelativeServerTest extends BaseValidatorTestCase
 {
-    /**
-     * @return array<array<ServerRequest>>
-     */
+    /** @return array<array<ServerRequest>> */
     public function validDataProvider(): array
     {
         return [
@@ -35,12 +33,10 @@ class ServerRequestRelativeServerTest extends BaseValidatorTest
         ];
     }
 
-    /**
-     * @dataProvider validDataProvider
-     */
+    /** @dataProvider validDataProvider */
     public function testItAllowsRelativesServerUrlsGreen(ServerRequest $request): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Test API

@@ -41,8 +41,8 @@ YAML;
         $validator->validate(
             new ServerRequest(
                 'POST',
-                '/api'
-            )
+                '/api',
+            ),
         );
 
         $this->addToAssertionCount(1);
@@ -81,8 +81,8 @@ YAML;
         $validator->validate(
             new ServerRequest(
                 'POST',
-                '/api'
-            )
+                '/api',
+            ),
         );
     }
 }

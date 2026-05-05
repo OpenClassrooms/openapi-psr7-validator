@@ -7,13 +7,13 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\KeywordMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class PropertiesTest extends SchemaValidatorTest
+final class PropertiesTest extends SchemaValidatorTestCase
 {
     public function testItValidatesPropertiesGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   properties:
@@ -30,7 +30,7 @@ SPEC;
 
     public function testItValidatesAdditionalPropertiesGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   properties:
@@ -49,7 +49,7 @@ SPEC;
 
     public function testItValidatesPropertiesRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   properties:
@@ -68,7 +68,7 @@ SPEC;
 
     public function testItValidatesAdditionalPropertiesRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   properties:
@@ -87,7 +87,7 @@ SPEC;
 
     public function testItValidatesAdditionalPropertiesDisallowedRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   required:
@@ -106,7 +106,7 @@ SPEC;
 
     public function testItInfersObjectTypeGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   properties:
     date:

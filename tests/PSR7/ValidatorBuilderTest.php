@@ -10,9 +10,7 @@ use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
-/**
- * @covers \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder
- */
+/** @covers \OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder */
 final class ValidatorBuilderTest extends TestCase
 {
     public function testItCachesParsedOpenApiSpec(): void

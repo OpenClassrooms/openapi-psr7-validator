@@ -6,13 +6,13 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class AllOfTest extends SchemaValidatorTest
+final class AllOfTest extends SchemaValidatorTestCase
 {
     public function testItValidatesAllOfGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   allOf:
     - type: object
@@ -34,7 +34,7 @@ SPEC;
 
     public function testItValidatesAllOfRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   allOf:
     - type: object

@@ -13,7 +13,7 @@ use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 
 use function json_encode;
 
-final class ValidateResponseTest extends BaseValidatorTest
+final class ValidateResponseTest extends BaseValidatorTestCase
 {
     public function testItValidatesMessageGreen(): void
     {
@@ -58,7 +58,7 @@ final class ValidateResponseTest extends BaseValidatorTest
 
         $this->expectException(InvalidBody::class);
         $this->expectExceptionMessage(
-            'Body does not match schema for content-type "application/json" for Response [get /path1 200]'
+            'Body does not match schema for content-type "application/json" for Response [get /path1 200]',
         );
 
         $validator = (new ValidatorBuilder())->fromYamlFile($this->apiSpecFile)->getResponseValidator();
@@ -73,7 +73,7 @@ final class ValidateResponseTest extends BaseValidatorTest
 
         $this->expectException(InvalidHeaders::class);
         $this->expectExceptionMessage(
-            'Value "wrong value" for header "Header-C" is invalid for Response [get /path1 200]'
+            'Value "wrong value" for header "Header-C" is invalid for Response [get /path1 200]',
         );
 
         $validator = (new ValidatorBuilder())->fromYamlFile($this->apiSpecFile)->getResponseValidator();

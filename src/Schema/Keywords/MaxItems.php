@@ -21,11 +21,9 @@ class MaxItems extends BaseKeyword
      * An array instance is valid against "maxItems" if its size is less
      * than, or equal to, the value of this keyword.
      *
-     * @param mixed $data
-     *
      * @throws KeywordMismatch
      */
-    public function validate($data, int $maxItems): void
+    public function validate(mixed $data, int $maxItems): void
     {
         try {
             Validator::arrayType()->assert($data);
@@ -39,7 +37,7 @@ class MaxItems extends BaseKeyword
             throw KeywordMismatch::fromKeyword(
                 'maxItems',
                 $data,
-                sprintf('Size of an array must be less or equal to %d', $maxItems)
+                sprintf('Size of an array must be less or equal to %d', $maxItems),
             );
         }
     }

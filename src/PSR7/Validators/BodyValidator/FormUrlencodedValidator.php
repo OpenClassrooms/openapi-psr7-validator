@@ -74,16 +74,14 @@ class FormUrlencodedValidator implements MessageValidator
         // @see https://github.com/lezhnev74/openapi-psr7-validator/issues/47
     }
 
-    /**
-     * @return mixed[]
-     */
+    /** @return mixed[] */
     protected function parseUrlencodedData(MessageInterface $message): array
     {
         $body = [];
 
         parse_str(
             (string) $message->getBody(),
-            $body
+            $body,
         );
 
         return $body;

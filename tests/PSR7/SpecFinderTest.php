@@ -18,7 +18,7 @@ final class SpecFinderTest extends TestCase
 {
     public function testFindCallbackSpecs(): void
     {
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -38,7 +38,7 @@ paths:
                   type: string
       callbacks:
         productCreated:
-          '{\$request.body#/url}':
+          '{$request.body#/url}':
             post:
               requestBody:
                 content:
@@ -70,7 +70,7 @@ YAML;
         // Some assertions to ensure we have the right operation
         $this->assertEquals(
             'boolean',
-            $operation->requestBody->content['application/json']->schema->properties['success']->type
+            $operation->requestBody->content['application/json']->schema->properties['success']->type,
         );
         $this->assertEquals(['200'], array_keys(iterator_to_array($operation->responses->getIterator())));
     }
@@ -126,7 +126,7 @@ JSON;
 
     public function testResponseStatusCodesWithWildcards(): void
     {
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -166,17 +166,17 @@ YAML;
         $schema       = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator()->getSchema();
         $specFinder   = new SpecFinder($schema);
         $responseSpec = $specFinder->findResponseSpec(
-            new ResponseAddress('/products.find', 'get', 404)
+            new ResponseAddress('/products.find', 'get', 404),
         );
         self::assertSame('Not Found', $responseSpec->description);
 
         $responseSpec = $specFinder->findResponseSpec(
-            new ResponseAddress('/products.find', 'get', 400)
+            new ResponseAddress('/products.find', 'get', 400),
         );
         self::assertSame('Client Error', $responseSpec->description);
 
         $responseSpec = $specFinder->findResponseSpec(
-            new ResponseAddress('/products.find', 'get', 500)
+            new ResponseAddress('/products.find', 'get', 500),
         );
         self::assertSame('Unexpected Error', $responseSpec->description);
     }

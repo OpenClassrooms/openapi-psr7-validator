@@ -53,7 +53,7 @@ class MultipartValidator implements MessageValidator
     use ValidationStrategy;
     use BodyDeserialization;
 
-    private const HEADER_CONTENT_TYPE = 'Content-Type';
+    private const string HEADER_CONTENT_TYPE = 'Content-Type';
 
     /** @var MediaType */
     protected $mediaTypeSpec;
@@ -90,7 +90,7 @@ class MultipartValidator implements MessageValidator
     private function validatePlainBodyMultipart(
         OperationAddress $addr,
         MessageInterface $message,
-        Schema $schema
+        Schema $schema,
     ): void {
         // 1. Parse message body
         $document = PSR7::convert($message);
@@ -127,7 +127,7 @@ class MultipartValidator implements MessageValidator
                     throw InvalidBody::becauseBodyDoesNotMatchSchemaMultipart(
                         $partName,
                         $partContentType,
-                        $addr
+                        $addr,
                     );
                 }
 
@@ -186,9 +186,7 @@ class MultipartValidator implements MessageValidator
         return $multipartData;
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     private function detectEncodingContentTypes(Encoding $encoding, StreamedPart $part, Schema $partSchema): array
     {
         $contentType = $encoding->contentType;
@@ -285,7 +283,7 @@ class MultipartValidator implements MessageValidator
     private function validateServerRequestMultipart(
         OperationAddress $addr,
         ServerRequestInterface $message,
-        Schema $schema
+        Schema $schema,
     ): void {
         $body = (array) $message->getParsedBody();
 

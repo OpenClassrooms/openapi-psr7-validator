@@ -12,7 +12,7 @@ final class PathFinderTest extends TestCase
 {
     public function testItFindsMatchingOperation(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -38,7 +38,7 @@ SPEC;
 
     public function testItFindsMatchingOperationWithParametrizedServer(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -64,7 +64,7 @@ SPEC;
 
     public function testItFindsMatchingOperationForFullUrl(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -91,7 +91,7 @@ SPEC;
 
     public function testItFindsMatchingOperationForMultipleServersWithSamePath(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -119,7 +119,7 @@ SPEC;
 
     public function testItPrioritisesOperatorsThatAreMoreStatic(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -143,7 +143,7 @@ SPEC;
 
     public function testItPrioritises2EquallyDynamicPaths(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Uber API

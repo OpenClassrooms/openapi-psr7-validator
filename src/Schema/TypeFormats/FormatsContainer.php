@@ -61,20 +61,16 @@ class FormatsContainer
 
     /**
      * Add new format to the list
-     *
-     * @param string|callable $fqcn
      */
-    public static function registerFormat(string $type, string $format, $fqcn): void
+    public static function registerFormat(string $type, string $format, string|callable $fqcn): void
     {
         self::$list[$type][$format] = $fqcn;
     }
 
     /**
      * Return FQCN for the format validation class
-     *
-     * @return string|callable|null
      */
-    public static function getFormat(string $type, string $format)
+    public static function getFormat(string $type, string $format): string|callable|null
     {
         return self::$list[$type][$format] ?? null;
     }

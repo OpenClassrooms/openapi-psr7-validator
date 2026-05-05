@@ -12,12 +12,8 @@ class KeywordMismatch extends SchemaMismatch
     /** @var string */
     protected $keyword;
 
-    /**
-     * @param mixed $data
-     *
-     * @return KeywordMismatch
-     */
-    public static function fromKeyword(string $keyword, $data, ?string $message = null, ?Throwable $prev = null): self
+    /** @return KeywordMismatch */
+    public static function fromKeyword(string $keyword, mixed $data, string|null $message = null, Throwable|null $prev = null): self
     {
         $instance          = new self('Keyword validation failed: ' . $message, 0, $prev);
         $instance->keyword = $keyword;

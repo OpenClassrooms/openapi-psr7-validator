@@ -33,12 +33,9 @@ class Maximum extends BaseKeyword
      * false (or not specified), then a numeric instance MAY be equal to the
      * value of "maximum".
      *
-     * @param mixed     $data
-     * @param int|float $maximum
-     *
      * @throws KeywordMismatch
      */
-    public function validate($data, $maximum, bool $exclusiveMaximum = false): void
+    public function validate(mixed $data, int|float $maximum, bool $exclusiveMaximum = false): void
     {
         try {
             if (class_exists(NumericVal::class)) {
@@ -56,7 +53,7 @@ class Maximum extends BaseKeyword
             throw KeywordMismatch::fromKeyword(
                 'maximum',
                 $data,
-                sprintf('Value %d must be less than %d', $data, $maximum)
+                sprintf('Value %d must be less than %d', $data, $maximum),
             );
         }
 
@@ -64,7 +61,7 @@ class Maximum extends BaseKeyword
             throw KeywordMismatch::fromKeyword(
                 'maximum',
                 $data,
-                sprintf('Value %d must be less or equal to %d', $data, $maximum)
+                sprintf('Value %d must be less or equal to %d', $data, $maximum),
             );
         }
     }

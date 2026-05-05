@@ -17,6 +17,7 @@ class CallbackAddress extends OperationAddress
     public function __construct(string $path, string $method, string $callbackName, string $callbackMethod)
     {
         parent::__construct($path, $method);
+
         $this->callbackName   = $callbackName;
         $this->callbackMethod = $callbackMethod;
     }

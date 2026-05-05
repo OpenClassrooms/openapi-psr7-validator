@@ -11,7 +11,7 @@ use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 
 use function sprintf;
 
-final class HeadersTest extends BaseValidatorTest
+final class HeadersTest extends BaseValidatorTestCase
 {
     public function testItValidatesRequestQueryArgumentsGreen(): void
     {
@@ -22,9 +22,7 @@ final class HeadersTest extends BaseValidatorTest
         $this->addToAssertionCount(1);
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function dataProviderDeserializesRequestHeaderGreen(): array
     {
         return [
@@ -36,9 +34,7 @@ final class HeadersTest extends BaseValidatorTest
         ];
     }
 
-    /**
-     * @dataProvider dataProviderDeserializesRequestHeaderGreen
-     */
+    /** @dataProvider dataProviderDeserializesRequestHeaderGreen */
     public function testItDeserializesRequestHeaderParametersGreen(string $headerName, string $headerValue): void
     {
         $request = (new ServerRequest('get', new Uri('/deserialize-headers')))
@@ -49,9 +45,7 @@ final class HeadersTest extends BaseValidatorTest
         $this->addToAssertionCount(1);
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function dataProviderDeserializesRequestHeaderRed(): array
     {
         return [
@@ -65,9 +59,7 @@ final class HeadersTest extends BaseValidatorTest
         ];
     }
 
-    /**
-     * @dataProvider dataProviderDeserializesRequestHeaderRed
-     */
+    /** @dataProvider dataProviderDeserializesRequestHeaderRed */
     public function testItDeserializesRequestHeaderParametersRed(string $headerName, string $headerValue): void
     {
         $request = (new ServerRequest('get', new Uri('/deserialize-headers')))
@@ -77,7 +69,7 @@ final class HeadersTest extends BaseValidatorTest
 
         $this->expectException(InvalidHeaders::class);
         $this->expectExceptionMessage(
-            sprintf('Value "%s" for header "%s" is invalid for Request [get /deserialize-headers]', $headerValue, $headerName)
+            sprintf('Value "%s" for header "%s" is invalid for Request [get /deserialize-headers]', $headerValue, $headerName),
         );
         $validator->validate($request);
     }

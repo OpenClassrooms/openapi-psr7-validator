@@ -27,12 +27,10 @@ class MinLength extends BaseKeyword
      * "minLength", if absent, may be considered as being present with
      * integer value 0.
      *
-     * @param mixed $data
-     *
      * @throws KeywordMismatch
      * @throws InvalidSchema
      */
-    public function validate($data, int $minLength): void
+    public function validate(mixed $data, int $minLength): void
     {
         try {
             Validator::stringType()->assert($data);
@@ -46,7 +44,7 @@ class MinLength extends BaseKeyword
             throw KeywordMismatch::fromKeyword(
                 'minLength',
                 $data,
-                sprintf("Length of '%s' must be longer or equal to %d", $data, $minLength)
+                sprintf("Length of '%s' must be longer or equal to %d", $data, $minLength),
             );
         }
     }

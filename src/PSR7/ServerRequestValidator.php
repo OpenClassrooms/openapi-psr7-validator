@@ -38,7 +38,7 @@ class ServerRequestValidator implements ReusableSchema
             new BodyValidator($finder),
             new QueryArgumentsValidator($finder),
             new PathValidator($finder),
-            new SecurityValidator($finder)
+            new SecurityValidator($finder),
         );
     }
 
@@ -81,7 +81,7 @@ class ServerRequestValidator implements ReusableSchema
                 $this->validator->validate($matchedAddr, $serverRequest);
 
                 return $matchedAddr; // Good, operation matched and request is valid against it, stop here
-            } catch (Throwable $e) {
+            } catch (Throwable) {
                 // that operation did not match
             }
         }

@@ -24,11 +24,9 @@ class MinItems extends BaseKeyword
      * If this keyword is not present, it may be considered present with a
      * value of 0.
      *
-     * @param mixed $data
-     *
      * @throws KeywordMismatch
      */
-    public function validate($data, int $minItems): void
+    public function validate(mixed $data, int $minItems): void
     {
         try {
             Validator::arrayType()->assert($data);

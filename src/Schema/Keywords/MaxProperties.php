@@ -21,11 +21,9 @@ class MaxProperties extends BaseKeyword
      * An object instance is valid against "maxProperties" if its number of
      * properties is less than, or equal to, the value of this keyword.
      *
-     * @param mixed $data
-     *
      * @throws KeywordMismatch
      */
-    public function validate($data, int $maxProperties): void
+    public function validate(mixed $data, int $maxProperties): void
     {
         try {
             Validator::arrayType()->assert($data);
@@ -38,7 +36,7 @@ class MaxProperties extends BaseKeyword
             throw KeywordMismatch::fromKeyword(
                 'maxProperties',
                 $data,
-                sprintf("The number of object's properties must be less or equal to %d", $maxProperties)
+                sprintf("The number of object's properties must be less or equal to %d", $maxProperties),
             );
         }
     }

@@ -14,7 +14,7 @@ class InvalidBody extends AddressValidationFailed
     public static function becauseBodyDoesNotMatchSchema(
         string $contentType,
         OperationAddress $addr,
-        SchemaMismatch $prev
+        SchemaMismatch $prev,
     ): self {
         $exception          = static::fromAddrAndPrev($addr, $prev);
         $exception->message = sprintf('Body does not match schema for content-type "%s" for %s', $contentType, $addr);
@@ -26,14 +26,14 @@ class InvalidBody extends AddressValidationFailed
         string $partName,
         string $contentType,
         OperationAddress $addr,
-        ?SchemaMismatch $prev = null
+        SchemaMismatch|null $prev = null,
     ): self {
         $exception          = $prev ? static::fromAddrAndPrev($addr, $prev) : static::fromAddr($addr);
         $exception->message = sprintf(
             'Multipart body does not match schema for part "%s" with content-type "%s" for %s',
             $partName,
             $contentType,
-            $addr
+            $addr,
         );
 
         return $exception;

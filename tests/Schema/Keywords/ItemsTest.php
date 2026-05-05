@@ -6,13 +6,13 @@ namespace OpenClassrooms\OpenAPIValidation\Tests\Schema\Keywords;
 
 use OpenClassrooms\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use OpenClassrooms\OpenAPIValidation\Schema\SchemaValidator;
-use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
+use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTestCase;
 
-final class ItemsTest extends SchemaValidatorTest
+final class ItemsTest extends SchemaValidatorTestCase
 {
     public function testItValidatesItemsGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   items:
@@ -28,7 +28,7 @@ SPEC;
 
     public function testItValidatesItemsNestedGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   items:
@@ -47,7 +47,7 @@ SPEC;
 
     public function testItValidatesItemsRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   items:
@@ -63,7 +63,7 @@ SPEC;
 
     public function testItValidatesItemsNestedRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   items:

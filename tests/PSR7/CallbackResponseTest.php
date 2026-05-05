@@ -13,7 +13,7 @@ use Psr\Http\Message\ResponseInterface;
 
 use function json_encode;
 
-final class CallbackResponseTest extends BaseValidatorTest
+final class CallbackResponseTest extends BaseValidatorTestCase
 {
     public function testItValidatesMessageGreen(): void
     {
@@ -31,7 +31,7 @@ final class CallbackResponseTest extends BaseValidatorTest
 
         $this->expectException(InvalidBody::class);
         $this->expectExceptionMessage(
-            'Body does not match schema for content-type "application/json" for Callback [post /callback somethingHappened post 200]'
+            'Body does not match schema for content-type "application/json" for Callback [post /callback somethingHappened post 200]',
         );
 
         $validator->validate($this->getCallbackAddress(), $response);

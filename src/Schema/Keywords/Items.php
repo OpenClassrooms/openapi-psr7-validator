@@ -24,6 +24,7 @@ class Items extends BaseKeyword
     public function __construct(CebeSchema $parentSchema, int $type, BreadCrumb $breadCrumb)
     {
         parent::__construct($parentSchema);
+
         $this->validationDataType = $type;
         $this->dataBreadCrumb     = $breadCrumb;
     }
@@ -33,11 +34,9 @@ class Items extends BaseKeyword
      * Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.
      * items MUST be present if the type is array.
      *
-     * @param mixed $data
-     *
      * @throws SchemaMismatch
      */
-    public function validate($data, CebeSchema $itemsSchema): void
+    public function validate(mixed $data, CebeSchema $itemsSchema): void
     {
         try {
             Validator::arrayVal()->assert($data);

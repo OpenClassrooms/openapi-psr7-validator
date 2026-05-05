@@ -24,7 +24,7 @@ final class CallbackResponseValidator implements ReusableSchema
         $finder          = new SpecFinder($this->openApi);
         $this->validator = new ValidatorChain(
             new HeadersValidator($finder),
-            new BodyValidator($finder)
+            new BodyValidator($finder),
         );
     }
 
@@ -33,9 +33,7 @@ final class CallbackResponseValidator implements ReusableSchema
         return $this->openApi;
     }
 
-    /**
-     * @throws ValidationFailed
-     */
+    /** @throws ValidationFailed */
     public function validate(CallbackAddress $opAddr, ResponseInterface $serverRequest): void
     {
         $opAddr = new CallbackResponseAddress(
@@ -43,7 +41,7 @@ final class CallbackResponseValidator implements ReusableSchema
             $opAddr->method(),
             $opAddr->callbackName(),
             $opAddr->callbackMethod(),
-            $serverRequest->getStatusCode()
+            $serverRequest->getStatusCode(),
         );
         $this->validator->validate($opAddr, $serverRequest);
     }

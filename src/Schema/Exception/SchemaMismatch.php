@@ -14,7 +14,7 @@ class SchemaMismatch extends Exception
     /** @var mixed */
     protected $data;
 
-    public function dataBreadCrumb(): ?BreadCrumb
+    public function dataBreadCrumb(): BreadCrumb|null
     {
         return $this->dataBreadCrumb;
     }
@@ -35,10 +35,7 @@ class SchemaMismatch extends Exception
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function data()
+    public function data(): mixed
     {
         return $this->data;
     }

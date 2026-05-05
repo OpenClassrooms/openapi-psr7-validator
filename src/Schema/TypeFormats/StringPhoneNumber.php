@@ -15,7 +15,7 @@ class StringPhoneNumber
 
         try {
             return $phoneUtil->isValidNumber($phoneUtil->parse($value));
-        } catch (NumberParseException $e) {
+        } catch (NumberParseException) {
             return false;
         }
     }

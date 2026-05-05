@@ -22,7 +22,7 @@ class InvalidHeaders extends AddressValidationFailed
     public static function becauseOfMissingRequiredHeaderMupripart(
         string $partName,
         string $headerName,
-        OperationAddress $address
+        OperationAddress $address,
     ): self {
         $exception          = static::fromAddr($address);
         $exception->message = sprintf('Missing required header "%s" for %s in multipart "%s"', $headerName, $address, $partName);
@@ -43,7 +43,7 @@ class InvalidHeaders extends AddressValidationFailed
         string $headerName,
         string $headerValue,
         OperationAddress $address,
-        SchemaMismatch $prev
+        SchemaMismatch $prev,
     ): self {
         $exception          = static::fromAddrAndPrev($address, $prev);
         $exception->message = sprintf('Value "%s" for header "%s" is invalid for "%s" in multipart "%s"', $headerValue, $headerName, $address, $partName);

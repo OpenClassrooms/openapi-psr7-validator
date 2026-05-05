@@ -12,13 +12,11 @@ use PHPUnit\Framework\TestCase;
 
 final class Issue17Test extends TestCase
 {
-    /**
-     * @see https://github.com/lezhnev74/openapi-psr7-validator/issues/17
-     */
+    /** @see https://github.com/lezhnev74/openapi-psr7-validator/issues/17 */
     public function testIssue17(): void
     {
         $yaml = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -52,7 +50,7 @@ YAML;
             'POST',
             'http://localhost:8000/api/v1/products.create',
             ['Content-Type' => 'application/json'],
-            <<<JSON
+            <<<'JSON'
 {
     "stringOne":"foo",
     "stringTwo":"bar",
@@ -60,7 +58,7 @@ YAML;
         "more":"things"
     }
 }
-JSON
+JSON,
         );
 
         $address = new OperationAddress('/products.create', 'post');

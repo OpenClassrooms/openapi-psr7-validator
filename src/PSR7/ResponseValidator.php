@@ -24,7 +24,7 @@ class ResponseValidator implements ReusableSchema
         $finder          = new SpecFinder($this->openApi);
         $this->validator = new ValidatorChain(
             new HeadersValidator($finder),
-            new BodyValidator($finder)
+            new BodyValidator($finder),
         );
     }
 
@@ -33,14 +33,12 @@ class ResponseValidator implements ReusableSchema
         return $this->openApi;
     }
 
-    /**
-     * @throws ValidationFailed
-     */
+    /** @throws ValidationFailed */
     public function validate(OperationAddress $opAddr, ResponseInterface $response): void
     {
         $this->validator->validate(
             new ResponseAddress($opAddr->path(), $opAddr->method(), $response->getStatusCode()),
-            $response
+            $response,
         );
     }
 }

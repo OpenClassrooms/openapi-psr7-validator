@@ -72,7 +72,7 @@ final class IssueWithQueryArrayTest extends TestCase
     public function testConvertSingleLayerDeepObject(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -109,7 +109,7 @@ YAML;
     public function testConvertSingleLayerDeepObjectError(): void
     {
         $yaml = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -154,7 +154,7 @@ YAML;
     public function testConvertMultiLayerDeepObject(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -197,7 +197,7 @@ YAML;
     public function testConvertNumericKeysDeepObject(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -231,7 +231,7 @@ YAML;
     public function testConvertDeepArrayInteger(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -268,7 +268,7 @@ YAML;
     public function testConvertDeepArrayIntegerWithoutExplode(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -301,7 +301,7 @@ YAML;
     public function testConvertDeepArrayBoolean(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -335,7 +335,7 @@ YAML;
     public function testConvertDeepArrayString(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -369,7 +369,7 @@ YAML;
     public function testConvertDeepArrayOfArrayInteger(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -407,7 +407,7 @@ YAML;
         // there should be ints instead of strings in the array
         $this->expectException(InvalidQueryArgs::class);
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -448,7 +448,7 @@ YAML;
     public function testConvertMultiLayerDeepObjectError(): void
     {
         $yaml = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API

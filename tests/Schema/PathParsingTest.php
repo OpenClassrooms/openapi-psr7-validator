@@ -15,7 +15,7 @@ class PathParsingTest extends TestCase
     {
         // that specification doesn't raise any errors in swagger-editor
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -37,7 +37,7 @@ paths:
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
 
-        $psrRequest = (new ServerRequest('get', 'http://localhost:8000/api/v1/test/whatever'));
+        $psrRequest = new ServerRequest('get', 'http://localhost:8000/api/v1/test/whatever');
 
         $this->expectException(InvalidSchema::class);
         $validator->validate($psrRequest);

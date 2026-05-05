@@ -23,6 +23,7 @@ class Not extends BaseKeyword
     public function __construct(CebeSchema $parentSchema, int $type, BreadCrumb $breadCrumb)
     {
         parent::__construct($parentSchema);
+
         $this->validationDataType = $type;
         $this->dataBreadCrumb     = $breadCrumb;
     }
@@ -34,11 +35,9 @@ class Not extends BaseKeyword
      * An instance is valid against this keyword if it fails to validate
      * successfully against the schema defined by this keyword.
      *
-     * @param mixed $data
-     *
      * @throws KeywordMismatch
      */
-    public function validate($data, CebeSchema $not): void
+    public function validate(mixed $data, CebeSchema $not): void
     {
         try {
             Validator::instance(CebeSchema::class)->assert($not);
@@ -50,7 +49,7 @@ class Not extends BaseKeyword
 
         try {
             $schemaValidator->validate($data, $not, $this->dataBreadCrumb);
-        } catch (SchemaMismatch $e) {
+        } catch (SchemaMismatch) {
             return;
         }
 

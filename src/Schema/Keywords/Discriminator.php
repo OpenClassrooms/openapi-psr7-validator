@@ -6,10 +6,7 @@ namespace OpenClassrooms\OpenAPIValidation\Schema\Keywords;
 
 class Discriminator extends BaseKeyword
 {
-    /**
-     * @param mixed $data
-     */
-    public function validate($data): void
+    public function validate(mixed $data): void
     {
         // TODO
     }
