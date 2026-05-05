@@ -39,10 +39,6 @@ class Type extends BaseKeyword
      */
     public function validate(mixed $data, string|array $types, string|null $format = null): void
     {
-        if (! is_array($types) && ! is_string($types)) {
-            throw new TypeError('$types only can be array or string');
-        }
-
         if (! is_array($types)) {
             $types = [$types];
         }

@@ -15,6 +15,7 @@ use OpenClassrooms\OpenAPIValidation\PSR7\SpecFinder;
 use OpenClassrooms\OpenAPIValidation\PSR7\Validators\ValidationStrategy;
 use Psr\Http\Message\MessageInterface;
 
+use cebe\openapi\spec\Response;
 use function explode;
 use function preg_match;
 use function strtok;
@@ -53,11 +54,13 @@ final class BodyValidator implements MessageValidator
             return;
         }
 
-        $mediaTypeSpecs = $mediaTypeSpecs->content;
-
-        if (empty($mediaTypeSpecs)) {
-            // edge case: if "content" keyword is not set (body can be anything as no expectations set)
-            return;
+        if ($mediaTypeSpecs instanceof RequestBody || $mediaTypeSpecs instanceof Response) {
+            $mediaTypeSpecs = $mediaTypeSpecs->content;
+    
+            if (empty($mediaTypeSpecs)) {
+                // edge case: if "content" keyword is not set (body can be anything as no expectations set)
+                return;
+            }
         }
 
         // Detect ContentType of the message

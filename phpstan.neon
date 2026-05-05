@@ -8,3 +8,4 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     ignoreErrors:
         - '#Call to an undefined static method Respect\\Validation\\Validator::numeric\(\).#'
+        - '#Call to function is_int\(\) with int will always evaluate to true.#'

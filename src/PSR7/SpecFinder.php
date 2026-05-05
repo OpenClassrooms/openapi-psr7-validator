@@ -184,14 +184,6 @@ final class SpecFinder
      */
     public function findResponseSpec(ResponseAddress|CallbackResponseAddress $addr): ResponseSpec
     {
-        Assert::isInstanceOfAny(
-            $addr,
-            [
-                ResponseAddress::class,
-                CallbackResponseAddress::class,
-            ],
-        );
-
         $operation = $this->findOperationSpec($addr);
 
         $response = $operation->responses->getResponse((string) $addr->responseCode());

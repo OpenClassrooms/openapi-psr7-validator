@@ -20,9 +20,7 @@ class BreadCrumb
     /** @param int|string|null $compoundIndex suitable for array index */
     public function __construct(protected int|string|null $compoundIndex = null)
     {
-        if (($compoundIndex !== null) && ! is_scalar($compoundIndex)) {
-            throw new RuntimeException(sprintf('BreadCrumb cannot have non-scalar index: %s', $compoundIndex));
-        }
+
     }
 
     /** @return BreadCrumb */

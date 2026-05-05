@@ -248,10 +248,6 @@ final class SerializedParameter
     {
         $value = explode(',', $value);
 
-        if (! is_iterable($value)) {
-            throw TypeMismatch::becauseTypeDoesNotMatch(['iterable'], $value);
-        }
-
         $array = [];
         foreach ($value as &$val) {
             $splitVal            = explode('=', $val);

@@ -51,7 +51,7 @@ final class SchemaValidator implements Validator
     }
 
     /** {@inheritDoc} */
-    public function validate($data, CebeSchema $schema, BreadCrumb|null $breadCrumb = null): void
+    public function validate(mixed $data, CebeSchema $schema, BreadCrumb|null $breadCrumb = null): void
     {
         $breadCrumb = $breadCrumb ?? new BreadCrumb();
 
