@@ -18,7 +18,7 @@ final class SpecFinderTest extends TestCase
 {
     public function testFindCallbackSpecs(): void
     {
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -27,38 +27,38 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /products.create:
-    post:
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              properties:
-                url:
-                  type: string
-      callbacks:
-        productCreated:
-          '{\$request.body#/url}':
-            post:
-              requestBody:
-                content:
-                  application/json:
-                    schema:
-                      properties:
-                        success:
-                          type: boolean
-              responses:
-                '200':
-                  description: Callback received the request.
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                properties:
-                  result: 
-                    type: string
+	post:
+	  requestBody:
+		required: true
+		content:
+		  application/json:
+			schema:
+			  properties:
+				url:
+				  type: string
+	  callbacks:
+		productCreated:
+		  '{$request.body#/url}':
+			post:
+			  requestBody:
+				content:
+				  application/json:
+					schema:
+					  properties:
+						success:
+						  type: boolean
+			  responses:
+				'200':
+				  description: Callback received the request.
+	  responses:
+		'200':
+		  description: OK
+		  content:
+			application/json:
+			  schema:
+				properties:
+				  result: 
+					type: string
 YAML;
 
         $schema     = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator()->getSchema();
@@ -70,7 +70,7 @@ YAML;
         // Some assertions to ensure we have the right operation
         $this->assertEquals(
             'boolean',
-            $operation->requestBody->content['application/json']->schema->properties['success']->type
+            $operation->requestBody->content['application/json']->schema->properties['success']->type,
         );
         $this->assertEquals(['200'], array_keys(iterator_to_array($operation->responses->getIterator())));
     }
@@ -126,7 +126,7 @@ JSON;
 
     public function testResponseStatusCodesWithWildcards(): void
     {
-        $yaml = <<<YAML
+        $yaml = <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -135,48 +135,48 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /products.find:
-    get:
-      responses:
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                properties:
-                  message:
-                    type: string
-        '4XX':
-          description: Client Error
-          content:
-            application/json:
-              schema:
-                properties:
-                  message:
-                    type: string
-        'default':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                properties:
-                  message:
-                    type: string
+	get:
+	  responses:
+		'404':
+		  description: Not Found
+		  content:
+			application/json:
+			  schema:
+				properties:
+				  message:
+					type: string
+		'4XX':
+		  description: Client Error
+		  content:
+			application/json:
+			  schema:
+				properties:
+				  message:
+					type: string
+		'default':
+		  description: Unexpected Error
+		  content:
+			application/json:
+			  schema:
+				properties:
+				  message:
+					type: string
 YAML;
 
         $schema       = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator()->getSchema();
         $specFinder   = new SpecFinder($schema);
         $responseSpec = $specFinder->findResponseSpec(
-            new ResponseAddress('/products.find', 'get', 404)
+            new ResponseAddress('/products.find', 'get', 404),
         );
         self::assertSame('Not Found', $responseSpec->description);
 
         $responseSpec = $specFinder->findResponseSpec(
-            new ResponseAddress('/products.find', 'get', 400)
+            new ResponseAddress('/products.find', 'get', 400),
         );
         self::assertSame('Client Error', $responseSpec->description);
 
         $responseSpec = $specFinder->findResponseSpec(
-            new ResponseAddress('/products.find', 'get', 500)
+            new ResponseAddress('/products.find', 'get', 500),
         );
         self::assertSame('Unexpected Error', $responseSpec->description);
     }

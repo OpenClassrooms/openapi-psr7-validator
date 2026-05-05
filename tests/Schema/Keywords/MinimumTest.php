@@ -31,7 +31,7 @@ SPEC;
 
     public function testMinimumExclusiveKeywordGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: number
   minimum: 100

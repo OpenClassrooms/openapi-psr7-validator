@@ -14,6 +14,7 @@ class ResponseAddress extends OperationAddress
     public function __construct(string $path, string $method, int $responseCode)
     {
         parent::__construct($path, $method);
+
         $this->responseCode = $responseCode;
     }
 

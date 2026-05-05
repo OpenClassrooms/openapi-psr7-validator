@@ -72,9 +72,7 @@ class PathFinder
         return $matches;
     }
 
-    /**
-     * @return OperationAddress[]
-     */
+    /** @return OperationAddress[] */
     public function search(): array
     {
         if ($this->searchResult === null) {
@@ -84,9 +82,7 @@ class PathFinder
         return $this->searchResult;
     }
 
-    /**
-     * @return OperationAddress[]
-     */
+    /** @return OperationAddress[] */
     private function doSearch(): array
     {
         $paths = [];
@@ -188,7 +184,7 @@ class PathFinder
         return sprintf(
             '%s/%s',
             rtrim((string) parse_url($server->url, PHP_URL_PATH), '/'),
-            ltrim($addr->path(), '/')
+            ltrim($addr->path(), '/'),
         );
     }
 

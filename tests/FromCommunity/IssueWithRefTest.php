@@ -23,7 +23,7 @@ final class IssueWithRefTest extends TestCase
     {
         return new ServerRequest(
             'GET',
-            'http://localhost:8000/foo'
+            'http://localhost:8000/foo',
         );
     }
 }

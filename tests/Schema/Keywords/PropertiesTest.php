@@ -13,12 +13,12 @@ final class PropertiesTest extends SchemaValidatorTest
 {
     public function testItValidatesPropertiesGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   properties:
-    name:
-      type: string
+	name:
+	  type: string
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -30,14 +30,14 @@ SPEC;
 
     public function testItValidatesAdditionalPropertiesGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   properties:
-    name:
-      type: string
+	name:
+	  type: string
   additionalProperties:
-    type: number
+	type: number
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -49,14 +49,14 @@ SPEC;
 
     public function testItValidatesPropertiesRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   properties:
-    name:
-      type: string
-    age:
-      type: integer
+	name:
+	  type: string
+	age:
+	  type: integer
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -68,14 +68,14 @@ SPEC;
 
     public function testItValidatesAdditionalPropertiesRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   properties:
-    name:
-      type: string
+	name:
+	  type: string
   additionalProperties:
-    type: number
+	type: number
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -87,13 +87,13 @@ SPEC;
 
     public function testItValidatesAdditionalPropertiesDisallowedRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   required:
-    - data
+	- data
   properties:
-    data: {}
+	data: {}
   additionalProperties: false
 SPEC;
 
@@ -106,12 +106,12 @@ SPEC;
 
     public function testItInfersObjectTypeGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   properties:
-    date:
-      type: string
-      format: date
+	date:
+	  type: string
+	  format: date
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

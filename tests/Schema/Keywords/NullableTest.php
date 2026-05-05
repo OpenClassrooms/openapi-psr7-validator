@@ -12,10 +12,10 @@ final class NullableTest extends SchemaValidatorTest
 {
     public function testItValidatesNullableGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
-    type: string
-    nullable: true
+	type: string
+	nullable: true
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -27,9 +27,9 @@ SPEC;
 
     public function testItValidatesNullableRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
-    type: string
+	type: string
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

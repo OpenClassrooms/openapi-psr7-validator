@@ -24,6 +24,7 @@ class AnyOf extends BaseKeyword
     public function __construct(CebeSchema $parentSchema, int $type, BreadCrumb $breadCrumb)
     {
         parent::__construct($parentSchema);
+
         $this->validationDataType = $type;
         $this->dataBreadCrumb     = $breadCrumb;
     }
@@ -38,12 +39,11 @@ class AnyOf extends BaseKeyword
      * validates successfully against at least one schema defined by this
      * keyword's value.
      *
-     * @param mixed        $data
      * @param CebeSchema[] $anyOf
      *
      * @throws KeywordMismatch
      */
-    public function validate($data, array $anyOf): void
+    public function validate(mixed $data, array $anyOf): void
     {
         try {
             Validator::arrayVal()->assert($anyOf);
@@ -69,7 +69,7 @@ class AnyOf extends BaseKeyword
             'anyOf',
             $data,
             $innerExceptions,
-            'Data must match at least one schema'
+            'Data must match at least one schema',
         );
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators;
 
+use LogicException;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\NoPath;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidParameter;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidPath;
@@ -11,7 +12,6 @@ use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\RequiredParameter
 use OpenClassrooms\OpenAPIValidation\PSR7\MessageValidator;
 use OpenClassrooms\OpenAPIValidation\PSR7\OperationAddress;
 use OpenClassrooms\OpenAPIValidation\PSR7\SpecFinder;
-use LogicException;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\RequestInterface;
 
@@ -27,7 +27,7 @@ final class PathValidator implements MessageValidator
         $this->finder = $finder;
     }
 
-    /** {@inheritdoc} */
+    /** {@inheritDoc} */
     public function validate(OperationAddress $addr, MessageInterface $message): void
     {
         if (! ($message instanceof RequestInterface)) {

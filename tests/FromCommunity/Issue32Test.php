@@ -14,9 +14,7 @@ use function json_encode;
 
 final class Issue32Test extends TestCase
 {
-    /**
-     * @see https://github.com/thephpleague/openapi-psr7-validator/issues/32
-     */
+    /** @see https://github.com/thephpleague/openapi-psr7-validator/issues/32 */
     public function testIssue32(): void
     {
         $yaml = /** @lang yaml */

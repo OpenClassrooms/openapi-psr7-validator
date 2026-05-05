@@ -14,7 +14,7 @@ final class JsonFileFactory extends FileFactory
     public function createSchema(): OpenApi
     {
         return Reader::readFromJsonFile(
-            realpath($this->getFilename())
+            realpath($this->getFilename()),
         );
     }
 }

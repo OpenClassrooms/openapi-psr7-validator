@@ -18,7 +18,7 @@ final class ParameterDeserializationTest extends TestCase
         $queryParams = ['filter' => '{"type":"t-shirt","color":"blue"}'];
         $psrRequest  = (new ServerRequest(
             'GET',
-            'http://localhost:8000/api/v1/products?' . http_build_query($queryParams)
+            'http://localhost:8000/api/v1/products?' . http_build_query($queryParams),
         ))
             ->withQueryParams($queryParams);
 
@@ -36,7 +36,7 @@ final class ParameterDeserializationTest extends TestCase
         $queryParams = ['filter' => '{"type":"t-shirt","color":false}'];
         $psrRequest  = (new ServerRequest(
             'GET',
-            'http://localhost:8000/api/v1/products?' . http_build_query($queryParams)
+            'http://localhost:8000/api/v1/products?' . http_build_query($queryParams),
         ))
             ->withQueryParams($queryParams);
 
@@ -55,7 +55,7 @@ final class ParameterDeserializationTest extends TestCase
         $queryParams = ['filter' => 'type,t-shirt,color,blue'];
         $psrRequest  = (new ServerRequest(
             'GET',
-            'http://localhost:8000/api/v1/products?' . http_build_query($queryParams)
+            'http://localhost:8000/api/v1/products?' . http_build_query($queryParams),
         ))
             ->withQueryParams($queryParams);
 

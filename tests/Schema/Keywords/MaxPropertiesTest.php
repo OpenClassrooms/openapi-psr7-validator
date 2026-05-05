@@ -12,7 +12,7 @@ final class MaxPropertiesTest extends SchemaValidatorTest
 {
     public function testItValidatesMaxPropertiesGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
 SPEC;
@@ -26,7 +26,7 @@ SPEC;
 
     public function testItValidatesMaxPropertiesRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   maxProperties: 2

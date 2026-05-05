@@ -14,6 +14,7 @@ class CallbackResponseAddress extends CallbackAddress
     public function __construct(string $path, string $method, string $callbackName, string $callbackMethod, int $responseCode)
     {
         parent::__construct($path, $method, $callbackName, $callbackMethod);
+
         $this->responseCode = $responseCode;
     }
 

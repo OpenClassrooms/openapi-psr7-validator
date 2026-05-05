@@ -12,7 +12,7 @@ final class MinPropertiesTest extends SchemaValidatorTest
 {
     public function testItValidatesMinPropertiesGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
 SPEC;
@@ -26,7 +26,7 @@ SPEC;
 
     public function testItValidatesMinPropertiesRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   minProperties: 2

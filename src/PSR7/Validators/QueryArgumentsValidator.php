@@ -17,9 +17,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function parse_str;
 
-/**
- * @see https://swagger.io/docs/specification/describing-parameters/
- */
+/** @see https://swagger.io/docs/specification/describing-parameters/ */
 final class QueryArgumentsValidator implements MessageValidator
 {
     use ValidationStrategy;
@@ -32,7 +30,7 @@ final class QueryArgumentsValidator implements MessageValidator
         $this->finder = $finder;
     }
 
-    /** {@inheritdoc} */
+    /** {@inheritDoc} */
     public function validate(OperationAddress $addr, MessageInterface $message): void
     {
         if (! $message instanceof RequestInterface) {
@@ -63,9 +61,7 @@ final class QueryArgumentsValidator implements MessageValidator
         }
     }
 
-    /**
-     * @return mixed[] like [offset => 10]
-     */
+    /** @return mixed[] like [offset => 10] */
     private function parseQueryArguments(RequestInterface $message): array
     {
         if ($message instanceof ServerRequestInterface) {

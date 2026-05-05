@@ -11,13 +11,11 @@ use PHPUnit\Framework\TestCase;
 
 final class EmptyObjectValidationTest extends TestCase
 {
-    /**
-     * @see https://github.com/lezhnev74/openapi-psr7-validator/issues/57
-     */
+    /** @see https://github.com/lezhnev74/openapi-psr7-validator/issues/57 */
     public function testIssue57000(): void
     {
         $yaml = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -26,13 +24,13 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /products.create:
-    post:
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
+	post:
+	  requestBody:
+		required: true
+		content:
+		  application/json:
+			schema:
+			  type: object
 YAML;
 
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();

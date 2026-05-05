@@ -161,18 +161,14 @@ final class SpecFinder
         return $this->openApi->security;
     }
 
-    /**
-     * @return SecurityScheme[]
-     */
+    /** @return SecurityScheme[] */
     public function findSecuritySchemesSpecs(): array
     {
         return $this->openApi->components ? $this->openApi->components->securitySchemes : [];
     }
 
-    /**
-     * @throws NoPath
-     */
-    public function findBodySpec(OperationAddress $addr): ?SpecBaseObject
+    /** @throws NoPath */
+    public function findBodySpec(OperationAddress $addr): SpecBaseObject|null
     {
         if ($addr instanceof ResponseAddress || $addr instanceof CallbackResponseAddress) {
             return $this->findResponseSpec($addr);
@@ -184,18 +180,16 @@ final class SpecFinder
     /**
      * Find the schema which describes a given response
      *
-     * @param ResponseAddress|CallbackResponseAddress $addr
-     *
      * @throws NoPath
      */
-    public function findResponseSpec($addr): ResponseSpec
+    public function findResponseSpec(ResponseAddress|CallbackResponseAddress $addr): ResponseSpec
     {
         Assert::isInstanceOfAny(
             $addr,
             [
                 ResponseAddress::class,
                 CallbackResponseAddress::class,
-            ]
+            ],
         );
 
         $operation = $this->findOperationSpec($addr);
@@ -214,7 +208,7 @@ final class SpecFinder
             throw NoResponseCode::fromPathAndMethodAndResponseCode(
                 $addr->path(),
                 $addr->method(),
-                $addr->responseCode()
+                $addr->responseCode(),
             );
         }
 
@@ -303,9 +297,7 @@ final class SpecFinder
         return $cookieSpecs;
     }
 
-    /**
-     * @throws NoCallback
-     */
+    /** @throws NoCallback */
     private function findCallbackInOperation(CallbackAddress $addr, Operation $operation): Operation
     {
         $callbacks = $operation->callbacks;
@@ -314,7 +306,7 @@ final class SpecFinder
                 $addr->path(),
                 $addr->method(),
                 $addr->callbackName(),
-                $addr->callbackMethod()
+                $addr->callbackMethod(),
             );
         }
 
@@ -325,7 +317,7 @@ final class SpecFinder
                 $addr->path(),
                 $addr->method(),
                 $addr->callbackName(),
-                $addr->callbackMethod()
+                $addr->callbackMethod(),
             );
         }
 

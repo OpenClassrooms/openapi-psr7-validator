@@ -11,11 +11,11 @@ final class InvalidDataTrackingTest extends SchemaValidatorTest
 {
     public function testItShowsInvalidDataAddress(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   items:
-    type: string
+	type: string
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -32,16 +32,16 @@ SPEC;
 
     public function testItShowsInvalidDataAddressNested(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   items:
-    type: array
-    items:
-      type: object
-      properties:
-        name: 
-          type: string     
+	type: array
+	items:
+	  type: object
+	  properties:
+		name: 
+		  type: string     
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

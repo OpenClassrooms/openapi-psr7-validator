@@ -13,7 +13,7 @@ class ValidationMiddlewareBuilder extends ValidatorBuilder
     {
         return new ValidationMiddleware(
             $this->getServerRequestValidator(),
-            $this->getResponseValidator()
+            $this->getResponseValidator(),
         );
     }
 }

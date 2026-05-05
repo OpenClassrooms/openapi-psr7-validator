@@ -12,12 +12,12 @@ final class MinItemsTest extends SchemaValidatorTest
 {
     public function testItValidatesMinItemsGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   minItems: 3
   items:
-    type: number
+	type: number
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -29,12 +29,12 @@ SPEC;
 
     public function testItValidatesMinItemsRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   minItems: 3
   items:
-    type: number
+	type: number
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

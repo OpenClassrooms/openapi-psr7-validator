@@ -12,12 +12,12 @@ final class MaxItemsTest extends SchemaValidatorTest
 {
     public function testItValidatesMaxItemsGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   maxItems: 3
   items:
-    type: number
+	type: number
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -29,12 +29,12 @@ SPEC;
 
     public function testItValidatesMaxItemsRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   maxItems: 3
   items:
-    type: number
+	type: number
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

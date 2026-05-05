@@ -13,9 +13,7 @@ use function sprintf;
 
 use const JSON_PRETTY_PRINT;
 
-/**
- * @method SchemaMismatch getPrevious()
- */
+/** @method SchemaMismatch getPrevious() */
 class InvalidParameter extends ValidationFailed
 {
     /** @var string */
@@ -24,12 +22,8 @@ class InvalidParameter extends ValidationFailed
     /** @var string */
     protected $value;
 
-    /**
-     * @param mixed $value
-     *
-     * @return InvalidParameter
-     */
-    public static function becauseValueDidNotMatchSchema(string $name, $value, SchemaMismatch $prev): self
+    /** @return InvalidParameter */
+    public static function becauseValueDidNotMatchSchema(string $name, mixed $value, SchemaMismatch $prev): self
     {
         if (! is_scalar($value)) {
             $value = json_encode($value, JSON_PRETTY_PRINT);

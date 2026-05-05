@@ -31,7 +31,7 @@ SPEC;
 
     public function testMaximumExclusiveKeywordGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: number
   maximum: 100

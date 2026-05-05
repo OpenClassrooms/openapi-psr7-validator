@@ -12,16 +12,14 @@ use PHPUnit\Framework\TestCase;
 
 class BodyValidatorTest extends TestCase
 {
-    /**
-     * @return string[][] of arguments
-     */
+    /** @return string[][] of arguments */
     public function dataProviderGreen(): array
     {
         return [
             // Normal message
             [
                 __DIR__ . '/../../stubs/form-url-encoded.yaml',
-                <<<HTTP
+                <<<'HTTP'
 POST /urlencoded/scalar-types HTTP/1.1
 Content-Length: 428
 Content-Type: application/x-www-form-urlencoded; charset=utf-8
@@ -32,7 +30,7 @@ HTTP
             ],
             [
                 __DIR__ . '/../../stubs/form-url-encoded.yaml',
-                <<<HTTP
+                <<<'HTTP'
 POST /urlencoded/scalar-deserialization HTTP/1.1
 Content-Length: 428
 Content-Type: application/x-www-form-urlencoded; charset=utf-8
@@ -43,7 +41,7 @@ HTTP
             ],
             [
                 __DIR__ . '/../../stubs/multi-media-types.yaml',
-                <<<HTTP
+                <<<'HTTP'
 POST /post-media-range HTTP/1.1
 Content-Type: text/plain
 Content-Length: 3
@@ -54,7 +52,7 @@ HTTP
             ],
             [
                 __DIR__ . '/../../stubs/multi-media-types.yaml',
-                <<<HTTP
+                <<<'HTTP'
 POST /post-media-range HTTP/1.1
 Content-Type: text/html
 Content-Length: 13
@@ -65,7 +63,7 @@ HTTP
             ],
             [
                 __DIR__ . '/../../stubs/multi-media-types.yaml',
-                <<<HTTP
+                <<<'HTTP'
 POST /post-media-range HTTP/1.1
 Content-Type: application/json
 Content-Length: 1
@@ -77,16 +75,14 @@ HTTP
         ];
     }
 
-    /**
-     * @return string[][] of arguments
-     */
+    /** @return string[][] of arguments */
     public function dataProviderRed(): array
     {
         return [
             // invalid int
             [
                 __DIR__ . '/../../stubs/form-url-encoded.yaml',
-                <<<HTTP
+                <<<'HTTP'
 POST /urlencoded/scalar-deserialization HTTP/1.1
 Content-Length: 428
 Content-Type: application/x-www-form-urlencoded; charset=utf-8
@@ -98,7 +94,7 @@ HTTP
             // invalid bool
             [
                 __DIR__ . '/../../stubs/form-url-encoded.yaml',
-                <<<HTTP
+                <<<'HTTP'
 POST /urlencoded/scalar-deserialization HTTP/1.1
 Content-Length: 428
 Content-Type: application/x-www-form-urlencoded; charset=utf-8
@@ -110,7 +106,7 @@ HTTP
             // invalid int
             [
                 __DIR__ . '/../../stubs/form-url-encoded.yaml',
-                <<<HTTP
+                <<<'HTTP'
 POST /urlencoded/scalar-deserialization HTTP/1.1
 Content-Length: 428
 Content-Type: application/x-www-form-urlencoded; charset=utf-8
@@ -122,7 +118,7 @@ HTTP
             // missing parameter
             [
                 __DIR__ . '/../../stubs/form-url-encoded.yaml',
-                <<<HTTP
+                <<<'HTTP'
 POST /urlencoded/scalar-deserialization HTTP/1.1
 Content-Length: 428
 Content-Type: application/x-www-form-urlencoded; charset=utf-8
@@ -134,9 +130,7 @@ HTTP
         ];
     }
 
-    /**
-     * @dataProvider dataProviderGreen
-     */
+    /** @dataProvider dataProviderGreen */
     public function testValidateGreen(string $specFile, string $message): void
     {
         $request       = Message::parseRequest($message); // convert a text HTTP message to a PSR7 message
@@ -144,7 +138,7 @@ HTTP
             $request->getMethod(),
             $request->getUri(),
             $request->getHeaders(),
-            $request->getBody()
+            $request->getBody(),
         );
 
         $validator = (new ValidatorBuilder())->fromYamlFile($specFile)->getServerRequestValidator();
@@ -152,9 +146,7 @@ HTTP
         $this->addToAssertionCount(1);
     }
 
-    /**
-     * @dataProvider dataProviderRed
-     */
+    /** @dataProvider dataProviderRed */
     public function testValidateRed(string $specFile, string $message): void
     {
         $request       = Message::parseRequest($message); // convert a text HTTP message to a PSR7 message
@@ -162,7 +154,7 @@ HTTP
             $request->getMethod(),
             $request->getUri(),
             $request->getHeaders(),
-            $request->getBody()
+            $request->getBody(),
         );
 
         $validator = (new ValidatorBuilder())->fromYamlFile($specFile)->getServerRequestValidator();

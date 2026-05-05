@@ -9,17 +9,13 @@ use PHPUnit\Framework\TestCase;
 
 final class StringDateTest extends TestCase
 {
-    /**
-     * @dataProvider dateGreenDataProvider
-     */
+    /** @dataProvider dateGreenDataProvider */
     public function testGreendateTypeFormat(string $date): void
     {
         $this->assertTrue((new StringDate())($date));
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public function dateGreenDataProvider(): array
     {
         return [
@@ -30,17 +26,13 @@ final class StringDateTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dateRedDataProvider
-     */
+    /** @dataProvider dateRedDataProvider */
     public function testRedDateTypeFormat(string $date): void
     {
         $this->assertFalse((new StringDate())($date));
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public function dateRedDataProvider(): array
     {
         return [

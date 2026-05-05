@@ -15,13 +15,11 @@ use function json_encode;
 
 final class Issue50Test extends TestCase
 {
-    /**
-     * @see https://github.com/lezhnev74/openapi-psr7-validator/issues/50
-     */
+    /** @see https://github.com/lezhnev74/openapi-psr7-validator/issues/50 */
     public function testIssue50(): void
     {
         $yaml = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -30,23 +28,23 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /products.create:
-    post:
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [body]
-              properties:
-                body:
-                  type: object
-                  required: [username, email]
-                  properties:
-                    username:
-                      type: string
-                    email:
-                      type: string 
+	post:
+	  requestBody:
+		required: true
+		content:
+		  application/json:
+			schema:
+			  type: object
+			  required: [body]
+			  properties:
+				body:
+				  type: object
+				  required: [username, email]
+				  properties:
+					username:
+					  type: string
+					email:
+					  type: string 
 YAML;
 
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
@@ -62,9 +60,9 @@ YAML;
                                     'username' => 'scaytrase',
                                     'notEmail' => 'notEmail',
                                 ],
-                        ]
-                    )
-                )
+                        ],
+                    ),
+                ),
             );
 
         try {

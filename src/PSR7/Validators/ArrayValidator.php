@@ -21,9 +21,7 @@ class ArrayValidator
     /** @var Parameter[] */
     private $specs;
 
-    /**
-     * @param Parameter[] $specs
-     */
+    /** @param Parameter[] $specs */
     public function __construct(array $specs)
     {
         $this->specs = $specs;

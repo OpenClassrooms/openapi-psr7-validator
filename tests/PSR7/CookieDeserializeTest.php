@@ -13,9 +13,7 @@ use function sprintf;
 
 final class CookieDeserializeTest extends BaseValidatorTest
 {
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function dataProviderCookiesGreen(): array
     {
         return [
@@ -27,9 +25,7 @@ final class CookieDeserializeTest extends BaseValidatorTest
         ];
     }
 
-    /**
-     * @dataProvider dataProviderCookiesGreen
-     */
+    /** @dataProvider dataProviderCookiesGreen */
     public function testItDeserializesServerRequestCookieParametersGreen(string $cookieName, string $cookieValue): void
     {
         $request = (new ServerRequest('get', new Uri('/deserialize-cookies')))
@@ -40,9 +36,7 @@ final class CookieDeserializeTest extends BaseValidatorTest
         $this->addToAssertionCount(1);
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function dataProviderCookiesRed(): array
     {
         return [
@@ -56,9 +50,7 @@ final class CookieDeserializeTest extends BaseValidatorTest
         ];
     }
 
-    /**
-     * @dataProvider dataProviderCookiesRed
-     */
+    /** @dataProvider dataProviderCookiesRed */
     public function testItDeserializesServerRequestCookieParametersRed(string $cookieName, string $cookieValue): void
     {
         $request = (new ServerRequest('get', new Uri('/deserialize-cookies')))
@@ -68,7 +60,7 @@ final class CookieDeserializeTest extends BaseValidatorTest
 
         $this->expectException(InvalidCookies::class);
         $this->expectExceptionMessage(
-            sprintf('Value "%s" for cookie "%s" is invalid for Request [get /deserialize-cookies]', $cookieValue, $cookieName)
+            sprintf('Value "%s" for cookie "%s" is invalid for Request [get /deserialize-cookies]', $cookieValue, $cookieName),
         );
         $validator->validate($request);
     }

@@ -28,6 +28,7 @@ class OneOf extends BaseKeyword
     public function __construct(CebeSchema $parentSchema, int $type, BreadCrumb $breadCrumb)
     {
         parent::__construct($parentSchema);
+
         $this->validationDataType = $type;
         $this->dataBreadCrumb     = $breadCrumb;
     }
@@ -42,12 +43,11 @@ class OneOf extends BaseKeyword
      * validates successfully against exactly one schema defined by this
      * keyword's value.
      *
-     * @param mixed        $data
      * @param CebeSchema[] $oneOf
      *
      * @throws KeywordMismatch
      */
-    public function validate($data, array $oneOf): void
+    public function validate(mixed $data, array $oneOf): void
     {
         try {
             Validator::arrayVal()->assert($oneOf);
@@ -79,7 +79,7 @@ class OneOf extends BaseKeyword
                 'oneOf',
                 $data,
                 $innerExceptions,
-                'Data must match exactly one schema, but matched none'
+                'Data must match exactly one schema, but matched none',
             );
         }
 
@@ -87,7 +87,7 @@ class OneOf extends BaseKeyword
             'oneOf',
             $data,
             $validSchemas,
-            sprintf('Data must match exactly one schema, but matched %d', count($validSchemas))
+            sprintf('Data must match exactly one schema, but matched %d', count($validSchemas)),
         );
     }
 }

@@ -15,9 +15,7 @@ class MultipleOperationsMismatchForRequest extends ValidationFailed
     /** @var OperationAddress[] */
     protected $matchedAddrs;
 
-    /**
-     * @param OperationAddress[] $addrs
-     */
+    /** @param OperationAddress[] $addrs */
     public static function fromMatchedAddrs(array $addrs): self
     {
         $addrsStrings = array_map(static function (OperationAddress $addr) {
@@ -31,9 +29,7 @@ class MultipleOperationsMismatchForRequest extends ValidationFailed
         return $i;
     }
 
-    /**
-     * @return OperationAddress[]
-     */
+    /** @return OperationAddress[] */
     public function matchedAddrs(): array
     {
         return $this->matchedAddrs;

@@ -14,29 +14,19 @@ use function sprintf;
 // It can address an index in the compound array(object)
 class BreadCrumb
 {
-    /** @var string|null */
-    protected $compoundIndex;
     /** @var self|null link to a previous crumb */
     protected $prevCrumb;
 
-    /**
-     * @param int|string|null $compoundIndex suitable for array index
-     */
-    public function __construct($compoundIndex = null)
+    /** @param int|string|null $compoundIndex suitable for array index */
+    public function __construct(protected int|string|null $compoundIndex = null)
     {
         if (($compoundIndex !== null) && ! is_scalar($compoundIndex)) {
             throw new RuntimeException(sprintf('BreadCrumb cannot have non-scalar index: %s', $compoundIndex));
         }
-
-        $this->compoundIndex = $compoundIndex;
     }
 
-    /**
-     * @param string|int $index
-     *
-     * @return BreadCrumb
-     */
-    public function addCrumb($index): self
+    /** @return BreadCrumb */
+    public function addCrumb(string|int $index): self
     {
         $i            = new self($index);
         $i->prevCrumb = $this;

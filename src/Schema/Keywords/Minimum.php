@@ -33,12 +33,9 @@ class Minimum extends BaseKeyword
      * false (or not specified), then a numeric instance MAY be equal to the
      * value of "minimum".
      *
-     * @param mixed     $data
-     * @param int|float $minimum
-     *
      * @throws KeywordMismatch
      */
-    public function validate($data, $minimum, bool $exclusiveMinimum = false): void
+    public function validate(mixed $data, int|float $minimum, bool $exclusiveMinimum = false): void
     {
         try {
             if (class_exists(NumericVal::class)) {
@@ -56,7 +53,7 @@ class Minimum extends BaseKeyword
             throw KeywordMismatch::fromKeyword(
                 'minimum',
                 $data,
-                sprintf('Value %d must be greater than %d', $data, $minimum)
+                sprintf('Value %d must be greater than %d', $data, $minimum),
             );
         }
 
@@ -64,7 +61,7 @@ class Minimum extends BaseKeyword
             throw KeywordMismatch::fromKeyword(
                 'minimum',
                 $data,
-                sprintf('Value %d must be greater or equal to %d', $data, $minimum)
+                sprintf('Value %d must be greater or equal to %d', $data, $minimum),
             );
         }
     }

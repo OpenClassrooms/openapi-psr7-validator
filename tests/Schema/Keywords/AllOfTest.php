@@ -12,17 +12,17 @@ final class AllOfTest extends SchemaValidatorTest
 {
     public function testItValidatesAllOfGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   allOf:
-    - type: object
-      properties:
-        name:
-          type: string
-    - type: object
-      properties:
-        age:
-          type: integer
+	- type: object
+	  properties:
+		name:
+		  type: string
+	- type: object
+	  properties:
+		age:
+		  type: integer
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -34,17 +34,17 @@ SPEC;
 
     public function testItValidatesAllOfRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   allOf:
-    - type: object
-      properties:
-        name:
-          type: string
-    - type: object
-      properties:
-        age:
-          type: integer
+	- type: object
+	  properties:
+		name:
+		  type: string
+	- type: object
+	  properties:
+		age:
+		  type: integer
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

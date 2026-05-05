@@ -11,7 +11,7 @@ use function sprintf;
 
 class InvalidQueryArgs extends AddressValidationFailed
 {
-    public static function becauseOfMissingRequiredArgument(string $argumentName, OperationAddress $address, ?Throwable $prev = null): self
+    public static function becauseOfMissingRequiredArgument(string $argumentName, OperationAddress $address, Throwable|null $prev = null): self
     {
         if ($prev !== null) {
             $exception = static::fromAddrAndPrev($address, $prev);

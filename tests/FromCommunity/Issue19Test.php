@@ -12,9 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 use function json_encode;
 
-/**
- * @see https://github.com/lezhnev74/openapi-psr7-validator/issues/19
- */
+/** @see https://github.com/lezhnev74/openapi-psr7-validator/issues/19 */
 final class Issue19Test extends TestCase
 {
     /** @var string $yamlFile */
@@ -25,6 +23,7 @@ final class Issue19Test extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->validator = (new ValidatorBuilder())->fromYamlFile($this->yamlFile)->getServerRequestValidator();
     }
 
@@ -57,7 +56,7 @@ final class Issue19Test extends TestCase
             'POST',
             'http://localhost:8000/products.create',
             ['Content-Type' => 'application/json'],
-            $body
+            $body,
         );
     }
 }

@@ -27,12 +27,11 @@ class Enum extends BaseKeyword
      * An instance validates successfully against this keyword if its value
      * is equal to one of the elements in this keyword's array value.
      *
-     * @param mixed   $data
      * @param mixed[] $enum - can be strings or numbers
      *
      * @throws KeywordMismatch
      */
-    public function validate($data, array $enum): void
+    public function validate(mixed $data, array $enum): void
     {
         try {
             Validator::arrayType()->assert($enum);
@@ -46,13 +45,13 @@ class Enum extends BaseKeyword
                 static function ($value) {
                     return is_string($value) ? "'" . $value . "'" : (string) $value;
                 },
-                $enum
+                $enum,
             ));
 
             throw KeywordMismatch::fromKeyword(
                 'enum',
                 $data,
-                sprintf('Value must be present in the enum. Allowed values: %s', $allowedValues)
+                sprintf('Value must be present in the enum. Allowed values: %s', $allowedValues),
             );
         }
     }

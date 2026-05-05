@@ -6,10 +6,7 @@ namespace OpenClassrooms\OpenAPIValidation\Schema\Keywords;
 
 class AdditionalProperties extends BaseKeyword
 {
-    /**
-     * @param mixed $data
-     */
-    public function validate($data, bool $additionalProperties): void
+    public function validate(mixed $data, bool $additionalProperties): void
     {
         // The additionalProperties keyword specifies the type of values in the dictionary.
         // Values can be primitives (strings, numbers or boolean values), arrays or objects.

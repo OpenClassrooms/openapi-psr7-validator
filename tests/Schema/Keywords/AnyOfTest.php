@@ -12,21 +12,21 @@ final class AnyOfTest extends SchemaValidatorTest
 {
     public function testItValidatesAnyOfGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   anyOf:
-    - type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    - type: object
-      properties:
-        age:
-          type: integer
-      required:
-      - age
+	- type: object
+	  properties:
+		name:
+		  type: string
+	  required:
+	  - name
+	- type: object
+	  properties:
+		age:
+		  type: integer
+	  required:
+	  - age
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -38,21 +38,21 @@ SPEC;
 
     public function testItValidatesAnyOfRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   anyOf:
-    - type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    - type: object
-      properties:
-        age:
-          type: integer
-      required:
-      - age
+	- type: object
+	  properties:
+		name:
+		  type: string
+	  required:
+	  - name
+	- type: object
+	  properties:
+		age:
+		  type: integer
+	  required:
+	  - age
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

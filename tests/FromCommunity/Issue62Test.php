@@ -11,13 +11,11 @@ use PHPUnit\Framework\TestCase;
 
 final class Issue62Test extends TestCase
 {
-    /**
-     * @see https://github.com/thephpleague/openapi-psr7-validator/issues/62
-     */
+    /** @see https://github.com/thephpleague/openapi-psr7-validator/issues/62 */
     public function testIssue62(): void
     {
         $yaml = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Test API
@@ -26,21 +24,21 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /clam/scan:
-    put:
-      responses:
-        '202':
-          description: Accepted
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                upload:
-                  type: array
-                  items:
-                    type: string
-                    format: binary
+	put:
+	  responses:
+		'202':
+		  description: Accepted
+	  requestBody:
+		content:
+		  multipart/form-data:
+			schema:
+			  type: object
+			  properties:
+				upload:
+				  type: array
+				  items:
+					type: string
+					format: binary
 YAML;
 
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
@@ -53,8 +51,8 @@ YAML;
                             new UploadedFile('body1', 5, 0, 'upload_1.txt', 'text/plain'),
                             new UploadedFile('body2', 5, 0, 'upload_2.txt', 'text/plain'),
                         ],
-                    ]
-                )
+                    ],
+                ),
             )
             ->withMethod('PUT')
             ->withHeader('Content-Type', 'multipart/form-data');

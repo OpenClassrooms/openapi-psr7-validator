@@ -33,12 +33,11 @@ class Type extends BaseKeyword
      * An instance matches successfully if its primitive type is one of the
      * types defined by keyword.  Recall: "number" includes "integer".
      *
-     * @param mixed           $data
      * @param string|string[] $types
      *
      * @throws TypeMismatch
      */
-    public function validate($data, $types, ?string $format = null): void
+    public function validate(mixed $data, string|array $types, string|null $format = null): void
     {
         if (! is_array($types) && ! is_string($types)) {
             throw new TypeError('$types only can be array or string');

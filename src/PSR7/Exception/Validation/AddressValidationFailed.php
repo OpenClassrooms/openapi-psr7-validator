@@ -18,14 +18,12 @@ abstract class AddressValidationFailed extends ValidationFailed
     /** @var OperationAddress */
     private $address;
 
-    final public function __construct(string $message = '', int $code = 0, ?Throwable $previous = null)
+    final public function __construct(string $message = '', int $code = 0, Throwable|null $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }
 
-    /**
-     * @return static
-     */
+    /** @return static */
     public static function fromAddrAndPrev(OperationAddress $address, Throwable $prev): self
     {
         $ex          = new static(sprintf('Validation failed for %s', $address), $prev->getCode(), $prev);
@@ -34,9 +32,7 @@ abstract class AddressValidationFailed extends ValidationFailed
         return $ex;
     }
 
-    /**
-     * @return static
-     */
+    /** @return static */
     public static function fromAddr(OperationAddress $address): self
     {
         $ex          = new static(sprintf('Validation failed for %s', $address));
@@ -56,7 +52,7 @@ abstract class AddressValidationFailed extends ValidationFailed
             '%s. [%s in %s]',
             $this->getMessage(),
             rtrim($previous->getMessage(), '.'),
-            implode('->', $previous->dataBreadCrumb()->buildChain())
+            implode('->', $previous->dataBreadCrumb()->buildChain()),
         );
     }
 

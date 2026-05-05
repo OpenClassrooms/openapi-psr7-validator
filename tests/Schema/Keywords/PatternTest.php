@@ -10,9 +10,7 @@ use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
 
 final class PatternTest extends SchemaValidatorTest
 {
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public function validDataProvider(): array
     {
         return [
@@ -26,9 +24,7 @@ final class PatternTest extends SchemaValidatorTest
         ];
     }
 
-    /**
-     * @dataProvider validDataProvider
-     */
+    /** @dataProvider validDataProvider */
     public function testItValidatesPatternGreen(string $pattern, string $data): void
     {
         $spec = <<<SPEC

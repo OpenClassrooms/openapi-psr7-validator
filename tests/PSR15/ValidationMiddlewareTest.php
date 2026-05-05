@@ -47,13 +47,13 @@ class ValidationMiddlewareTest extends BaseValidatorTest
     public function testItReturnsExpectedException(
         ServerRequestInterface $serverRequest,
         RequestHandlerInterface $handler,
-        string $expectedExceptionType
+        string $expectedExceptionType,
     ): void {
         $builder = (new ValidatorBuilder())->fromYamlFile($this->apiSpecFile);
 
         $middleware = new ValidationMiddleware(
             $builder->getServerRequestValidator(),
-            $builder->getResponseValidator()
+            $builder->getResponseValidator(),
         );
 
         $this->expectException($expectedExceptionType);

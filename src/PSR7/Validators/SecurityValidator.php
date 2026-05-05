@@ -25,9 +25,9 @@ use function sprintf;
 
 final class SecurityValidator implements MessageValidator
 {
-    private const HEADER_AUTHORIZATION = 'Authorization';
-    private const AUTH_PATTERN_BASIC   = '#^Basic #';
-    private const AUTH_PATTERN_BEARER  = '#^Bearer #';
+    private const string HEADER_AUTHORIZATION = 'Authorization';
+    private const string AUTH_PATTERN_BASIC   = '#^Basic #';
+    private const string AUTH_PATTERN_BEARER  = '#^Bearer #';
 
     /** @var SpecFinder */
     private $finder;
@@ -37,7 +37,7 @@ final class SecurityValidator implements MessageValidator
         $this->finder = $finder;
     }
 
-    /** {@inheritdoc} */
+    /** {@inheritDoc} */
     public function validate(OperationAddress $addr, MessageInterface $message): void
     {
         // Note: Security schemes support OR/AND union
@@ -53,9 +53,7 @@ final class SecurityValidator implements MessageValidator
         $this->validateServerRequest($addr, $message);
     }
 
-    /**
-     * @throws ValidationFailed
-     */
+    /** @throws ValidationFailed */
     private function validateServerRequest(OperationAddress $addr, ServerRequestInterface $request): void
     {
         $securitySpecs = $this->finder->findSecuritySpecs($addr);
@@ -71,7 +69,7 @@ final class SecurityValidator implements MessageValidator
                 $this->validateSecurityScheme($addr, $request, $spec);
 
                 return; // this security schema matched, request is valid, stop here
-            } catch (ValidationFailed $e) {
+            } catch (ValidationFailed) {
                 // that security schema did not match
             }
         }
@@ -80,13 +78,11 @@ final class SecurityValidator implements MessageValidator
         throw InvalidSecurity::becauseRequestDidNotMatchAnySchema($addr);
     }
 
-    /**
-     * @throws InvalidSecurity
-     */
+    /** @throws InvalidSecurity */
     private function validateSecurityScheme(
         OperationAddress $addr,
         ServerRequestInterface $request,
-        SecurityRequirement $spec
+        SecurityRequirement $spec,
     ): void {
         // Here I implement AND-union
         // Each SecurityRequirement contains 1+ security [schema_name=>scopes]
@@ -96,7 +92,7 @@ final class SecurityValidator implements MessageValidator
         foreach ($spec->getSerializableData() as $securitySchemeName => $scopes) {
             if (! isset($securitySchemesSpecs[$securitySchemeName])) {
                 throw new InvalidSchema(
-                    sprintf("Mentioned security scheme '%s' not found in the given spec", $securitySchemeName)
+                    sprintf("Mentioned security scheme '%s' not found in the given spec", $securitySchemeName),
                 );
             }
 
@@ -117,13 +113,11 @@ final class SecurityValidator implements MessageValidator
         }
     }
 
-    /**
-     * @throws ValidationFailed
-     */
+    /** @throws ValidationFailed */
     private function validateHTTPSecurityScheme(
         OperationAddress $addr,
         RequestInterface $request,
-        SecurityScheme $securityScheme
+        SecurityScheme $securityScheme,
     ): void {
         // Supported schemas: https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
 
@@ -139,7 +133,7 @@ final class SecurityValidator implements MessageValidator
                     throw InvalidSecurity::becauseAuthHeaderValueDoesNotMatchExpectedPattern(
                         self::HEADER_AUTHORIZATION,
                         self::AUTH_PATTERN_BASIC,
-                        $addr
+                        $addr,
                     );
                 }
 
@@ -150,7 +144,7 @@ final class SecurityValidator implements MessageValidator
                     throw InvalidSecurity::becauseAuthHeaderValueDoesNotMatchExpectedPattern(
                         self::HEADER_AUTHORIZATION,
                         self::AUTH_PATTERN_BEARER,
-                        $addr
+                        $addr,
                     );
                 }
 
@@ -158,13 +152,11 @@ final class SecurityValidator implements MessageValidator
         }
     }
 
-    /**
-     * @throws ValidationFailed
-     */
+    /** @throws ValidationFailed */
     private function validateApiKeySecurityScheme(
         OperationAddress $addr,
         ServerRequestInterface $request,
-        SecurityScheme $securityScheme
+        SecurityScheme $securityScheme,
     ): void {
         switch ($securityScheme->in) {
             case 'query':

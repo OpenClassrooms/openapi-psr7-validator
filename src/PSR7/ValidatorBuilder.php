@@ -24,10 +24,8 @@ class ValidatorBuilder
     /** @var string */
     protected $cacheKey;
 
-    /**
-     * @return $this
-     */
-    public function setCache(CacheItemPoolInterface $cache, ?int $ttl = null): self
+    /** @return $this */
+    public function setCache(CacheItemPoolInterface $cache, int|null $ttl = null): self
     {
         $this->cache = $cache;
         $this->ttl   = $ttl;
@@ -35,9 +33,7 @@ class ValidatorBuilder
         return $this;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function overrideCacheKey(string $cacheKey): self
     {
         $this->cacheKey = $cacheKey;
@@ -45,9 +41,7 @@ class ValidatorBuilder
         return $this;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function fromYaml(string $yaml): self
     {
         $this->setSchemaFactory(new YamlFactory($yaml));
@@ -55,9 +49,7 @@ class ValidatorBuilder
         return $this;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function setSchemaFactory(SchemaFactory $schemaFactory): self
     {
         $this->factory = $schemaFactory;
@@ -65,9 +57,7 @@ class ValidatorBuilder
         return $this;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function fromYamlFile(string $yamlFile): self
     {
         $this->setSchemaFactory(new YamlFileFactory($yamlFile));
@@ -75,9 +65,7 @@ class ValidatorBuilder
         return $this;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function fromJson(string $json): self
     {
         $this->setSchemaFactory(new JsonFactory($json));
@@ -85,9 +73,7 @@ class ValidatorBuilder
         return $this;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function fromJsonFile(string $jsonFile): self
     {
         $this->setSchemaFactory(new JsonFileFactory($jsonFile));
@@ -95,9 +81,7 @@ class ValidatorBuilder
         return $this;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function fromSchema(OpenApi $schema): self
     {
         $this->setSchemaFactory(new PrecreatedSchemaFactory($schema));
@@ -172,7 +156,7 @@ class ValidatorBuilder
 
         if (! $this->factory instanceof CacheableSchemaFactory) {
             throw new InvalidArgumentException(
-                'Either provide cache key manually or use instance of ' . CacheableSchemaFactory::class
+                'Either provide cache key manually or use instance of ' . CacheableSchemaFactory::class,
             );
         }
 

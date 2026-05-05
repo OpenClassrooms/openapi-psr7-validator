@@ -24,11 +24,9 @@ class MinProperties extends BaseKeyword
      * If this keyword is not present, it may be considered present with a
      * value of 0.
      *
-     * @param mixed $data
-     *
      * @throws KeywordMismatch
      */
-    public function validate($data, int $minProperties): void
+    public function validate(mixed $data, int $minProperties): void
     {
         try {
             Validator::arrayType()->assert($data);
@@ -41,7 +39,7 @@ class MinProperties extends BaseKeyword
             throw KeywordMismatch::fromKeyword(
                 'minProperties',
                 $data,
-                sprintf("The number of object's properties must be greater or equal to %d", $minProperties)
+                sprintf("The number of object's properties must be greater or equal to %d", $minProperties),
             );
         }
     }

@@ -12,11 +12,11 @@ final class ItemsTest extends SchemaValidatorTest
 {
     public function testItValidatesItemsGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   items:
-    type: string
+	type: string
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -28,14 +28,14 @@ SPEC;
 
     public function testItValidatesItemsNestedGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   items:
-    type: array
-    items:
-      type: string
-    minItems: 2
+	type: array
+	items:
+	  type: string
+	minItems: 2
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -47,11 +47,11 @@ SPEC;
 
     public function testItValidatesItemsRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   items:
-    type: string
+	type: string
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -63,14 +63,14 @@ SPEC;
 
     public function testItValidatesItemsNestedRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: array
   items:
-    type: array
-    items:
-      type: string
-    minItems: 2
+	type: array
+	items:
+	  type: string
+	minItems: 2
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

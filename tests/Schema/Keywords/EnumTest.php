@@ -12,7 +12,7 @@ final class EnumTest extends SchemaValidatorTest
 {
     public function testItValidatesEnumGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   enum:
@@ -29,7 +29,7 @@ SPEC;
 
     public function testItValidatesEnumRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   enum: 
@@ -50,7 +50,7 @@ SPEC;
 
     public function testItDisplaysAllowedValuesInErrorMessage(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   enum:
@@ -73,7 +73,7 @@ SPEC;
 
     public function testItDisplaysNumericEnumValuesWithoutQuotes(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: integer
   enum:

@@ -14,7 +14,7 @@ final class YamlFileFactory extends FileFactory
     public function createSchema(): OpenApi
     {
         return Reader::readFromYamlFile(
-            realpath($this->getFilename())
+            realpath($this->getFilename()),
         );
     }
 }

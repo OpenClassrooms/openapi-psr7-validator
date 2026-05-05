@@ -22,7 +22,7 @@ use const PREG_SPLIT_DELIM_CAPTURE;
 
 class OperationAddress
 {
-    private const PATH_PLACEHOLDER = '#{[^}]+}#';
+    private const string PATH_PLACEHOLDER = '#{[^}]+}#';
 
     /** @var string */
     protected $method;
@@ -135,7 +135,7 @@ class OperationAddress
      *
      * @param array<string>|null $parameterNames
      */
-    protected function buildPattern(string $url, ?array &$parameterNames): string
+    protected function buildPattern(string $url, array|null &$parameterNames): string
     {
         $parameterNames = [];
         $pregParts      = [];

@@ -12,7 +12,7 @@ final class PathFinderTest extends TestCase
 {
     public function testItFindsMatchingOperation(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -22,11 +22,11 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-    get:
-      summary: Product Types
+	get:
+	  summary: Product Types
   /products/{review}:
-    post:
-      summary: Product Types
+	post:
+	  summary: Product Types
 SPEC;
 
         $pathFinder = new PathFinder(Reader::readFromYaml($spec), '/v1/products/10', 'get');
@@ -38,7 +38,7 @@ SPEC;
 
     public function testItFindsMatchingOperationWithParametrizedServer(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -48,11 +48,11 @@ servers:
   - url: /v1/{date}
 paths:
   /products/{id}:
-    get:
-      summary: Product Types
+	get:
+	  summary: Product Types
   /products/{review}:
-    post:
-      summary: Product Types
+	post:
+	  summary: Product Types
 SPEC;
 
         $pathFinder = new PathFinder(Reader::readFromYaml($spec), '/v1/2019-05-07/products/20', 'get');
@@ -64,7 +64,7 @@ SPEC;
 
     public function testItFindsMatchingOperationForFullUrl(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -75,11 +75,11 @@ servers:
   - url: /v1.2
 paths:
   /products/{id}:
-    get:
-      summary: Product Types
+	get:
+	  summary: Product Types
   /products/{review}:
-    post:
-      summary: Product Types
+	post:
+	  summary: Product Types
 SPEC;
 
         $pathFinder = new PathFinder(Reader::readFromYaml($spec), 'https://localhost/v1/products/10', 'get');
@@ -91,7 +91,7 @@ SPEC;
 
     public function testItFindsMatchingOperationForMultipleServersWithSamePath(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -103,11 +103,11 @@ servers:
   - url: https://prod.example.com/v1
 paths:
   /products/{id}:
-    get:
-      summary: Product Types
+	get:
+	  summary: Product Types
   /products/{review}:
-    post:
-      summary: Product Types
+	post:
+	  summary: Product Types
 SPEC;
 
         $pathFinder = new PathFinder(Reader::readFromYaml($spec), 'https://localhost/v1/products/10', 'get');
@@ -119,7 +119,7 @@ SPEC;
 
     public function testItPrioritisesOperatorsThatAreMoreStatic(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -127,11 +127,11 @@ info:
   version: "1.0.0"
 paths:
   /products/{product}/images/{image}:
-    get:
-      summary: A specific image for a specific product
+	get:
+	  summary: A specific image for a specific product
   /products/{product}/images/thumbnails:
-    get:
-      summary: All thumbnail images for a specific product
+	get:
+	  summary: All thumbnail images for a specific product
 SPEC;
 
         $pathFinder = new PathFinder(Reader::readFromYaml($spec), '/products/10/images/thumbnails', 'get');
@@ -143,7 +143,7 @@ SPEC;
 
     public function testItPrioritises2EquallyDynamicPaths(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -151,14 +151,14 @@ info:
   version: "1.0.0"
 paths:
   /products/{product}/images/{image}/{size}:
-    get:
-      summary: A specific image for a specific product
+	get:
+	  summary: A specific image for a specific product
   /products/{product}/images/thumbnails/{size}:
-    get:
-      summary: All thumbnail images for a specific product
+	get:
+	  summary: All thumbnail images for a specific product
   /products/{product}/images/{image}/primary:
-    get:
-      summary: All thumbnail images for a specific product
+	get:
+	  summary: All thumbnail images for a specific product
 SPEC;
 
         $pathFinder = new PathFinder(Reader::readFromYaml($spec), '/products/10/images/thumbnails/primary', 'get');

@@ -12,19 +12,19 @@ final class OneOfTest extends SchemaValidatorTest
 {
     public function testItValidatesOneOfGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   oneOf:
-    - type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    - type: object
-      properties:
-        age:
-          type: integer
+	- type: object
+	  properties:
+		name:
+		  type: string
+	  required:
+	  - name
+	- type: object
+	  properties:
+		age:
+		  type: integer
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -36,17 +36,17 @@ SPEC;
 
     public function testItValidatesOneOfRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   oneOf:
-    - type: object
-      properties:
-        name:
-          type: string
-    - type: object
-      properties:
-        age:
-          type: integer
+	- type: object
+	  properties:
+		name:
+		  type: string
+	- type: object
+	  properties:
+		age:
+		  type: integer
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -62,17 +62,17 @@ SPEC;
 
     public function testItValidatesOneOfNoMatchesRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   oneOf:
-    - type: object
-      properties:
-        name:
-          type: string
-    - type: object
-      properties:
-        age:
-          type: integer
+	- type: object
+	  properties:
+		name:
+		  type: string
+	- type: object
+	  properties:
+		age:
+		  type: integer
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

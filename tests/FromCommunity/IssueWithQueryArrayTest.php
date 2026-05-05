@@ -72,7 +72,7 @@ final class IssueWithQueryArrayTest extends TestCase
     public function testConvertSingleLayerDeepObject(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -81,25 +81,25 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-    get:
-      parameters:
-        - in: query
-          name: id
-          required: true
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              before:
-                type: integer
-                format: int32
-              after:
-                type: integer
-                format: int32
-      responses:
-        '200':
-          description: A list of users
+	get:
+	  parameters:
+		- in: query
+		  name: id
+		  required: true
+		  style: deepObject
+		  explode: true
+		  schema:
+			type: object
+			properties:
+			  before:
+				type: integer
+				format: int32
+			  after:
+				type: integer
+				format: int32
+	  responses:
+		'200':
+		  description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $validator->validate($this->makeRequest('deepObject', 'integer'));
@@ -109,7 +109,7 @@ YAML;
     public function testConvertSingleLayerDeepObjectError(): void
     {
         $yaml = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -118,25 +118,25 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-    get:
-      parameters:
-        - in: query
-          name: id
-          required: true
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              before:
-                type: integer
-                format: int32
-              after:
-                type: integer
-                format: int32
-      responses:
-        '200':
-          description: A list of users
+	get:
+	  parameters:
+		- in: query
+		  name: id
+		  required: true
+		  style: deepObject
+		  explode: true
+		  schema:
+			type: object
+			properties:
+			  before:
+				type: integer
+				format: int32
+			  after:
+				type: integer
+				format: int32
+	  responses:
+		'200':
+		  description: A list of users
 YAML;
         try {
             $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
@@ -154,7 +154,7 @@ YAML;
     public function testConvertMultiLayerDeepObject(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -163,31 +163,31 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-    get:
-      parameters:
-        - in: query
-          name: id
-          required: true
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              before:
-                type: object
-                properties:
-                  first:
-                    type: object
-                    properties:
-                      second:
-                        type: integer
-                        format: int32
-              after:
-                type: integer
-                format: int32
-      responses:
-        '200':
-          description: A list of users
+	get:
+	  parameters:
+		- in: query
+		  name: id
+		  required: true
+		  style: deepObject
+		  explode: true
+		  schema:
+			type: object
+			properties:
+			  before:
+				type: object
+				properties:
+				  first:
+					type: object
+					properties:
+					  second:
+						type: integer
+						format: int32
+			  after:
+				type: integer
+				format: int32
+	  responses:
+		'200':
+		  description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $validator->validate($this->makeRequest('deepObject', 'deep'));
@@ -197,7 +197,7 @@ YAML;
     public function testConvertNumericKeysDeepObject(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -206,20 +206,20 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-    get:
-      parameters:
-        - in: query
-          name: id
-          required: true
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            additionalProperties:
-              type: integer
-      responses:
-        '200':
-          description: A list of users
+	get:
+	  parameters:
+		- in: query
+		  name: id
+		  required: true
+		  style: deepObject
+		  explode: true
+		  schema:
+			type: object
+			additionalProperties:
+			  type: integer
+	  responses:
+		'200':
+		  description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $request   = $this->makeRequest('deepObject', 'numericKeys');
@@ -231,7 +231,7 @@ YAML;
     public function testConvertDeepArrayInteger(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -240,20 +240,20 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-    get:
-      parameters:
-        - in: query
-          name: id
-          required: true
-          style: deepObject
-          explode: true
-          schema:
-            type: array
-            items:
-              type: integer
-      responses:
-        '200':
-          description: A list of users
+	get:
+	  parameters:
+		- in: query
+		  name: id
+		  required: true
+		  style: deepObject
+		  explode: true
+		  schema:
+			type: array
+			items:
+			  type: integer
+	  responses:
+		'200':
+		  description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $request   = $this->makeRequest('deepObject', 'deepArrayInteger');
@@ -268,7 +268,7 @@ YAML;
     public function testConvertDeepArrayIntegerWithoutExplode(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -277,19 +277,19 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-    get:
-      parameters:
-        - in: query
-          name: id
-          required: true
-          style: deepObject
-          schema:
-            type: array
-            items:
-              type: integer
-      responses:
-        '200':
-          description: A list of users
+	get:
+	  parameters:
+		- in: query
+		  name: id
+		  required: true
+		  style: deepObject
+		  schema:
+			type: array
+			items:
+			  type: integer
+	  responses:
+		'200':
+		  description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $request   = $this->makeRequest('deepObject', 'deepArrayInteger');
@@ -301,7 +301,7 @@ YAML;
     public function testConvertDeepArrayBoolean(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -310,20 +310,20 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-    get:
-      parameters:
-        - in: query
-          name: id
-          required: true
-          style: deepObject
-          explode: true
-          schema:
-            type: array
-            items:
-              type: boolean
-      responses:
-        '200':
-          description: A list of users
+	get:
+	  parameters:
+		- in: query
+		  name: id
+		  required: true
+		  style: deepObject
+		  explode: true
+		  schema:
+			type: array
+			items:
+			  type: boolean
+	  responses:
+		'200':
+		  description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $request   = $this->makeRequest('deepObject', 'deepArrayBoolean');
@@ -335,7 +335,7 @@ YAML;
     public function testConvertDeepArrayString(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -344,20 +344,20 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-    get:
-      parameters:
-        - in: query
-          name: id
-          required: true
-          style: deepObject
-          explode: true
-          schema:
-            type: array
-            items:
-              type: string
-      responses:
-        '200':
-          description: A list of users
+	get:
+	  parameters:
+		- in: query
+		  name: id
+		  required: true
+		  style: deepObject
+		  explode: true
+		  schema:
+			type: array
+			items:
+			  type: string
+	  responses:
+		'200':
+		  description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $request   = $this->makeRequest('deepObject', 'deepArrayStrings');
@@ -369,7 +369,7 @@ YAML;
     public function testConvertDeepArrayOfArrayInteger(): void
     {
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -378,22 +378,22 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-    get:
-      parameters:
-        - in: query
-          name: id
-          required: true
-          style: deepObject
-          explode: true
-          schema:
-            type: array
-            items:
-              type: array
-              items:
-                type: integer
-      responses:
-        '200':
-          description: A list of users
+	get:
+	  parameters:
+		- in: query
+		  name: id
+		  required: true
+		  style: deepObject
+		  explode: true
+		  schema:
+			type: array
+			items:
+			  type: array
+			  items:
+				type: integer
+	  responses:
+		'200':
+		  description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         $request   = $this->makeRequest('deepObject', 'deepArrayOfArrayInteger');
@@ -407,7 +407,7 @@ YAML;
         // there should be ints instead of strings in the array
         $this->expectException(InvalidQueryArgs::class);
         $yaml      = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -416,20 +416,20 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-    get:
-      parameters:
-        - in: query
-          name: id
-          required: true
-          style: deepObject
-          explode: true
-          schema:
-            type: array
-            items:
-              type: boolean
-      responses:
-        '200':
-          description: A list of users
+	get:
+	  parameters:
+		- in: query
+		  name: id
+		  required: true
+		  style: deepObject
+		  explode: true
+		  schema:
+			type: array
+			items:
+			  type: boolean
+	  responses:
+		'200':
+		  description: A list of users
 YAML;
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
         try {
@@ -448,7 +448,7 @@ YAML;
     public function testConvertMultiLayerDeepObjectError(): void
     {
         $yaml = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -457,31 +457,31 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /users:
-    get:
-      parameters:
-        - in: query
-          name: id
-          required: true
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              before:
-                type: object
-                properties:
-                  first:
-                    type: object
-                    properties:
-                      second:
-                        type: string
-                        format: date-time
-              after:
-                type: integer
-                format: int32
-      responses:
-        '200':
-          description: A list of users
+	get:
+	  parameters:
+		- in: query
+		  name: id
+		  required: true
+		  style: deepObject
+		  explode: true
+		  schema:
+			type: object
+			properties:
+			  before:
+				type: object
+				properties:
+				  first:
+					type: object
+					properties:
+					  second:
+						type: string
+						format: date-time
+			  after:
+				type: integer
+				format: int32
+	  responses:
+		'200':
+		  description: A list of users
 YAML;
         try {
             $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();

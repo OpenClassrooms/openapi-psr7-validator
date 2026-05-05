@@ -9,17 +9,13 @@ use PHPUnit\Framework\TestCase;
 
 final class StringPhoneNumberTest extends TestCase
 {
-    /**
-     * @dataProvider dateTimeGreenDataProvider
-     */
+    /** @dataProvider dateTimeGreenDataProvider */
     public function testGreenPhoneNumberTypeFormat(string $phoneNumber): void
     {
         $this->assertTrue((new StringPhoneNumber())($phoneNumber));
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public function dateTimeGreenDataProvider(): array
     {
         return [
@@ -29,17 +25,13 @@ final class StringPhoneNumberTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dateTimeRedDataProvider
-     */
+    /** @dataProvider dateTimeRedDataProvider */
     public function testRedPhoneNumberFormat(string $phoneNumber): void
     {
         $this->assertFalse((new StringPhoneNumber())($phoneNumber));
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public function dateTimeRedDataProvider(): array
     {
         return [

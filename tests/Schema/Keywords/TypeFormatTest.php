@@ -13,7 +13,7 @@ final class TypeFormatTest extends SchemaValidatorTest
 {
     public function testItValidatesTypeFormatGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   format: email
@@ -26,7 +26,7 @@ SPEC;
 
     public function testItValidatesTypeInvalidFormatRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   format: email
@@ -44,7 +44,7 @@ SPEC;
 
     public function testItUnexpectedFormatIgnoredGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   format: unexpected
@@ -57,7 +57,7 @@ SPEC;
 
     public function testItValidatesSafeUriGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   format: safe-uri
@@ -70,7 +70,7 @@ SPEC;
 
     public function testItValidatesSafeUriRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   format: safe-uri
@@ -88,7 +88,7 @@ SPEC;
 
     public function testItValidatesSafeUriWithUserInfoRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   format: safe-uri
@@ -106,7 +106,7 @@ SPEC;
 
     public function testItAllowsCustomFormatGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   format: unexpected
@@ -114,10 +114,7 @@ SPEC;
 
         $unexpectedFormat = new class ()
         {
-            /**
-             * @param mixed $value
-             */
-            public function __invoke($value): bool
+            public function __invoke(mixed $value): bool
             {
                 return $value === 'good value';
             }
@@ -131,7 +128,7 @@ SPEC;
 
     public function testItAllowsCustomFormatRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   format: unexpected

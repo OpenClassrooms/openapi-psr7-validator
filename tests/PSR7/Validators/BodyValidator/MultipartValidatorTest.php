@@ -18,15 +18,13 @@ use function filesize;
 
 class MultipartValidatorTest extends TestCase
 {
-    /**
-     * @return string[][] of arguments
-     */
+    /** @return string[][] of arguments */
     public function dataProviderMultipartGreen(): array
     {
         return [
             // Normal multipart message
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart HTTP/1.1
 Content-Length: 428
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryOmz20xyMCkE27rN7
@@ -59,7 +57,7 @@ HTTP
             ],
             // multiple files with the same part name (array of files)
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/files HTTP/1.1
 Content-Length: 2740
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWfPNVh4wuWBlyEyQ
@@ -85,7 +83,7 @@ HTTP
             ],
             // specified encoding for one part
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/encoding HTTP/1.1
 Content-Length: 2740
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWfPNVh4wuWBlyEyQ
@@ -101,7 +99,7 @@ HTTP
             ],
             // specified headers for one part
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/encoding HTTP/1.1
 Content-Length: 2740
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWfPNVh4wuWBlyEyQ
@@ -119,7 +117,7 @@ HTTP
             ],
             // specified headers for one part (wildcard)
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/encoding/wildcard HTTP/1.1
 Content-Length: 2740
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWfPNVh4wuWBlyEyQ
@@ -135,7 +133,7 @@ HTTP
             ],
             // specified headers for one part (multiple, with charset)
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/encoding/multiple HTTP/1.1
 Content-Length: 2740
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWfPNVh4wuWBlyEyQ
@@ -151,7 +149,7 @@ HTTP
             ],
             // specified headers for one part (multiple, other valid type)
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/encoding/multiple HTTP/1.1
 Content-Length: 2740
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWfPNVh4wuWBlyEyQ
@@ -167,7 +165,7 @@ HTTP
             ],
             // specified headers for one part (multiple, wildcard)
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/encoding/multiple HTTP/1.1
 Content-Length: 2740
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWfPNVh4wuWBlyEyQ
@@ -183,7 +181,7 @@ HTTP
             ],
             // deserialized values
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart-deserialization HTTP/1.1
 Content-Length: 428
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryOmz20xyMCkE27rN7
@@ -210,15 +208,13 @@ HTTP
         ];
     }
 
-    /**
-     * @return string[][] of arguments
-     */
+    /** @return string[][] of arguments */
     public function dataProviderMultipartRed(): array
     {
         return [
             // wrong data in one of the parts
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart HTTP/1.1
 Content-Length: 428
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryOmz20xyMCkE27rN7
@@ -248,7 +244,7 @@ HTTP
             ],
             // wrong encoding for one of the part
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/encoding HTTP/1.1
 Content-Length: 2740
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWfPNVh4wuWBlyEyQ
@@ -265,7 +261,7 @@ HTTP
             ],
             // missing required part
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/encoding HTTP/1.1
 Content-Length: 428
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryOmz20xyMCkE27rN7
@@ -282,7 +278,7 @@ HTTP
             ],
             // wrong encoding charset for one of the parts (multiple)
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/encoding/multiple HTTP/1.1
 Content-Length: 2740
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWfPNVh4wuWBlyEyQ
@@ -299,7 +295,7 @@ HTTP
             ],
             // missing encoding charset for one of the parts (multiple)
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/encoding/multiple HTTP/1.1
 Content-Length: 2740
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWfPNVh4wuWBlyEyQ
@@ -316,7 +312,7 @@ HTTP
             ],
             // wrong header for one part
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/headers HTTP/1.1
 Content-Length: 2740
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWfPNVh4wuWBlyEyQ
@@ -334,7 +330,7 @@ HTTP
             ],
             // wrong header format for one part
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart/headers HTTP/1.1
 Content-Length: 2740
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWfPNVh4wuWBlyEyQ
@@ -353,7 +349,7 @@ HTTP
             ],
             // wrong data in one of the parts
             [
-                <<<HTTP
+                <<<'HTTP'
 POST /multipart-deserialization HTTP/1.1
 Content-Length: 428
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryOmz20xyMCkE27rN7
@@ -381,9 +377,7 @@ HTTP
         ];
     }
 
-    /**
-     * @dataProvider dataProviderMultipartGreen
-     */
+    /** @dataProvider dataProviderMultipartGreen */
     public function testValidateMultipartGreen(string $message): void
     {
         $specFile = __DIR__ . '/../../../stubs/multipart.yaml';
@@ -393,7 +387,7 @@ HTTP
             $request->getMethod(),
             $request->getUri(),
             $request->getHeaders(),
-            $request->getBody()
+            $request->getBody(),
         );
 
         $validator = (new ValidatorBuilder())->fromYamlFile($specFile)->getServerRequestValidator();
@@ -401,9 +395,7 @@ HTTP
         $this->addToAssertionCount(1);
     }
 
-    /**
-     * @dataProvider dataProviderMultipartRed
-     */
+    /** @dataProvider dataProviderMultipartRed */
     public function testValidateMultipartRed(string $message, string $expectedExceptionClass): void
     {
         $this->expectException($expectedExceptionClass);
@@ -415,16 +407,14 @@ HTTP
             $request->getMethod(),
             $request->getUri(),
             $request->getHeaders(),
-            $request->getBody()
+            $request->getBody(),
         );
 
         $validator = (new ValidatorBuilder())->fromYamlFile($specFile)->getServerRequestValidator();
         $validator->validate($serverRequest);
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function dataProviderMultipartServerRequestGreen(): array
     {
         $imagePath = __DIR__ . '/../../../stubs/image.jpg';

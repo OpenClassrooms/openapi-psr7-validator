@@ -25,7 +25,7 @@ use function strtok;
  */
 final class BodyValidator implements MessageValidator
 {
-    private const HEADER_CONTENT_TYPE = 'Content-Type';
+    private const string HEADER_CONTENT_TYPE = 'Content-Type';
     use ValidationStrategy;
 
     /** @var SpecFinder */
@@ -36,7 +36,7 @@ final class BodyValidator implements MessageValidator
         $this->finder = $finder;
     }
 
-    /** {@inheritdoc} */
+    /** {@inheritDoc} */
     public function validate(OperationAddress $addr, MessageInterface $message): void
     {
         $mediaTypeSpecs = $this->finder->findBodySpec($addr);
@@ -90,7 +90,7 @@ final class BodyValidator implements MessageValidator
         }
     }
 
-    private function messageContentType(MessageInterface $message): ?string
+    private function messageContentType(MessageInterface $message): string|null
     {
         $contentTypes = $message->getHeader(self::HEADER_CONTENT_TYPE);
         if (! $contentTypes) {
@@ -112,10 +112,8 @@ final class BodyValidator implements MessageValidator
      * Match the spec from media type specs for the given media type.
      *
      * @param Reference[]|MediaType[] $mediaTypeSpecs
-     *
-     * @return Reference|MediaType|null
      */
-    private function matchMediaTypeSpec(array $mediaTypeSpecs, string $mediaType)
+    private function matchMediaTypeSpec(array $mediaTypeSpecs, string $mediaType): Reference|MediaType|null
     {
         [$mediaTypeType, $mediaTypeSubType] = explode('/', $mediaType);
 

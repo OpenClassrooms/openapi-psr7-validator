@@ -8,19 +8,15 @@ use cebe\openapi\Reader;
 use OpenClassrooms\OpenAPIValidation\PSR7\PathFinder;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @see https://github.com/thephpleague/openapi-psr7-validator/issues/79
- */
+/** @see https://github.com/thephpleague/openapi-psr7-validator/issues/79 */
 final class Issue79Test extends TestCase
 {
-    /**
-     * @dataProvider provideSpecAndOperationToMatch
-     */
+    /** @dataProvider provideSpecAndOperationToMatch */
     public function testItFindsMatchingOperationWithTheRightServer(
         string $spec,
         string $path,
         string $method,
-        string $expectedPath
+        string $expectedPath,
     ): void {
         $pathFinder = new PathFinder(Reader::readFromYaml($spec), $path, $method);
         $opAddrs    = $pathFinder->search();
@@ -29,13 +25,11 @@ final class Issue79Test extends TestCase
         $this->assertEquals($expectedPath, $opAddrs[0]->path());
     }
 
-    /**
-     * @return iterable<string[]>
-     */
+    /** @return iterable<string[]> */
     public function provideSpecAndOperationToMatch(): iterable
     {
         yield 'Server override on the operation level' => [
-            <<<YAML
+            <<<'YAML'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -45,12 +39,12 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-    servers:
-      - url: /v2
-    get:
-      summary: Product Types
-      servers:
-        - url: /v3
+	servers:
+	  - url: /v2
+	get:
+	  summary: Product Types
+	  servers:
+		- url: /v3
 YAML
 ,
             '/v3/products/10',
@@ -59,7 +53,7 @@ YAML
         ];
 
         yield 'Server override on the path level' => [
-            <<<YAML
+            <<<'YAML'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -69,10 +63,10 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-    servers:
-      - url: /v2
-    get:
-      summary: Product Types
+	servers:
+	  - url: /v2
+	get:
+	  summary: Product Types
 YAML
 ,
             '/v2/products/10',
@@ -81,7 +75,7 @@ YAML
         ];
 
         yield 'Server from the root level' => [
-            <<<YAML
+            <<<'YAML'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -91,8 +85,8 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-    get:
-      summary: Product Types
+	get:
+	  summary: Product Types
 YAML
 ,
             '/v1/products/10',
@@ -101,7 +95,7 @@ YAML
         ];
 
         yield 'Default server' => [
-            <<<YAML
+            <<<'YAML'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -109,8 +103,8 @@ info:
   version: "1.0.0"
 paths:
   /products/{id}:
-    get:
-      summary: Product Types
+	get:
+	  summary: Product Types
 YAML
 ,
             '/products/10',
@@ -119,13 +113,11 @@ YAML
         ];
     }
 
-    /**
-     * @dataProvider provideSpecAndOperationToNotMatch
-     */
+    /** @dataProvider provideSpecAndOperationToNotMatch */
     public function testItDoesNotFindMatchingOperationWithTheWrongServer(
         string $spec,
         string $path,
-        string $method
+        string $method,
     ): void {
         $pathFinder = new PathFinder(Reader::readFromYaml($spec), $path, $method);
         $opAddrs    = $pathFinder->search();
@@ -133,13 +125,11 @@ YAML
         $this->assertCount(0, $opAddrs);
     }
 
-    /**
-     * @return iterable<string[]>
-     */
+    /** @return iterable<string[]> */
     public function provideSpecAndOperationToNotMatch(): iterable
     {
         yield 'Server override on the operation level' => [
-            <<<YAML
+            <<<'YAML'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -149,12 +139,12 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-    servers:
-      - url: /v2
-    get:
-      summary: Product Types
-      servers:
-        - url: /v3
+	servers:
+	  - url: /v2
+	get:
+	  summary: Product Types
+	  servers:
+		- url: /v3
 YAML
 ,
             '/v2/products/10',
@@ -162,7 +152,7 @@ YAML
         ];
 
         yield 'Server override on the path level' => [
-            <<<YAML
+            <<<'YAML'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -172,10 +162,10 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-    servers:
-      - url: /v2
-    get:
-      summary: Product Types
+	servers:
+	  - url: /v2
+	get:
+	  summary: Product Types
 YAML
 ,
             '/v1/products/10',
@@ -183,7 +173,7 @@ YAML
         ];
 
         yield 'Server from the root level' => [
-            <<<YAML
+            <<<'YAML'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -193,8 +183,8 @@ servers:
   - url: /v1
 paths:
   /products/{id}:
-    get:
-      summary: Product Types
+	get:
+	  summary: Product Types
 YAML
 ,
             '/products/10',

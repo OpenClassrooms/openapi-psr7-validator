@@ -10,9 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class OperationAddressTest extends TestCase
 {
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function dataProviderParseGreen(): array
     {
         return [
@@ -38,9 +36,7 @@ final class OperationAddressTest extends TestCase
         $this->assertSame($result, $parsed);
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function dataProviderParseRed(): array
     {
         return [
@@ -49,9 +45,7 @@ final class OperationAddressTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dataProviderParseRed
-     */
+    /** @dataProvider dataProviderParseRed */
     public function testItThrowsIfParsingNotPossible(string $spec, string $url): void
     {
         $this->expectException(InvalidPath::class);
@@ -59,9 +53,7 @@ final class OperationAddressTest extends TestCase
         $parsed = $addr->parseParams($url);
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function dataProviderMatch(): array
     {
         return [
@@ -78,9 +70,7 @@ final class OperationAddressTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dataProviderMatch
-     */
+    /** @dataProvider dataProviderMatch */
     public function testItMatchesPathAgainstSpec(string $spec, string $path, bool $result): void
     {
         $this->assertEquals($result, OperationAddress::isPathMatchesSpec($spec, $path));

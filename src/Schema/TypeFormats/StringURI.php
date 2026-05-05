@@ -17,7 +17,7 @@ class StringURI
             UriString::parse($value);
 
             return true;
-        } catch (SyntaxError $error) {
+        } catch (SyntaxError) {
             return false;
         }
     }

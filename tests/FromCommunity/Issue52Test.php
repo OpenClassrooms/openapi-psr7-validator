@@ -11,61 +11,59 @@ use PHPUnit\Framework\TestCase;
 
 final class Issue52Test extends TestCase
 {
-    /**
-     * @see https://github.com/thephpleague/openapi-psr7-validator/issues/52
-     */
+    /** @see https://github.com/thephpleague/openapi-psr7-validator/issues/52 */
     public function testIssue52(): void
     {
         $json = /** @lang json */
-            <<<JSON
+            <<<'JSON'
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Product import API",
-    "version": "1.0"
+	"title": "Product import API",
+	"version": "1.0"
   },
   "servers": [
-    {
-      "url": "http://localhost:8000/api/v1"
-    }
+	{
+	  "url": "http://localhost:8000/api/v1"
+	}
   ],
   "paths": {
-    "/products": {
-      "post": {
-        "parameters":[
-          {
-            "name": "fields",
-            "required":true,
-            "in": "query",
-            "schema": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "enum": [
-                    "array"
-                  ]
-                }
-                }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "result": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+	"/products": {
+	  "post": {
+		"parameters":[
+		  {
+			"name": "fields",
+			"required":true,
+			"in": "query",
+			"schema": {
+				"type": "array",
+				"items": {
+				  "type": "string",
+				  "enum": [
+					"array"
+				  ]
+				}
+				}
+		  }
+		],
+		"responses": {
+		  "200": {
+			"description": "OK",
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "properties": {
+					"result": {
+					  "type": "string"
+					}
+				  }
+				}
+			  }
+			}
+		  }
+		}
+	  }
+	}
   }
 }
 JSON;

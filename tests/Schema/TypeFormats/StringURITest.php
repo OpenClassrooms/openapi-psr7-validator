@@ -11,9 +11,7 @@ use function rawurlencode;
 
 class StringURITest extends TestCase
 {
-    /**
-     * @return array<array<string>>
-     */
+    /** @return array<array<string>> */
     public function greenURIDataProvider(): array
     {
         return [
@@ -73,9 +71,7 @@ class StringURITest extends TestCase
         ];
     }
 
-    /**
-     * @return array<array<string>>
-     */
+    /** @return array<array<string>> */
     public function redURIDataProvider(): array
     {
         return [
@@ -105,17 +101,13 @@ class StringURITest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider greenURIDataProvider
-     */
+    /** @dataProvider greenURIDataProvider */
     public function testGreenURIFormat(string $uri): void
     {
         $this->assertTrue((new StringURI())($uri));
     }
 
-    /**
-     * @dataProvider redURIDataProvider
-     */
+    /** @dataProvider redURIDataProvider */
     public function testRedURIFormat(string $uri): void
     {
         $this->assertFalse((new StringURI())($uri));

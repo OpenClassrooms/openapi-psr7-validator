@@ -37,18 +37,18 @@ use const JSON_ERROR_NONE;
 
 final class SerializedParameter
 {
-    private const STYLE_FORM            = 'form';
-    private const STYLE_SPACE_DELIMITED = 'spaceDelimited';
-    private const STYLE_PIPE_DELIMITED  = 'pipeDelimited';
-    private const STYLE_DEEP_OBJECT     = 'deepObject';
-    private const STYLE_DELIMITER_MAP   = [
+    private const string STYLE_FORM            = 'form';
+    private const string STYLE_SPACE_DELIMITED = 'spaceDelimited';
+    private const string STYLE_PIPE_DELIMITED  = 'pipeDelimited';
+    private const string STYLE_DEEP_OBJECT     = 'deepObject';
+    private const array STYLE_DELIMITER_MAP    = [
         self::STYLE_FORM => ',',
         self::STYLE_SPACE_DELIMITED => ' ',
         self::STYLE_PIPE_DELIMITED => '|',
     ];
-    private const STYLE_LABEL           = 'label';
-    private const STYLE_SIMPLE          = 'simple';
-    private const STYLE_MATRIX          = 'matrix';
+    private const string STYLE_LABEL           = 'label';
+    private const string STYLE_SIMPLE          = 'simple';
+    private const string STYLE_MATRIX          = 'matrix';
 
     /** @var CebeSchema */
     private $schema;
@@ -61,7 +61,7 @@ final class SerializedParameter
     /** @var string|null */
     private $in;
 
-    public function __construct(CebeSchema $schema, ?string $contentType = null, ?string $style = null, ?bool $explode = null, ?string $in = null)
+    public function __construct(CebeSchema $schema, string|null $contentType = null, string|null $style = null, bool|null $explode = null, string|null $in = null)
     {
         $this->schema      = $schema;
         $this->contentType = $contentType;
@@ -94,14 +94,8 @@ final class SerializedParameter
         return new self($schema, $contentType, $parameter->style, $parameter->explode, $parameter->in);
     }
 
-    /**
-     * @param mixed $value
-     *
-     * @return mixed
-     *
-     * @throws SchemaMismatch
-     */
-    public function deserialize($value)
+    /** @throws SchemaMismatch */
+    public function deserialize(mixed $value): mixed
     {
         if ($this->isJsonContentType()) {
             // Value MUST be a string.
@@ -127,12 +121,7 @@ final class SerializedParameter
         return $this->contentType !== null && preg_match('#^application/.*json$#', $this->contentType) !== false;
     }
 
-    /**
-     * @param mixed $value
-     *
-     * @return mixed
-     */
-    private function castToSchemaType($value, ?string $type)
+    private function castToSchemaType(mixed $value, string|null $type): mixed
     {
         if ($type === CebeType::BOOLEAN && is_scalar($value)) {
             if (preg_match('#^(true|false)$#i', (string) $value)) {
@@ -177,13 +166,8 @@ final class SerializedParameter
         return $value;
     }
 
-    /**
-     * @param mixed           $value
-     * @param CebeSchema|null $schema - optional schema of value to convert it in case of DeepObject serialisation
-     *
-     * @return mixed
-     */
-    protected function convertToSerializationStyle($value, ?CebeSchema $schema)
+    /** @param CebeSchema|null $schema - optional schema of value to convert it in case of DeepObject serialisation */
+    protected function convertToSerializationStyle(mixed $value, CebeSchema|null $schema): mixed
     {
         switch ($this->in) {
             case 'path':
@@ -197,13 +181,8 @@ final class SerializedParameter
         }
     }
 
-    /**
-     * @param mixed           $value
-     * @param CebeSchema|null $schema - optional schema of value to convert it in case of DeepObject serialisation
-     *
-     * @return mixed
-     */
-    protected function convertToSerializationStyleForPath($value, ?CebeSchema $schema)
+    /** @param CebeSchema|null $schema - optional schema of value to convert it in case of DeepObject serialisation */
+    protected function convertToSerializationStyleForPath(mixed $value, CebeSchema|null $schema): mixed
     {
         switch ($this->style) {
             case self::STYLE_SIMPLE:
@@ -264,13 +243,8 @@ final class SerializedParameter
         return $value;
     }
 
-    /**
-     * @param mixed           $value
-     * @param CebeSchema|null $schema - optional schema of value to convert it in case of DeepObject serialisation
-     *
-     * @return mixed
-     */
-    protected function convertToSerializationStyleForHeader($value, ?CebeSchema $schema)
+    /** @param CebeSchema|null $schema - optional schema of value to convert it in case of DeepObject serialisation */
+    protected function convertToSerializationStyleForHeader(mixed $value, CebeSchema|null $schema): mixed
     {
         $value = explode(',', $value);
 
@@ -278,22 +252,17 @@ final class SerializedParameter
             throw TypeMismatch::becauseTypeDoesNotMatch(['iterable'], $value);
         }
 
-        $array  = [];
+        $array = [];
         foreach ($value as &$val) {
-            $splitVal = explode('=', $val);
+            $splitVal            = explode('=', $val);
             $array[$splitVal[0]] = $this->castToSchemaType($splitVal[1], $schema->properties[$splitVal[0]]->type ?? null);
         }
 
         return $array;
     }
 
-    /**
-     * @param mixed           $value
-     * @param CebeSchema|null $schema - optional schema of value to convert it in case of DeepObject serialisation
-     *
-     * @return mixed
-     */
-    protected function convertToSerializationStyleForQuery($value, ?CebeSchema $schema)
+    /** @param CebeSchema|null $schema - optional schema of value to convert it in case of DeepObject serialisation */
+    protected function convertToSerializationStyleForQuery(mixed $value, CebeSchema|null $schema): mixed
     {
         if (in_array($this->style, [self::STYLE_FORM, self::STYLE_SPACE_DELIMITED, self::STYLE_PIPE_DELIMITED], true)) {
             if ($this->explode === false) {
@@ -332,7 +301,7 @@ final class SerializedParameter
         return $this->schema;
     }
 
-    protected function getChildSchema(CebeSchema $schema, string $key): ?CebeSchema
+    protected function getChildSchema(CebeSchema $schema, string $key): CebeSchema|null
     {
         if ($schema->type === CebeType::OBJECT) {
             if (($schema->properties[$key] ?? false) && $schema->properties[$key] instanceof CebeSchema) {

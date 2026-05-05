@@ -12,13 +12,13 @@ final class NotTest extends SchemaValidatorTest
 {
     public function testItValidatesNotGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   not:
-    type: object
-    properties:
-      name:
-        type: string
+	type: object
+	properties:
+	  name:
+		type: string
 SPEC;
 
         $schema = $this->loadRawSchema($spec);
@@ -30,13 +30,13 @@ SPEC;
 
     public function testItValidatesNotRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   not:
-    type: object
-    properties:
-      name:
-        type: string
+	type: object
+	properties:
+	  name:
+		type: string
 SPEC;
 
         $schema = $this->loadRawSchema($spec);

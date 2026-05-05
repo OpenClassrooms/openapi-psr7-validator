@@ -13,11 +13,10 @@ class TypeMismatch extends KeywordMismatch
 {
     /**
      * @param string[] $expected
-     * @param mixed    $value
      *
      * @return TypeMismatch
      */
-    public static function becauseTypeDoesNotMatch(array $expected, $value): self
+    public static function becauseTypeDoesNotMatch(array $expected, mixed $value): self
     {
         $exception          = new self(sprintf("Value expected to be '%s', but '%s' given.", implode(', ', $expected), gettype($value)));
         $exception->data    = $value;

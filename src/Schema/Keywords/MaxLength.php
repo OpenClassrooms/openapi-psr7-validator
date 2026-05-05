@@ -26,11 +26,9 @@ class MaxLength extends BaseKeyword
      * The length of a string instance is defined as the number of its
      * characters as defined by RFC 7159 [RFC7159].
      *
-     * @param mixed $data
-     *
      * @throws KeywordMismatch
      */
-    public function validate($data, int $maxLength): void
+    public function validate(mixed $data, int $maxLength): void
     {
         try {
             Validator::stringType()->assert($data);

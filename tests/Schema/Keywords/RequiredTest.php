@@ -12,7 +12,7 @@ final class RequiredTest extends SchemaValidatorTest
 {
     public function testItValidatesRequiredGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   required:
@@ -29,15 +29,15 @@ SPEC;
 
     public function testItValidatesPropertiesWriteOnlyGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   properties:
-    name:
-      type: string
-      writeOnly: true
-    age:
-      type: integer
+	name:
+	  type: string
+	  writeOnly: true
+	age:
+	  type: integer
   required:
   - name
   - age
@@ -52,7 +52,7 @@ SPEC;
 
     public function testItValidatesRequiredRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   required: 
@@ -73,14 +73,14 @@ SPEC;
 
     public function testItValidatesPropertiesRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: object
   properties:
-    name:
-      type: string
-    age:
-      type: integer
+	name:
+	  type: string
+	age:
+	  type: integer
   required:
   - name
   - age

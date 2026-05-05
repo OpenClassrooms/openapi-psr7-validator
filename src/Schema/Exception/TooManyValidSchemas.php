@@ -12,16 +12,15 @@ class TooManyValidSchemas extends KeywordMismatch
     protected $validSchemas = [];
 
     /**
-     * @param mixed    $data
      * @param Schema[] $validSchemas
      *
      * @return self
      */
     public static function fromKeywordWithValidSchemas(
         string $keyword,
-        $data,
+        mixed $data,
         array $validSchemas,
-        ?string $message = null
+        string|null $message = null,
     ): KeywordMismatch {
         $instance               = new self('Keyword validation failed: ' . $message, 0);
         $instance->keyword      = $keyword;
@@ -31,9 +30,7 @@ class TooManyValidSchemas extends KeywordMismatch
         return $instance;
     }
 
-    /**
-     * @return Schema[]
-     */
+    /** @return Schema[] */
     public function validSchemas(): array
     {
         return $this->validSchemas;

@@ -12,7 +12,7 @@ final class MaxLengthTest extends SchemaValidatorTest
 {
     public function testItValidatesMaxLengthGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   maxLength: 10
@@ -27,7 +27,7 @@ SPEC;
 
     public function testItValidatesMaxLengthRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   maxLength: 9

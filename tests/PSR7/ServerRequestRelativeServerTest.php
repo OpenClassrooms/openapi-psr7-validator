@@ -9,9 +9,7 @@ use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 
 class ServerRequestRelativeServerTest extends BaseValidatorTest
 {
-    /**
-     * @return array<array<ServerRequest>>
-     */
+    /** @return array<array<ServerRequest>> */
     public function validDataProvider(): array
     {
         return [
@@ -35,12 +33,10 @@ class ServerRequestRelativeServerTest extends BaseValidatorTest
         ];
     }
 
-    /**
-     * @dataProvider validDataProvider
-     */
+    /** @dataProvider validDataProvider */
     public function testItAllowsRelativesServerUrlsGreen(ServerRequest $request): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 openapi: "3.0.0"
 info:
   title: Test API
@@ -51,14 +47,14 @@ servers:
   - url: /v2
 paths:
   /products:
-    get:
-      summary: Inherits servers
+	get:
+	  summary: Inherits servers
   /products/overridden:
-    servers:
-      - url: https://special.host/v3
-      - url: /v4
-    get:
-      summary: Overrides servers
+	servers:
+	  - url: https://special.host/v3
+	  - url: /v4
+	get:
+	  summary: Overrides servers
 SPEC;
 
         $validator = (new ValidatorBuilder())->fromYaml($spec)->getServerRequestValidator();

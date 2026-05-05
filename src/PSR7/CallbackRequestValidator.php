@@ -28,7 +28,7 @@ final class CallbackRequestValidator implements ReusableSchema
             new HeadersValidator($finder),
             new CookiesValidator($finder),
             new BodyValidator($finder),
-            new QueryArgumentsValidator($finder)
+            new QueryArgumentsValidator($finder),
         );
     }
 
@@ -37,9 +37,7 @@ final class CallbackRequestValidator implements ReusableSchema
         return $this->openApi;
     }
 
-    /**
-     * @throws ValidationFailed
-     */
+    /** @throws ValidationFailed */
     public function validate(CallbackAddress $opAddr, RequestInterface $serverRequest): void
     {
         $this->validator->validate($opAddr, $serverRequest);

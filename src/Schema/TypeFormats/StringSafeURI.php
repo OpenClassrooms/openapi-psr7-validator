@@ -7,25 +7,39 @@ namespace OpenClassrooms\OpenAPIValidation\Schema\TypeFormats;
 use League\Uri\Exceptions\SyntaxError;
 use League\Uri\UriString;
 
+use function count;
+use function ctype_digit;
+use function explode;
+use function filter_var;
+use function in_array;
+use function is_int;
+use function preg_match;
+use function str_contains;
+use function str_ends_with;
+use function strlen;
+use function strtolower;
+
+use const FILTER_VALIDATE_IP;
+
 class StringSafeURI
 {
-    private const ALLOWED_SCHEMES = ['https'];
+    private const array ALLOWED_SCHEMES = ['https'];
 
     public function __invoke(string $value): bool
     {
         try {
             // @phpstan-ignore-next-line
             $parts = UriString::parse($value);
-        } catch (SyntaxError $error) {
+        } catch (SyntaxError) {
             return false;
         }
 
-        if (!isset($parts['scheme'], $parts['host'])) {
+        if (! isset($parts['scheme'], $parts['host'])) {
             return false;
         }
 
-        $scheme = strtolower((string)$parts['scheme']);
-        if (!in_array($scheme, self::ALLOWED_SCHEMES, true)) {
+        $scheme = strtolower((string) $parts['scheme']);
+        if (! in_array($scheme, self::ALLOWED_SCHEMES, true)) {
             return false;
         }
 
@@ -37,11 +51,11 @@ class StringSafeURI
             return false;
         }
 
-        if (isset($parts['port']) && !$this->isAllowedPort($parts['port'])) {
+        if (isset($parts['port']) && ! $this->isAllowedPort($parts['port'])) {
             return false;
         }
 
-        $host = strtolower((string)$parts['host']);
+        $host = strtolower((string) $parts['host']);
         if ($host === '' || $this->isLocalHost($host) || $this->containsEncodedControlChars($host)) {
             return false;
         }
@@ -53,16 +67,13 @@ class StringSafeURI
         return $this->isStandardPublicDnsHost($host);
     }
 
-    /**
-     * @param int|string $port
-     */
-    private function isAllowedPort($port): bool
+    private function isAllowedPort(int|string $port): bool
     {
         if (is_int($port)) {
             return $port === 443;
         }
 
-        return ctype_digit($port) && (int)$port === 443;
+        return ctype_digit($port) && (int) $port === 443;
     }
 
     private function isLocalHost(string $host): bool

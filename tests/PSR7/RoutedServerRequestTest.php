@@ -43,7 +43,7 @@ final class RoutedServerRequestTest extends BaseValidatorTest
 
         $this->expectException(InvalidBody::class);
         $this->expectExceptionMessage(
-            'Body does not match schema for content-type "application/json" for Request [post /request-body]'
+            'Body does not match schema for content-type "application/json" for Request [post /request-body]',
         );
 
         $validator = (new ValidatorBuilder())->fromYamlFile($this->apiSpecFile)->getRoutedRequestValidator();
@@ -59,7 +59,7 @@ final class RoutedServerRequestTest extends BaseValidatorTest
 
         $this->expectException(InvalidHeaders::class);
         $this->expectExceptionMessage(
-            'Content-Type "unexpected/content" is not expected for Request [post /request-body]'
+            'Content-Type "unexpected/content" is not expected for Request [post /request-body]',
         );
 
         $validator = (new ValidatorBuilder())->fromYamlFile($this->apiSpecFile)->getRoutedRequestValidator();

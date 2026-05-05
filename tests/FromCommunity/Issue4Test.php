@@ -8,9 +8,7 @@ use GuzzleHttp\Psr7\ServerRequest;
 use OpenClassrooms\OpenAPIValidation\PSR7\ValidatorBuilder;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @see https://github.com/lezhnev74/openapi-psr7-validator/issues/4
- */
+/** @see https://github.com/lezhnev74/openapi-psr7-validator/issues/4 */
 final class Issue4Test extends TestCase
 {
     public function testItResolvesSchemaRefsFromYamlStringGreen(): void
@@ -37,13 +35,13 @@ final class Issue4Test extends TestCase
             'POST',
             'http://localhost:8000/products.create',
             ['Content-Type' => 'application/json'],
-            <<<JSON
+            <<<'JSON'
 {
-    "test": {
-        "input": "some data"
-    }
+	"test": {
+		"input": "some data"
+	}
 }
-JSON
+JSON,
         );
     }
 }

@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 final class SecurityHTTPTest extends TestCase
 {
     /** @var string */
-    private $specBearer = <<<BEARER
+    private $specBearer = <<<'BEARER'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -20,20 +20,20 @@ info:
   version: "1.0.0"
 paths:
   /products:
-    get:
-      summary: Product Types
-      description: The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order.
-      security:
-        - bearerHttp: []
+	get:
+	  summary: Product Types
+	  description: The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order.
+	  security:
+		- bearerHttp: []
 components:
   securitySchemes:
-    bearerHttp:
-      type: http
-      scheme: bearer
+	bearerHttp:
+	  type: http
+	  scheme: bearer
 BEARER;
 
     /** @var string */
-    private $specBasic = <<<BASIC
+    private $specBasic = <<<'BASIC'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -41,16 +41,16 @@ info:
   version: "1.0.0"
 paths:
   /products:
-    get:
-      summary: Product Types
-      description: The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order.
-      security:
-        - bearerHttp: []
+	get:
+	  summary: Product Types
+	  description: The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order.
+	  security:
+		- bearerHttp: []
 components:
   securitySchemes:
-    bearerHttp:
-      type: http
-      scheme: basic
+	bearerHttp:
+	  type: http
+	  scheme: basic
 BASIC;
 
     public function testItChecksBearerHeaderGreen(): void

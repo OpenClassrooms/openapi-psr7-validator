@@ -22,6 +22,7 @@ final class AllOf extends BaseKeyword
     public function __construct(CebeSchema $parentSchema, int $type, BreadCrumb $breadCrumb)
     {
         parent::__construct($parentSchema);
+
         $this->validationDataType = $type;
         $this->dataBreadCrumb     = $breadCrumb;
     }
@@ -36,12 +37,11 @@ final class AllOf extends BaseKeyword
      * validates successfully against all schemas defined by this keyword's
      * value.
      *
-     * @param mixed        $data
      * @param CebeSchema[] $allOf
      *
      * @throws SchemaMismatch
      */
-    public function validate($data, array $allOf): void
+    public function validate(mixed $data, array $allOf): void
     {
         try {
             Validator::arrayVal()->assert($allOf);

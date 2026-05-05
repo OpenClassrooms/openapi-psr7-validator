@@ -16,18 +16,15 @@ use function sprintf;
 
 class MultipleOf extends BaseKeyword
 {
-    private const EPSILON = 0.00000001;
+    private const float EPSILON = 0.00000001;
 
     /**
      * The value of "multipleOf" MUST be a number, strictly greater than 0.
      * A numeric instance is only valid if division by this keyword's value results in an integer.
      *
-     * @param mixed     $data
-     * @param int|float $multipleOf
-     *
      * @throws KeywordMismatch
      */
-    public function validate($data, $multipleOf): void
+    public function validate(mixed $data, int|float $multipleOf): void
     {
         try {
             if (class_exists(NumericVal::class)) {

@@ -16,7 +16,7 @@ final class SecurityApiKeyTest extends TestCase
      *
      * @var string
      */
-    private $specSecurityORUnion = <<<OR
+    private $specSecurityORUnion = <<<'OR'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -24,27 +24,27 @@ info:
   version: "1.0.0"
 paths:
   /products:
-    get:
-      summary: Product Types
-      description: The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order.
-      security:
-        - apikey1: []
-        - apikey2: []
-        - apikey3: []
+	get:
+	  summary: Product Types
+	  description: The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order.
+	  security:
+		- apikey1: []
+		- apikey2: []
+		- apikey3: []
 components:
   securitySchemes:
-    apikey1:
-      type: apiKey
-      name: server_token1
-      in: query
-    apikey2:
-      type: apiKey
-      name: server_token2
-      in: header
-    apikey3:
-      type: apiKey
-      name: server_token3
-      in: cookie
+	apikey1:
+	  type: apiKey
+	  name: server_token1
+	  in: query
+	apikey2:
+	  type: apiKey
+	  name: server_token2
+	  in: header
+	apikey3:
+	  type: apiKey
+	  name: server_token3
+	  in: cookie
 OR;
 
     /**
@@ -52,7 +52,7 @@ OR;
      *
      * @var string
      */
-    private $specSecurityANDUnion = <<<AND
+    private $specSecurityANDUnion = <<<'AND'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -60,22 +60,22 @@ info:
   version: "1.0.0"
 paths:
   /products:
-    get:
-      summary: Product Types
-      description: The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order.
-      security:
-        - apikey1: []
-          apikey2: []
+	get:
+	  summary: Product Types
+	  description: The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order.
+	  security:
+		- apikey1: []
+		  apikey2: []
 components:
   securitySchemes:
-    apikey1:
-      type: apiKey
-      name: server_token1
-      in: query
-    apikey2:
-      type: apiKey
-      name: server_token2
-      in: header
+	apikey1:
+	  type: apiKey
+	  name: server_token1
+	  in: query
+	apikey2:
+	  type: apiKey
+	  name: server_token2
+	  in: header
 AND;
 
     /**
@@ -83,7 +83,7 @@ AND;
      *
      * @var string
      */
-    private $specSecurityANDORCombined = <<<AND
+    private $specSecurityANDORCombined = <<<'AND'
 openapi: "3.0.0"
 info:
   title: Uber API
@@ -91,27 +91,27 @@ info:
   version: "1.0.0"
 paths:
   /products:
-    get:
-      summary: Product Types
-      description: The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order.
-      security:
-        - apikey1: []
-          apikey2: []
-        - apikey3: []
+	get:
+	  summary: Product Types
+	  description: The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order.
+	  security:
+		- apikey1: []
+		  apikey2: []
+		- apikey3: []
 components:
   securitySchemes:
-    apikey1:
-      type: apiKey
-      name: server_token1
-      in: query
-    apikey2:
-      type: apiKey
-      name: server_token2
-      in: header
-    apikey3:
-      type: apiKey
-      name: server_token3
-      in: cookie
+	apikey1:
+	  type: apiKey
+	  name: server_token1
+	  in: query
+	apikey2:
+	  type: apiKey
+	  name: server_token2
+	  in: header
+	apikey3:
+	  type: apiKey
+	  name: server_token3
+	  in: cookie
 AND;
 
     public function testItAppliesSecurityRulesORGreen(): void

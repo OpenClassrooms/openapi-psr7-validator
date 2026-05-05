@@ -12,7 +12,7 @@ final class MinLengthTest extends SchemaValidatorTest
 {
     public function testItValidatesMinLengthGreen(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   minLength: 10
@@ -27,7 +27,7 @@ SPEC;
 
     public function testItValidatesMinLengthRed(): void
     {
-        $spec = <<<SPEC
+        $spec = <<<'SPEC'
 schema:
   type: string
   minLength: 11

@@ -20,10 +20,10 @@ final class Issue12Test extends TestCase
      *
      * @dataProvider getNullableTypeExamples
      */
-    public function testIssue12(?array $example): void
+    public function testIssue12(array|null $example): void
     {
         $yaml = /** @lang yaml */
-            <<<YAML
+            <<<'YAML'
 openapi: 3.0.0
 info:
   title: Product import API
@@ -32,29 +32,29 @@ servers:
   - url: 'http://localhost:8000/api/v1'
 paths:
   /products.create:
-    post:
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              properties:
-                test:
-                  nullable: true
-                  type: array
-                  items:
-                    type: integer
-                  minItems: 1
-                  
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                properties:
-                  result: 
-                    type: string
+	post:
+	  requestBody:
+		required: true
+		content:
+		  application/json:
+			schema:
+			  properties:
+				test:
+				  nullable: true
+				  type: array
+				  items:
+					type: integer
+				  minItems: 1
+				  
+	  responses:
+		'200':
+		  description: OK
+		  content:
+			application/json:
+			  schema:
+				properties:
+				  result: 
+					type: string
 YAML;
 
         $validator = (new ValidatorBuilder())->fromYaml($yaml)->getServerRequestValidator();
@@ -68,9 +68,7 @@ YAML;
         $this->addToAssertionCount(1);
     }
 
-    /**
-     * @return mixed[]
-     */
+    /** @return mixed[] */
     public function getNullableTypeExamples(): array
     {
         return [

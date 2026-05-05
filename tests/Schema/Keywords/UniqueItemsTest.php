@@ -10,109 +10,107 @@ use OpenClassrooms\OpenAPIValidation\Tests\Schema\SchemaValidatorTest;
 
 final class UniqueItemsTest extends SchemaValidatorTest
 {
-    /**
-     * @return array<array<(string|array<mixed>)>>
-     */
+    /** @return array<array<(string|array<mixed>)>> */
     public function dataProviderGreen(): array
     {
         return [
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: integer
+	type: integer
 SPEC
 ,
                 [],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: integer
+	type: integer
 SPEC
 ,
                 [1, 1],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: integer
+	type: integer
   uniqueItems: true
 SPEC
 ,
                 [1, 2],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: number
+	type: number
   uniqueItems: true
 SPEC
 ,
                 [1, 1.0],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: boolean
+	type: boolean
   uniqueItems: true
 SPEC
 ,
                 [true, false],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: string
+	type: string
   uniqueItems: true
 SPEC
 ,
                 ['one', 'oNe'],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: object
+	type: object
   uniqueItems: true
 SPEC
 ,
                 [['a' => 1, 'b' => 2], ['a' => 3, 'b' => 4]],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: array
-    items:
-        type: object
+	type: array
+	items:
+		type: object
   uniqueItems: true
 SPEC
 ,
                 [[['a' => 1, 'b' => 2], ['a' => 3, 'b' => 4]], [['a' => 1, 'b' => 2], ['a' => 1, 'b' => 2]]],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: array
-    items:
-        type: object
-    uniqueItems: true
+	type: array
+	items:
+		type: object
+	uniqueItems: true
   uniqueItems: true
 SPEC
 ,
@@ -121,78 +119,76 @@ SPEC
         ];
     }
 
-    /**
-     * @return array<array<(string|array<mixed>)>>
-     */
+    /** @return array<array<(string|array<mixed>)>> */
     public function dataProviderRed(): array
     {
         return [
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: integer
+	type: integer
   uniqueItems: true
 SPEC
 ,
                 [1, 1],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: boolean
+	type: boolean
   uniqueItems: true
 SPEC
 ,
                 [true, true],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: string
+	type: string
   uniqueItems: true
 SPEC
 ,
                 ['one', 'one'],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: object
+	type: object
   uniqueItems: true
 SPEC
 ,
                 [['a' => 1, 'b' => 2], ['a' => 1, 'b' => 2]],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: array
-    items:
-        type: object
+	type: array
+	items:
+		type: object
   uniqueItems: true
 SPEC
 ,
                 [[['a' => 1, 'b' => 2], ['a' => 3, 'b' => 4]], [['a' => 1, 'b' => 2], ['a' => 3, 'b' => 4]]],
             ],
             [
-                <<<SPEC
+                <<<'SPEC'
 schema:
   type: array
   items:
-    type: array
-    items:
-        type: object
-    uniqueItems: true
+	type: array
+	items:
+		type: object
+	uniqueItems: true
   uniqueItems: true
 SPEC
 ,

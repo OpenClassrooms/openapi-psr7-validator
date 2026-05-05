@@ -32,7 +32,7 @@ class RoutedServerRequestValidator implements ReusableSchema
             new BodyValidator($finder),
             new QueryArgumentsValidator($finder),
             new PathValidator($finder),
-            new SecurityValidator($finder)
+            new SecurityValidator($finder),
         );
     }
 
@@ -41,9 +41,7 @@ class RoutedServerRequestValidator implements ReusableSchema
         return $this->openApi;
     }
 
-    /**
-     * @throws ValidationFailed
-     */
+    /** @throws ValidationFailed */
     public function validate(OperationAddress $opAddr, ServerRequestInterface $serverRequest): void
     {
         $this->validator->validate($opAddr, $serverRequest);

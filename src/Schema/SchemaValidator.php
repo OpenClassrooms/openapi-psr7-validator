@@ -37,8 +37,8 @@ use function is_array;
 final class SchemaValidator implements Validator
 {
     // How to treat the data (affects writeOnly/readOnly keywords)
-    public const VALIDATE_AS_REQUEST  = 0;
-    public const VALIDATE_AS_RESPONSE = 1;
+    public const int VALIDATE_AS_REQUEST  = 0;
+    public const int VALIDATE_AS_RESPONSE = 1;
 
     /** @var int strategy of validation - Request or Response (affected by writeOnly/readOnly keywords) */
     private $validationStrategy;
@@ -50,8 +50,8 @@ final class SchemaValidator implements Validator
         $this->validationStrategy = $validationStrategy;
     }
 
-    /** {@inheritdoc} */
-    public function validate($data, CebeSchema $schema, ?BreadCrumb $breadCrumb = null): void
+    /** {@inheritDoc} */
+    public function validate($data, CebeSchema $schema, BreadCrumb|null $breadCrumb = null): void
     {
         $breadCrumb = $breadCrumb ?? new BreadCrumb();
 
@@ -138,7 +138,7 @@ final class SchemaValidator implements Validator
                     (new Properties($schema, $this->validationStrategy, $breadCrumb))->validate(
                         $data,
                         $schema->properties,
-                        $additionalProperties
+                        $additionalProperties,
                     );
                 }
             }
