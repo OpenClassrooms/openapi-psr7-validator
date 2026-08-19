@@ -52,7 +52,7 @@ class Type extends BaseKeyword
         foreach ($types as $type) {
             switch ($type) {
                 case CebeType::OBJECT:
-                    if (! is_object($data) && ! (is_array($data) && ArrayHelper::isAssoc($data)) && $data !== []) {
+                    if (! is_object($data) && ! (is_array($data) && ArrayHelper::isAssoc($data))) {
                         break;
                     }
 

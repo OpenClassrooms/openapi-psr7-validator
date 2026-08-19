@@ -19,7 +19,9 @@ final class TypeTest extends SchemaValidatorTest
         return [
             ['string', null, 'string value'],
             ['object', null, ['a' => 1]],
+            ['object', null, new stdClass()],
             ['array', null, ['a', 'b']],
+            ['array', null, []],
             ['boolean', null, true],
             ['boolean', null, false],
             ['number', null, 12],
@@ -77,7 +79,9 @@ SPEC;
         return [
             ['string', 12],
             ['object', 'not object'],
+            ['object', []],
             ['array', ['a' => 1, 'b' => 2]], // this is not a plain array (a-la JSON)
+            ['array', new stdClass()],
             ['boolean', [1, 2]],
             ['boolean', 'True'],
             ['boolean', ''],

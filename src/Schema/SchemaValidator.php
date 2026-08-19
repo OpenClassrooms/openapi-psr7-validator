@@ -31,7 +31,9 @@ use OpenClassrooms\OpenAPIValidation\Schema\Keywords\Type;
 use OpenClassrooms\OpenAPIValidation\Schema\Keywords\UniqueItems;
 
 use function count;
+use function get_object_vars;
 use function is_array;
+use function is_object;
 
 // This will load a whole schema and data to validate if one matches another
 final class SchemaValidator implements Validator
@@ -68,6 +70,8 @@ final class SchemaValidator implements Validator
             if (isset($schema->type)) {
                 (new Type($schema))->validate($data, $schema->type, $schema->format);
             }
+
+            $objectData = is_object($data) ? get_object_vars($data) : $data;
 
             // This keywords come directly from JSON Schema Validation, they are the same as in JSON schema
             // https://tools.ietf.org/html/draft-wright-json-schema-validation-00#section-5
@@ -110,15 +114,18 @@ final class SchemaValidator implements Validator
             }
 
             if (isset($schema->maxProperties)) {
-                (new MaxProperties($schema))->validate($data, $schema->maxProperties);
+                (new MaxProperties($schema))->validate($objectData, $schema->maxProperties);
             }
 
             if (isset($schema->minProperties)) {
-                (new MinProperties($schema))->validate($data, $schema->minProperties);
+                (new MinProperties($schema))->validate($objectData, $schema->minProperties);
             }
 
             if (isset($schema->required)) {
-                (new Required($schema, $this->validationStrategy, $breadCrumb))->validate($data, $schema->required);
+                (new Required($schema, $this->validationStrategy, $breadCrumb))->validate(
+                    $objectData,
+                    $schema->required
+                );
             }
 
             if (isset($schema->enum)) {
@@ -131,12 +138,15 @@ final class SchemaValidator implements Validator
 
             if (
                 $schema->type === CebeType::OBJECT
-                || (isset($schema->properties) && is_array($data) && ArrayHelper::isAssoc($data))
+                || (
+                    isset($schema->properties)
+                    && (is_object($data) || (is_array($data) && ArrayHelper::isAssoc($data)))
+                )
             ) {
                 $additionalProperties = $schema->additionalProperties ?? null; // defaults to true
                 if ((isset($schema->properties) && count($schema->properties)) || $additionalProperties) {
                     (new Properties($schema, $this->validationStrategy, $breadCrumb))->validate(
-                        $data,
+                        $objectData,
                         $schema->properties,
                         $additionalProperties
                     );
