@@ -129,7 +129,7 @@ final class SchemaValidator implements Validator
             }
 
             if (isset($schema->enum)) {
-                (new Enum($schema))->validate($data, $schema->enum);
+                (new Enum($schema))->validate($objectData, $schema->enum);
             }
 
             if (isset($schema->items)) {
