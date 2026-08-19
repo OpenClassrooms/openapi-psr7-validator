@@ -23,8 +23,10 @@ final class JsonContainerTypeValidationTest extends TestCase
         return [
             'empty array' => ['/arrays', '[]'],
             'empty object' => ['/objects', '{}'],
+            'empty array accepted for object compatibility' => ['/objects', '[]'],
             'nested empty array' => ['/nested-arrays', '{"value":[]}'],
             'nested empty object' => ['/nested-objects', '{"value":{}}'],
+            'nested empty array accepted for object compatibility' => ['/nested-objects', '{"value":[]}'],
             'object enum' => ['/object-enums', '{"kind":"x"}'],
         ];
     }
@@ -46,9 +48,9 @@ final class JsonContainerTypeValidationTest extends TestCase
     {
         return [
             'object is not an array' => ['/arrays', '{}'],
-            'array is not an object' => ['/objects', '[]'],
+            'non-empty array is not an object' => ['/objects', '[1]'],
             'nested object is not an array' => ['/nested-arrays', '{"value":{}}'],
-            'nested array is not an object' => ['/nested-objects', '{"value":[]}'],
+            'nested non-empty array is not an object' => ['/nested-objects', '{"value":[1]}'],
         ];
     }
 
@@ -70,6 +72,7 @@ final class JsonContainerTypeValidationTest extends TestCase
         return [
             'empty array' => ['/multipart-arrays', '[]'],
             'empty object' => ['/multipart-objects', '{}'],
+            'empty array accepted for object compatibility' => ['/multipart-objects', '[]'],
         ];
     }
 
@@ -90,7 +93,7 @@ final class JsonContainerTypeValidationTest extends TestCase
     {
         return [
             'object is not an array' => ['/multipart-arrays', '{}'],
-            'array is not an object' => ['/multipart-objects', '[]'],
+            'non-empty array is not an object' => ['/multipart-objects', '[1]'],
         ];
     }
 
