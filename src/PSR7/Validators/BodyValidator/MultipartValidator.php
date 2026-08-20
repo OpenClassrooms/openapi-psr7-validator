@@ -171,7 +171,7 @@ class MultipartValidator implements MessageValidator
             $partContentType = $part->getHeader('Content-Type');
 
             if (! empty($partContentType) && preg_match('#^application/.*json$#', $partContentType)) {
-                $partBody = json_decode($part->getBody(), true);
+                $partBody = json_decode($part->getBody());
                 if (json_last_error() !== JSON_ERROR_NONE) {
                     throw InvalidBody::becauseBodyIsNotValidJson(json_last_error_msg(), $addr);
                 }

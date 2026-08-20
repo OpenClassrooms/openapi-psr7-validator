@@ -278,9 +278,9 @@ final class SerializedParameter
             throw TypeMismatch::becauseTypeDoesNotMatch(['iterable'], $value);
         }
 
-        $array  = [];
+        $array = [];
         foreach ($value as &$val) {
-            $splitVal = explode('=', $val);
+            $splitVal            = explode('=', $val);
             $array[$splitVal[0]] = $this->castToSchemaType($splitVal[1], $schema->properties[$splitVal[0]]->type ?? null);
         }
 

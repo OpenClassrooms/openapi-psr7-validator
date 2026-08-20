@@ -44,7 +44,7 @@ class UnipartValidator implements MessageValidator
     public function validate(OperationAddress $addr, MessageInterface $message): void
     {
         if (preg_match('#^application/.*json$#', $this->contentType)) {
-            $body = json_decode((string) $message->getBody(), true);
+            $body = json_decode((string) $message->getBody());
             if (json_last_error() !== JSON_ERROR_NONE) {
                 throw InvalidBody::becauseBodyIsNotValidJson(json_last_error_msg(), $addr);
             }

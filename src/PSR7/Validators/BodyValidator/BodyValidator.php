@@ -7,6 +7,7 @@ namespace OpenClassrooms\OpenAPIValidation\PSR7\Validators\BodyValidator;
 use cebe\openapi\spec\MediaType;
 use cebe\openapi\spec\Reference;
 use cebe\openapi\spec\RequestBody;
+use cebe\openapi\spec\Response as ResponseSpec;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
 use OpenClassrooms\OpenAPIValidation\PSR7\Exception\Validation\InvalidHeaders;
 use OpenClassrooms\OpenAPIValidation\PSR7\MessageValidator;
@@ -53,7 +54,9 @@ final class BodyValidator implements MessageValidator
             return;
         }
 
-        $mediaTypeSpecs = $mediaTypeSpecs->content;
+        /** @var RequestBody|ResponseSpec $bodySpec */
+        $bodySpec       = $mediaTypeSpecs;
+        $mediaTypeSpecs = $bodySpec->content;
 
         if (empty($mediaTypeSpecs)) {
             // edge case: if "content" keyword is not set (body can be anything as no expectations set)
